@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#C44757"><meta name="description" content="臻朴采购系统 V2.1 完整需求文档，涵盖客户门户、内部经营后台、业务规则、待确认问题和参考资料。"><title>V2.1 完整需求文档 · 臻朴采购系统</title><style>
+:root{--brand:#D96872;--primary:#C44757;--hover:#B6404E;--tint:#FFF1F2;--bg:#F6F7F9;--paper:#FFFFFF;--ink:#252C38;--muted:#778190;--border:#E5E8EE;--header:72px;--font:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;color:var(--ink);background:var(--bg);font:15px/1.65 var(--font)}button,input,a{font:inherit}button,a,input{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a{color:var(--primary)}button:focus-visible,a:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #D9687266;outline-offset:3px}button:disabled{cursor:default}svg{display:block}.site-header{height:var(--header);position:sticky;top:0;z-index:30;background:#FFFFFFF5;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}.header-inner{height:100%;max-width:1540px;margin:auto;padding:0 34px;display:flex;align-items:center;gap:24px}.brand{display:flex;align-items:center;gap:12px;color:var(--ink);font-size:18px;font-weight:750;letter-spacing:.2px;text-decoration:none;white-space:nowrap}.brand-mark{width:34px;height:36px;display:grid;place-items:center;background:var(--primary);border-radius:10px;color:#FFF;font-size:20px;font-weight:600}.brand-small{font-size:11px;color:var(--muted);font-weight:450;display:block;letter-spacing:.8px;line-height:1.25;margin-top:1px}.header-nav{margin-left:auto;display:flex;gap:6px;align-items:center}.header-nav a{padding:10px 15px;border-radius:8px;color:#667180;text-decoration:none;font-weight:550;font-size:14px;transition:background .16s,color .16s}.header-nav a:hover{background:#F6F7F9;color:var(--primary)}.header-nav a[aria-current=page]{color:var(--primary);background:var(--tint)}.mobile-menu{display:none}.icon-btn{border:1px solid var(--border);background:white;width:36px;height:36px;border-radius:8px;display:grid;place-items:center;color:#697383}.icon-btn:hover{color:var(--primary);background:var(--tint);border-color:#E6B6BE}.read-progress{position:absolute;bottom:-1px;left:0;height:2px;background:var(--brand);width:0;transition:width .08s linear}.document-layout{max-width:1440px;margin:0 auto;padding:30px 28px 70px;display:grid;grid-template-columns:242px minmax(0,1fr);gap:30px;align-items:start}.doc-sidebar{position:sticky;top:102px;max-height:calc(100vh - 128px);overflow:auto;scrollbar-width:thin;padding:0 6px 22px 0;overscroll-behavior:contain}.sidebar-heading{display:flex;align-items:center;justify-content:space-between;padding:0 8px;margin:1px 0 14px;font-size:13px;font-weight:650;color:#697383}.sidebar-heading span{font-size:11px;color:#9AA2AF;font-weight:450}.search-box{position:relative;margin:0 4px 18px}.search-box svg{position:absolute;left:11px;top:11px;color:#9AA2AF;width:16px;height:16px}.search-box input{width:100%;height:38px;border:1px solid var(--border);background:#FFF;border-radius:8px;padding:0 12px 0 34px;font-size:13px;color:var(--ink)}.search-box input::placeholder{color:#9AA2AF}.toc-link{display:block;padding:9px 11px;text-decoration:none;font-size:13px;line-height:1.5;color:#636E7C;border-radius:7px;transition:background .15s,color .15s;margin:2px 0}.toc-link.level-2{font-weight:580}.toc-link.level-3{font-size:12px;font-weight:400;padding:6px 10px 6px 23px;color:#88919D;display:none}.toc-link.level-3.expanded,.searching .toc-link.level-3{display:block}.toc-link:hover{color:var(--primary);background:#F0F2F5}.toc-link.active{color:var(--primary);background:var(--tint);font-weight:650}.toc-link[hidden]{display:none!important}.toc-none{display:none;padding:14px 10px;color:var(--muted);font-size:13px}.sidebar-footer{border-top:1px solid var(--border);margin-top:20px;padding:18px 12px 0;font-size:11px;line-height:1.8;color:#929BA7}.doc-main{min-width:0}.page-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:22px}.page-heading h1{margin:0 0 6px;font-size:27px;line-height:1.4;font-weight:700;letter-spacing:-.6px}.page-heading p{margin:0;font-size:13px;color:var(--muted)}.page-actions{display:flex;gap:8px;margin-top:3px}.button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:7px 13px;border:1px solid var(--border);border-radius:8px;background:#FFF;color:#586372;white-space:nowrap;font-size:12px;font-weight:550;text-decoration:none;transition:background .16s,border-color .16s,color .16s}.button:hover{background:var(--tint);border-color:#E4B4BE;color:var(--primary)}.button svg{width:15px;height:15px}.version-note{border-left:3px solid var(--brand);padding:12px 16px;margin:0 0 23px;background:var(--tint);font-size:12px;color:#875A62;border-radius:0 7px 7px 0;line-height:1.85}.version-note strong{color:var(--primary);font-weight:650}.paper{background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:34px 38px;box-shadow:0 3px 12px #18273903}.document-body{font-size:14px;line-height:1.95;overflow-wrap:break-word}.document-body>h1{font-size:25px;line-height:1.5;margin:0 0 16px;letter-spacing:-.5px}.document-body h2{font-size:21px;font-weight:700;line-height:1.5;margin:48px 0 20px;padding-top:26px;border-top:1px solid var(--border);scroll-margin-top:100px}.document-body h3{font-size:17px;font-weight:650;line-height:1.5;margin:29px 0 14px;scroll-margin-top:100px}.document-body h4{font-size:15px;font-weight:650;margin:23px 0 12px;scroll-margin-top:100px}.document-body p{margin:12px 0}.document-body ul,.document-body ol{margin:12px 0;padding-left:24px}.document-body li{padding-left:3px;margin:5px 0}.document-body strong{font-weight:650;color:#283140}.document-body a{color:var(--primary);text-decoration-color:#D9687270;text-underline-offset:3px}.document-body a:hover{text-decoration-color:var(--primary)}.document-body code{background:#F2F4F7;padding:2px 5px;border-radius:4px;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;word-break:break-word}.document-body pre{margin:0;padding:18px 20px;overflow:auto;background:#F6F7FA;font-size:12px;line-height:1.75}.document-body pre code{padding:0;background:transparent;white-space:pre;word-break:normal}.table-scroll{max-width:100%;overflow-x:auto;border:1px solid var(--border);border-radius:8px;margin:20px 0 22px;scrollbar-width:thin}.document-body table{border-collapse:collapse;width:100%;min-width:600px;font-size:12.5px;line-height:1.75;text-align:left}.document-body thead{background:#F7F8FA}.document-body th{font-weight:650;color:#485363;padding:13px 14px;border-bottom:1px solid var(--border);white-space:normal;min-width:70px;vertical-align:top}.document-body td{padding:13px 14px;border-bottom:1px solid #EDF0F4;vertical-align:top;color:#5C6674;min-width:70px}.document-body tr:last-child td{border-bottom:0}.document-body tr:hover td{background:#FFFBFB}.document-body td:first-child{font-weight:550;color:#354052}.document-body table p{margin:0}.document-body table code{font-size:11px}.document-body hr{border:0;border-top:1px solid var(--border);margin:30px 0}.flow-figure{margin:24px 0 10px;padding:16px 8px 8px;border:1px solid var(--border);border-radius:10px;background:#FBFCFD}.price-flow{width:100%;max-height:510px;min-width:560px}.flow-figure{overflow:auto}.flow-figure figcaption{font-size:12px;color:var(--muted);text-align:center;margin:4px 0 8px}.source-details{border:1px solid var(--border);border-radius:7px;margin:10px 0 22px;overflow:hidden}.source-details summary{font-size:12px;padding:10px 15px;cursor:pointer;color:#778190;background:#FAFBFC}.source-details summary:hover{color:var(--primary)}.source-details pre{position:relative}.copy-code{float:right;padding:5px 9px;min-height:0;margin:8px 12px;font-size:11px;background:white}.document-footer{margin-top:30px;padding:20px 0 0;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px;color:var(--muted)}.document-footer a{text-decoration:none}.back-top{position:fixed;bottom:26px;right:25px;z-index:20;width:42px;height:42px;box-shadow:0 2px 12px #2531470A;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s}.back-top.visible{opacity:1;pointer-events:auto;transform:none}.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,12px);z-index:60;padding:11px 18px;border-radius:9px;background:#2C3544;color:white;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:calc(100vw - 40px);box-shadow:0 6px 24px #1D283D26}.toast.show{opacity:1;transform:translate(-50%,0)}.drawer-backdrop{display:none}.mobile-close{display:none}button[aria-label]{position:relative}
+@media(min-width:1700px){.document-layout{padding-top:38px}.paper{padding:40px 46px}.document-body{font-size:15px}}
+@media(max-width:1100px){.document-layout{grid-template-columns:216px minmax(0,1fr);padding:24px 22px;gap:22px}.paper{padding:28px}.page-heading{display:block}.page-actions{margin-top:15px}.header-inner{padding:0 24px}.document-body table{font-size:12px}.document-body td,.document-body th{padding:11px 12px}}
+@media(max-width:800px){:root{--header:64px}.header-inner{padding:0 16px;gap:12px}.brand{font-size:16px;gap:9px}.brand-mark{width:31px;height:33px;border-radius:9px;font-size:18px}.brand-small{display:none}.header-nav{gap:1px}.header-nav a{font-size:12px;padding:8px 10px}.mobile-menu{display:grid;flex:none}.document-layout{display:block;padding:22px 16px 55px}.doc-sidebar{position:fixed;z-index:50;left:0;top:0;bottom:0;width:290px;max-height:none;padding:24px 16px;background:white;transform:translateX(-100%);transition:transform .22s;box-shadow:10px 0 40px #18273915}.sidebar-heading{font-size:15px;padding:3px 7px;margin-bottom:18px}.sidebar-heading span{margin-left:auto;margin-right:10px}.mobile-close{display:grid}.drawer-backdrop{display:block;position:fixed;inset:0;z-index:45;background:#18203059;opacity:0;pointer-events:none;transition:opacity .22s}.toc-open .doc-sidebar{transform:none}.toc-open .drawer-backdrop{opacity:1;pointer-events:auto}.page-heading h1{font-size:24px}.page-heading p{font-size:12px;line-height:1.8}.paper{padding:24px 21px;border-radius:10px}.document-body{font-size:13.5px}.document-body>h1{font-size:23px}.document-body h2{font-size:19px;margin-top:36px;padding-top:22px}.document-body h3{font-size:16px}.document-body h4{font-size:14px}.version-note{font-size:12px;padding:11px 14px}.back-top{width:38px;height:38px;bottom:20px;right:17px}.table-scroll{margin-left:0;margin-right:0}.document-footer{display:block;line-height:2.3}}
+@media(max-width:460px){.header-inner{gap:9px;padding:0 12px}.brand{font-size:14px;gap:7px}.brand-mark{display:none}.header-nav a{font-size:11px;padding:7px 7px}.mobile-menu{width:32px;height:32px}.paper{padding:20px 16px}.document-layout{padding:18px 12px 50px}.page-heading h1{font-size:22px}.page-actions{gap:6px}.button{font-size:11px;padding:7px 10px}.document-body>h1{font-size:21px}.version-note{font-size:11.5px}.document-body h2{font-size:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+@media print{@page{margin:16mm 14mm}body{background:white;font-size:10pt}.site-header,.doc-sidebar,.page-heading,.version-note,.page-actions,.back-top,.toast,.document-footer,.drawer-backdrop,.source-details{display:none!important}.document-layout{display:block;padding:0;max-width:none}.paper{padding:0;border:0;box-shadow:none}.document-body{font-size:9pt;line-height:1.7}.document-body>h1{font-size:20pt}.document-body h2{font-size:14pt;page-break-after:avoid;margin-top:24px}.document-body h3{font-size:11pt;page-break-after:avoid}.table-scroll{overflow:visible;border-radius:0}.document-body table{min-width:0!important;width:100%;font-size:8pt;table-layout:fixed;word-break:break-word}.document-body td,.document-body th{padding:5px 6px;min-width:0}.document-body tr{break-inside:avoid}.document-body a{color:#222}.price-flow{min-width:0;max-height:350px}.flow-figure{break-inside:avoid}thead{display:table-header-group}}
+</style></head>
+<body>
+<header class="site-header"><div class="header-inner"><button id="open-toc" class="icon-btn mobile-menu" type="button" aria-label="打开章节目录" aria-controls="doc-sidebar" aria-expanded="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">臻</span><span>臻朴采购系统<span class="brand-small">ZHENPU PROCUREMENT</span></span></a><nav class="header-nav" aria-label="页面导航"><a href="index.html">系统预览</a><a href="readme.html" aria-current="page">需求文档</a><a href="names.html">名称备选</a></nav></div><div id="read-progress" class="read-progress" aria-hidden="true"></div></header>
+<div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
+<div class="document-layout"><aside class="doc-sidebar" id="doc-sidebar" aria-label="文档目录"><div class="sidebar-heading">文档目录<span>14 个章节</span><button id="close-toc" class="icon-btn mobile-close" type="button" aria-label="关闭章节目录"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><label class="search-box" style="display:block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 4.3 4.3"/></svg><input id="toc-search" type="search" placeholder="搜索章节标题" aria-label="搜索章节标题"></label><nav id="doc-toc" aria-label="章节导航"><a class="toc-link level-2" href="#chapter-1" data-chapter="1">一、版本说明、需求状态与当前范围</a><a class="toc-link level-3" href="#section-1-1" data-chapter="1">1.1 版本变化</a><a class="toc-link level-3" href="#section-1-2" data-chapter="1">1.2 四类需求状态</a><a class="toc-link level-3" href="#section-1-3" data-chapter="1">1.3 本版工作范围</a><a class="toc-link level-2" href="#chapter-2" data-chapter="2">二、参考证据范围</a><a class="toc-link level-3" href="#section-2-1" data-chapter="2">2.1 “客户易通”截图的使用边界</a><a class="toc-link level-3" href="#section-2-2" data-chapter="2">2.2 火办网的使用边界</a><a class="toc-link level-2" href="#chapter-3" data-chapter="3">三、“客户易通”后台可借鉴的内容</a><a class="toc-link level-2" href="#chapter-4" data-chapter="4">四、火办网页面构成与参考价值</a><a class="toc-link level-2" href="#chapter-5" data-chapter="5">五、系统结构与完整页面地图</a><a class="toc-link level-3" href="#section-5-1" data-chapter="5">5.1 总体结构</a><a class="toc-link level-2" href="#chapter-6" data-chapter="6">六、客户采购门户完整需求</a><a class="toc-link level-3" href="#section-6-1" data-chapter="6">6.1 公司账号、注册关闭与资料编辑</a><a class="toc-link level-3" href="#section-6-2" data-chapter="6">6.2 公司子账号：未来预留</a><a class="toc-link level-3" href="#section-6-3" data-chapter="6">6.3 商品浏览、资料与价格</a><a class="toc-link level-3" href="#section-6-4" data-chapter="6">6.4 提交采购需求与外部链接代采</a><a class="toc-link level-3" href="#section-6-5" data-chapter="6">6.5 购物车、多购物袋与地址簿</a><a class="toc-link level-3" href="#section-6-6" data-chapter="6">6.6 历史整单再次下单与暂缓常购</a><a class="toc-link level-3" href="#section-6-7" data-chapter="6">6.7 我的订单、物流与收货确认</a><a class="toc-link level-3" href="#section-6-8" data-chapter="6">6.8 发票、报价、通知和售后</a><a class="toc-link level-2" href="#chapter-7" data-chapter="7">七、内部经营后台完整需求</a><a class="toc-link level-3" href="#section-7-1" data-chapter="7">7.1 工作台与业务待办</a><a class="toc-link level-3" href="#section-7-2" data-chapter="7">7.2 商品、供应商供货资料与未来入驻</a><a class="toc-link level-3" href="#section-7-3" data-chapter="7">7.3 公司客户、供应商和轻量跟进</a><a class="toc-link level-3" href="#section-7-4" data-chapter="7">7.4 专业报价与合同预留</a><a class="toc-link level-3" href="#section-7-5" data-chapter="7">7.5 销售订单与多袋履约</a><a class="toc-link level-3" href="#section-7-6" data-chapter="7">7.6 采购执行与成本归属</a><a class="toc-link level-3" href="#section-7-7" data-chapter="7">7.7 快递物流与商家自配送</a><a class="toc-link level-3" href="#section-7-8" data-chapter="7">7.8 发票上传、识别、人工核对与业务绑定</a><a class="toc-link level-3" href="#section-7-9" data-chapter="7">7.9 取消资金模块后的经营记录与利润边界</a><a class="toc-link level-3" href="#section-7-10" data-chapter="7">7.10 A/B价格检查、强提醒与自动抓价候选</a><a class="toc-link level-3" href="#section-7-11" data-chapter="7">7.11 日期口径、跨月统计与条件汇总</a><a class="toc-link level-3" href="#section-7-12" data-chapter="7">7.12 权限、审计、附件、导出和备份恢复</a><a class="toc-link level-2" href="#chapter-8" data-chapter="8">八、关键业务流程与一致性规则</a><a class="toc-link level-3" href="#section-8-1" data-chapter="8">8.1 普通采购和链接代采</a><a class="toc-link level-3" href="#section-8-2" data-chapter="8">8.2 多购物袋、采购与包裹</a><a class="toc-link level-3" href="#section-8-3" data-chapter="8">8.3 履约、发票与可选结清标记</a><a class="toc-link level-3" href="#section-8-4" data-chapter="8">8.4 跨月实例</a><a class="toc-link level-3" href="#section-8-5" data-chapter="8">8.5 历史价格、抓价与核算</a><a class="toc-link level-2" href="#chapter-9" data-chapter="9">九、参考系统与当前意向的冲突对照</a><a class="toc-link level-2" href="#chapter-10" data-chapter="10">十、视觉与交互设计规范</a><a class="toc-link level-3" href="#section-10-1" data-chapter="10">10.1 既有方向与建议色板</a><a class="toc-link level-3" href="#section-10-2" data-chapter="10">10.2 标签页</a><a class="toc-link level-3" href="#section-10-3" data-chapter="10">10.3 鼠标悬停高亮与文字提示</a><a class="toc-link level-3" href="#section-10-4" data-chapter="10">10.4 现代后台布局</a><a class="toc-link level-3" href="#section-10-5" data-chapter="10">10.5 客户端与响应式</a><a class="toc-link level-3" href="#section-10-6" data-chapter="10">10.6 本轮新增页面的交互要求</a><a class="toc-link level-2" href="#chapter-11" data-chapter="11">十一、当前分期建议与可评审验收场景</a><a class="toc-link level-3" href="#section-11-1" data-chapter="11">11.1 一期与后续范围</a><a class="toc-link level-3" href="#section-11-2" data-chapter="11">11.2 当前可以评审的验收场景</a><a class="toc-link level-2" href="#chapter-12" data-chapter="12">十二、旧问题答复追踪与新一轮待定问题</a><a class="toc-link level-3" href="#section-12-1" data-chapter="12">12.1 V2.0的Q01—Q10答复追踪</a><a class="toc-link level-3" href="#section-12-2" data-chapter="12">12.2 新一轮需要讨论的问题（R01—R10）</a><a class="toc-link level-3" href="#section-12-3" data-chapter="12">12.3 后续细则（D级，不阻塞当前需求梳理）</a><a class="toc-link level-2" href="#chapter-13" data-chapter="13">十三、后续完整更新规则</a><a class="toc-link level-2" href="#chapter-14" data-chapter="14">十四、来源索引</a><a class="toc-link level-3" href="#section-14-1" data-chapter="14">14.1 需求与版本依据</a><a class="toc-link level-3" href="#section-14-2" data-chapter="14">14.2 用户提供的18张截图</a><a class="toc-link level-3" href="#section-14-3" data-chapter="14">14.3 火办网与官方资料</a><a class="toc-link level-3" href="#section-14-4" data-chapter="14">14.4 快递100官方资料</a></nav><div id="toc-none" class="toc-none">没有匹配的章节，请换个关键词。</div><div class="sidebar-footer">V2.1 · 完整需求讨论稿<br>页面排版：2026-11-14<br>上海臻朴实业有限公司</div></aside>
+<main class="doc-main" id="main"><div class="page-heading"><div><h1>完整需求文档 <span style="color:var(--primary)">V2.1</span></h1><p>从业务边界到页面结构，完整保留本版需求与待确认事项。</p></div><div class="page-actions"><button class="button" id="download-source" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-4-4 4 4 4-4M4 15v5h16v-5"/></svg>下载原文 MD</button><button class="button" id="print-document" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/><path d="M17 11h.01"/></svg>打印 / 保存 PDF</button></div></div><p class="version-note"><strong>页面排版版 · 2026-11-14</strong>　原需求版本仍为 V2.1（2026-11-13）。正文完整保留，当前设计意向与待定问题均未因页面展示而变为最终方案。</p><article class="paper document-body"><h1 id="document-title">采购会计系统完整需求文档</h1>
+<p><strong>版本：V2.1｜更新日期：2026-11-13｜状态：完整需求讨论稿，尚未定稿</strong></p>
+<p>本系统用于面向公司、单位客户的采购代办业务，以客户采购门户和内部经营后台贯通商品资料、采购需求、报价、订单、多地址配送、进销发票、成本利润和统计。网页支持电脑和手机浏览器使用，商品目录随实际业务逐步丰富。</p>
+<p><strong>本轮10条回答全部按“当前设计意向”整理，不表示最终方案已经确定。</strong> 本版将这些意向写回相关页面、模块、流程、分期与验收，替代V2.0中与之冲突的建议；同时保留仍需讨论的规则和原始意图，供下一轮校正。本文不是开发完成报告，也不是仅追加内容的补丁。</p>
+<h2 id="chapter-1">一、版本说明、需求状态与当前范围</h2>
+<h3 id="section-1-1">1.1 版本变化</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 1，可横向滚动"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>V2.1处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>客户与账号</td>
+<td>当前面向公司／单位；后台发号；自助注册保留但关闭并提示；一公司一主账号，子账号未来预留</td>
+</tr>
+<tr>
+<td>资金功能</td>
+<td>按当前意向不设置收付款操作、独立资金流水及核销模块，不对接支付或网银；订单结清标记与利润依据仍待讨论</td>
+</tr>
+<tr>
+<td>多购物袋</td>
+<td>一次提交形成一个订单；一袋对应一个收件组；同公司结算、客户线下一次结清；全部确认收货即履约完成</td>
+</tr>
+<tr>
+<td>发票与跨月</td>
+<td>当前一销售订单一张有效销项发票；多个供应商的采购发票另行管理；开票、采购、发货可跨月，按各业务日期统计</td>
+</tr>
+<tr>
+<td>商品与提醒</td>
+<td>前期采购价管理员填写，供应商入驻及同步未来预留；A＝30天、B＝7天为拟定默认，可自定义；首次起算存在待讨论冲突</td>
+</tr>
+<tr>
+<td>采购需求与报价</td>
+<td>需求表分开提交文字、图片、链接、规格、数量，地址非必填；正式报价及专业展示页纳入当前意向；合同预留接口</td>
+</tr>
+<tr>
+<td>复购与常购</td>
+<td>历史整单再次下单保留在一期；自动常购清单改为成熟稳定后的待办</td>
+</tr>
+<tr>
+<td>物流与UI</td>
+<td>保留双端物流查询，识别单号为候选、手选兜底；自送建议命名“商家自配送”；沿用柔和红色与现代交互</td>
+</tr>
+<tr>
+<td>更新方式</td>
+<td>仍输出完整文档；旧Q01—Q10记录答复进展，新的遗留问题改用R编号，避免把“有回答”等同于“已定稿”</td>
+</tr>
+</tbody></table>
+</div><h3 id="section-1-2">1.2 四类需求状态</h3>
+<ul>
+<li><strong>既有要求</strong>：此前已明确且本轮没有改变的目标，如无在线支付、多购物袋、整单复购先入购物车、双端物流、库存暂缓、柔和红色UI。</li>
+<li><strong>当前意向</strong>：本轮用户正在梳理的设计想法。本版据此安排结构，但不把它们称为最终确认规则。</li>
+<li><strong>设计建议</strong>：用于实现目标或解决冲突的推荐方式，等待用户判断。</li>
+<li><strong>待定／后续</strong>：仍缺业务规则或明确延后的功能。旧方案与当前意向不同的地方明确写出，不混杂执行。</li>
+</ul>
+<p>“功能保留”与“本期启用”分开。原本有过讨论的收付款、常购、个人客户等，不会因历史文档出现过就继续作为本版的当前实施要求。[B0][B1][B2][U3]</p>
+<h3 id="section-1-3">1.3 本版工作范围</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 2，可横向滚动"><table>
+<thead>
+<tr>
+<th>领域</th>
+<th>当前工作范围</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>经营对象</td>
+<td>公司／单位客户，联系人仍作为个人资料；原有独立个人客户场景暂不纳入当前使用范围</td>
+<td>当前意向</td>
+</tr>
+<tr>
+<td>采购来源</td>
+<td>本地、外地供应商，京东／淘宝等客户提供或管理员维护的外部链接</td>
+<td>既有要求与当前意向</td>
+</tr>
+<tr>
+<td>商品资料</td>
+<td>手工维护、文件导入，随采购补充目录；统一商品可有多个供应商供货记录</td>
+<td>既有要求＋设计建议</td>
+</tr>
+<tr>
+<td>客户下单</td>
+<td>浏览货源、采购需求、购物车、多购物袋、整单复购、后台确认及采购配送</td>
+<td>既有要求，需求与报价为当前意向</td>
+</tr>
+<tr>
+<td>资金边界</td>
+<td>线下公对公转账在系统外完成；不设置收付款操作、不做独立流水及金额核销</td>
+<td>当前意向，延续无在线支付要求</td>
+</tr>
+<tr>
+<td>经营记录</td>
+<td>订单成交、采购成本、运杂费、税费、发票、交付及利润分析；利润依据未定</td>
+<td>既有目标，具体核算待定</td>
+</tr>
+<tr>
+<td>发票</td>
+<td>进项／销项登记、附件、关联与状态；上传识别为条件增强，手填与人工核对兜底</td>
+<td>当前意向＋设计建议</td>
+</tr>
+<tr>
+<td>完成标准</td>
+<td>客户全部确认货物无问题后，订单履约完成；后续未开票、未结清不阻断完成</td>
+<td>当前意向</td>
+</tr>
+<tr>
+<td>价格维护</td>
+<td>A/B提醒、日志、自定义周期保留；本轮默认值与首次起算分别标明</td>
+<td>既有要求＋当前意向，部分待定</td>
+</tr>
+<tr>
+<td>库存</td>
+<td>完整库存暂缓，保留接口；采购和配送不强制依赖库存入库</td>
+<td>既有要求</td>
+</tr>
+<tr>
+<td>通用能力</td>
+<td>权限隔离、附件、操作审计、导出、备份及恢复、电脑手机适配</td>
+<td>既有规划，细节为设计建议</td>
+</tr>
+<tr>
+<td>视觉</td>
+<td>比火办网稍浅柔和的红色；现代标签页、悬停高亮、文字悬浮提示</td>
+<td>既有要求</td>
+</tr>
+</tbody></table>
+</div><p>用户提出未来可能出售系统，因此可考虑配置和模块扩展；<strong>这不自动等于本期建设多租户SaaS、收费会员、卡密激活或完整供应商入驻平台</strong>。智慧记自动同步、历史迁移仍未提出。桌面封装、部署位置和维护方式后续选定。</p>
+<h2 id="chapter-2">二、参考证据范围</h2>
+<h3 id="section-2-1">2.1 “客户易通”截图的使用边界</h3>
+<p>沿用V2.0对用户提供的18张后台截图的核对，包含工作台、客户、商机、报价、合同、订单、工单、供应商、采购、商品、财务、用户、角色、备份、审计和帮助等页面。收费会员截图仅用于识别排除范围，不纳入系统需求。[S01—S18]</p>
+<p>截图能够证明当时展示的栏目、字段、入口和产品说明，不能证明完整业务已经实际跑通。空表、灰色按钮不等于功能不支持；只看到侧栏入口的功能不推断其完整规则。客户自助端、多购物袋、佣金和A/B价格检查在这组截图中<strong>未展示</strong>，不能据此断言原产品没有。</p>
+<h3 id="section-2-2">2.2 火办网的使用边界</h3>
+<p>2026-11-13核验了火办网公开、未登录页面，覆盖首页、分类列表、品牌中心、品牌商品列表与登录页。[W1—W5]</p>
+<ul>
+<li>商品详情、购物车等访问触发登录跳转，因此没有核验登录后的详情、结算、我的订单、会员中心或商家后台。</li>
+<li>首页的“项目智能报价、订单智能采购、物流时效速查”等入口真实链接到教学视频，按教学入口和业务主题记录，不描述为本轮已实测业务工具。</li>
+<li>某分类列表本次显示0项结果，只能描述当次页面现象，不能据此认定无货或筛选不可用。</li>
+<li>安兴集团官网及官方PDF补充火办网的归属和功能资料。PDF元数据创建日期为2023-09-12，共14页，属于历史官方材料，不能当作2026年后台现场核验。[W6][W7]</li>
+</ul>
+<p>本次是功能与页面规划整合，尚未验证火办网、京东等平台的开放接口。基础货源支持手工维护及文件导入；自动同步、自动代下单不属于已接入或已确认可用的能力。</p>
+<h2 id="chapter-3">三、“客户易通”后台可借鉴的内容</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 3，可横向滚动"><table>
+<thead>
+<tr>
+<th>参考模块</th>
+<th>截图中实际展示</th>
+<th>对本系统的处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作台</td>
+<td>客户、跟进待办、月签单采购出库退货、待开票低库存供应商，应收实收应付及年度收入成本利润等卡片</td>
+<td>借鉴待办与经营概览；改为代采、发票、成本和价格检查的重点，不照搬收付款指标，库存指标随库存模块暂缓</td>
+</tr>
+<tr>
+<td>客户</td>
+<td>编号、名称、级别、状态、标签、业务员、手机、最后跟进；搜索筛选、打印、导入导出</td>
+<td>保留客户档案，建议增加轻量跟进、标签与待办；线索、公海池等仅看到入口，复杂CRM后续可选</td>
+</tr>
+<tr>
+<td>商机</td>
+<td>五阶段漏斗、预计成交、赢输单率及负责人报表</td>
+<td>可供项目业务参考，普通复购不强制建立商机</td>
+</tr>
+<tr>
+<td>报价</td>
+<td>编号、日期、客户、业务员、金额、折扣、状态</td>
+<td>正式报价已进入当前意向，版本、有效期及转订单为设计建议；不把每次普通下单变成报价审批</td>
+</tr>
+<tr>
+<td>合同</td>
+<td>编号、名称、类型、客户、起止日期、状态、金额、关联订单数</td>
+<td>当前保留合同关联接口；完整合同附件、期限和多订单管理后续启用</td>
+</tr>
+<tr>
+<td>销售订单</td>
+<td>“签单”编号、日期、客户、合同、业务员、金额、已收、欠款</td>
+<td>借鉴订单台账，补待确认、采购、收货分组和物流；不照搬已收／欠款资金台账</td>
+</tr>
+<tr>
+<td>工单</td>
+<td>类型、客户、联系人、地址、预约、状态、师傅、费用；我的工单／工单池提到接单、签到、完工、抢待派单</td>
+<td>当前先用售后与异常事项；外派师傅、抢单签到另列后续选项</td>
+</tr>
+<tr>
+<td>供应商与采购</td>
+<td>供应商档案及导入导出；采购单供应商、经办人、金额、已付、欠款、状态；说明确认入库后增加库存</td>
+<td>借鉴采购台账与成本资料，适配直发和经手发货；不强制入库，不增加付款登记</td>
+</tr>
+<tr>
+<td>商品与库存</td>
+<td>图片、名称、型号、分类、单位、售价、库存、导入导出；侧栏有出库、退货、待入库、库存预警</td>
+<td>借鉴商品字段与批量维护；仅有入口的仓库功能不视为已核验流程，库存仍暂缓</td>
+</tr>
+<tr>
+<td>财务</td>
+<td>流水日期、类型、金额、方式、关联单据、对方、备注，收款／付款／净额汇总；说明支持分批开票和多个PDF附件</td>
+<td>吸收发票附件和业务关联参考；本版不吸收资金流水，也不把分批销项开票带入一单一票意向</td>
+</tr>
+<tr>
+<td>用户与角色</td>
+<td>内部账号启停、改密；管理员、业务员、调度员、师傅、财务、仓管等角色和菜单权限描述</td>
+<td>区分内部账号与外部客户账号；本系统权限按实际操作和数据范围定义，不直接照抄角色</td>
+</tr>
+<tr>
+<td>系统设置</td>
+<td>字典、系统配置、自定义字段、工单类型、时效管家等侧栏入口</td>
+<td>基础配置纳入原方案，自定义字段和复杂工单配置后续可选</td>
+</tr>
+<tr>
+<td>备份与审计</td>
+<td>备份开关、目录、间隔、保留份数、手动执行、大小时间状态；审计模块、操作人、时间、对象、摘要、结果等字段；页面说明支持差异对比，详情未展示</td>
+<td>建议补充恢复流程和恢复验证；截图中24小时、保留3份只是参考值，恢复能力未展示</td>
+</tr>
+<tr>
+<td>帮助说明</td>
+<td>帮助页介绍本地化存储及通知依赖时效管家；备份页另提供NAS／服务器目录说明</td>
+<td>作为部署与提醒的参考线索，不当作技术验证；需按客户外网访问和内置A/B提醒重新设计</td>
+</tr>
+</tbody></table>
+</div><p>截图事实与本版采纳范围分开列示；本轮调整采纳范围，不改写截图所显示的事实。来源文件在文末逐项列明。[S01—S18]</p>
+<h2 id="chapter-4">四、火办网页面构成与参考价值</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 4，可横向滚动"><table>
+<thead>
+<tr>
+<th>页面／区域</th>
+<th>本轮可见内容</th>
+<th>建议吸收的部分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>顶部导航</td>
+<td>登录、注册、邀请码注册、我的订单、会员中心、商家中心、APP等入口</td>
+<td>客户账号与订单入口清晰；本版注册暂关，不直接复制开放注册或邀请码机制</td>
+</tr>
+<tr>
+<td>首页搜索区</td>
+<td>品牌标识、关键词搜索、找同款、购物车；找同款操作要求登录</td>
+<td>强化关键词搜索、购物车；找同款／图片识别不是一期默认能力</td>
+</tr>
+<tr>
+<td>首页分类与内容</td>
+<td>左侧办公分类，中部促销横幅，右侧MRO分类；下方品牌、品类、商品卡及促销／直发标签</td>
+<td>采用清晰分类、品牌和履约提示；按自身货源逐步扩展分类，减少大促销区域</td>
+</tr>
+<tr>
+<td>首页服务入口</td>
+<td>项目报价、智能采购、物流时效、退货等教学视频入口；浮动客服、购物车、售后</td>
+<td>将采购、物流、售后设计为可理解的业务入口；不把教学链接当作已验证自动化能力</td>
+</tr>
+<tr>
+<td>分类列表</td>
+<td>类目、克重、规格、包装筛选；销量／价格排序，价格范围、库存充足、配送地区、大图展示和商品数</td>
+<td>参考规格筛选和列表操作；供货能力不能以未接库存的“库存充足”替代</td>
+</tr>
+<tr>
+<td>品牌中心</td>
+<td>搜索、A—Z及数字首字母、品牌入口</td>
+<td>建议商品资料增加品牌，商品量增长后启用品牌检索</td>
+</tr>
+<tr>
+<td>品牌商品列表</td>
+<td>按目录分类、默认／销量／人气／价格排序、价区间、库存筛选、商品编码、收藏</td>
+<td>参考商品编码、收藏、分类及排序；人气排序需先具备相应数据</td>
+</tr>
+<tr>
+<td>登录页</td>
+<td>账号密码、自动登录、找回密码、普通及邀请码注册入口</td>
+<td>保留便捷登录及找回；本版采用后台发号，注册关闭提示，单位多账号未来预留</td>
+</tr>
+</tbody></table>
+</div><p>来源为本轮公开页面观察。[W1—W5]</p>
+<p><strong>价格权限有一处值得特别注意：</strong> 首页多数商品卡显示登录查看价格，但本轮在品牌商品列表仍看到一件商品的价格。因此不能概括为火办网全站“必须登录才能看价”。本系统应在列表、详情、搜索、购物车、导出及直接访问入口执行同一套客户价格权限。[W1][W4]</p>
+<p>官方历史PDF描述了客户前台、经销商后台、商城后台，以及客户与商品维护、客户价格、账期额度、配送、签收、经营数据、对账开票和退换货等能力。对本系统的启发是把客户采购与内部执行贯通；支付提现、库存接入、平台营销及服务时效承诺不直接复制。PDF物理第9页和第13页分别对应印刷页08和12。[W7]</p>
+<h2 id="chapter-5">五、系统结构与完整页面地图</h2>
+<h3 id="section-5-1">5.1 总体结构</h3>
+<p>采用“客户采购门户＋内部经营后台”统一维护商品、公司客户、采购需求、报价、销售与采购订单、履约、发票和经营数据。电脑适合批量处理，手机适合选购、改数量、查物流和快速处理待办。</p>
+<p>普通复购走短流程；报价用于专业呈现商品和价格，合同保留扩展位置。前台显示客户自己的业务资料，后台保存供货来源、成本、内部说明和审计信息。不得因为取消资金流水而取消成本记录，也不得为了计算利润重新塞入收付款台账。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 5，可横向滚动"><table>
+<thead>
+<tr>
+<th>端／栏目</th>
+<th>本版页面与职责</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>客户：首页／商品</td>
+<td>搜索、分类、商品列表详情；品牌、规格、单位包装与可见价格</td>
+<td>既有要求，价格模式待定</td>
+</tr>
+<tr>
+<td>客户：提交采购需求</td>
+<td>文字、图片、独立链接字段、规格、数量；查看处理进展</td>
+<td>当前意向</td>
+</tr>
+<tr>
+<td>客户：报价</td>
+<td>专业报价展示页、商品主图及系统商品链接、数量价格、查看和反馈</td>
+<td>当前意向；确认方式待定</td>
+</tr>
+<tr>
+<td>客户：购物车／购物袋</td>
+<td>改数量、分组收件、地址簿、提交检查，一次提交一个订单</td>
+<td>既有要求＋当前意向</td>
+</tr>
+<tr>
+<td>客户：订单／物流</td>
+<td>订单详情、各袋配送、快递轨迹、商家自配送、收货确认、再次下单</td>
+<td>既有要求＋当前意向</td>
+</tr>
+<tr>
+<td>客户：发票／资料</td>
+<td>已上传销项发票及状态、订单资料导出、通知、可编辑的账号资料</td>
+<td>当前意向，权限边界待定</td>
+</tr>
+<tr>
+<td>客户：常购</td>
+<td>暂不向客户展示，成熟稳定后再设计规则并启用</td>
+<td>当前意向：后续待办</td>
+</tr>
+<tr>
+<td>客户：注册／子账号</td>
+<td>注册关闭并提示；子账号暂不开，未来提交须主账号审核</td>
+<td>当前意向：预留</td>
+</tr>
+<tr>
+<td>后台：工作台</td>
+<td>待确认、待采购、配送异常、缺进项票／未上传销项票、待核对成本、到期查价</td>
+<td>既有规划按当前意向调整</td>
+</tr>
+<tr>
+<td>后台：基础资料</td>
+<td>公司客户、主账号、供应商、商品、多来源供货、历史价、采购链接</td>
+<td>核心范围</td>
+</tr>
+<tr>
+<td>后台：需求／报价／订单</td>
+<td>需求匹配、补充商品档案、专业报价、销售订单、采购单、合同关联预留</td>
+<td>当前意向＋既有要求</td>
+</tr>
+<tr>
+<td>后台：履约／发票</td>
+<td>分袋分包配送、物流、自配送、客户收货确认、采购与销售发票上传绑定</td>
+<td>核心范围</td>
+</tr>
+<tr>
+<td>后台：票据与经营核算</td>
+<td>发票资料、商品成本、运杂费及费用资料、利润待核算状态、按业务日期统计与导出</td>
+<td>核算口径待定，数据保留</td>
+</tr>
+<tr>
+<td>后台：系统</td>
+<td>账号权限、A/B提醒、附件、操作日志、设置、导出、备份恢复</td>
+<td>既有规划</td>
+</tr>
+</tbody></table>
+</div><p><strong>本版不设独立收款单、付款单、资金流水、收付款核销或网银对账页面。</strong> 是否在订单上保留手工“已结清”标记仍待R01，不提前把它当作已确定功能。</p>
+<h2 id="chapter-6">六、客户采购门户完整需求</h2>
+<h3 id="section-6-1">6.1 公司账号、注册关闭与资料编辑</h3>
+<p><strong>当前意向：</strong> 客户对象为公司／单位，前期一个公司对应一个主账号，由管理员生成。自助注册保留接口，暂不开放；注册页面显示清楚提示，例如“自助注册暂未开放，请联系管理员开通账号”。提示文案为设计建议，关闭状态同时作用于提交入口，不能只是隐藏按钮。</p>
+<p>客户可在账号后台修改允许编辑的资料。建议先开放联系人、联系方式、收货地址、密码等个人使用资料；具体字段清单见D02、D03。用户名拟每年可改一次，“自然年一次”还是“距上次修改满一年”尚待明确。</p>
+<p>公司／单位的法定名称以及用于开票、合同的名称不能由客户自行修改。资料录错不能永久无解：建议由客户申请、管理员核对后纠正，记录修改前后值、依据、操作人和时间；历史合同、订单及已开票信息保持可追溯，不随主档案静默改写。</p>
+<p>账号停用、找回密码与客户数据隔离继续保留。主账号、公司档案、联系人应有清楚对应关系，客户不得查看其他公司订单、成本、附件和价格资料。</p>
+<h3 id="section-6-2">6.2 公司子账号：未来预留</h3>
+<p>本期不开启公司多账户；保留未来一个主账号管理多个子账号的关系。按当前意向，子账号发起的业务需要主账号审核，并由主账号正式提交；不能让子账号绕过审核直接对外形成订单。</p>
+<p><strong>设计建议：</strong> 在后续订单、需求及报价反馈的显眼位置标注“由某子账号发起，主账号审核提交”，保留发起人、审核人、提交人和时间。用户所说“子账号的所有内容”具体涵盖哪些操作仍需后续细化，不把它扩展为本期复杂审批系统。后续设计建议：已审核的内容如果再次修改，应重新提交主账号审核，不能沿用旧批准直接提交变更内容。</p>
+<h3 id="section-6-3">6.3 商品浏览、资料与价格</h3>
+<p>保留商品图片、标题、文字描述、分类、品牌、型号、规格、单位包装、系统商品编码、当前可见价格、起订量、供货状态、搜索筛选及加入购物车。品牌和规格筛选按商品数量逐步启用；未接库存时不显示无依据的实时库存承诺。</p>
+<p><strong>价格是本轮明确保留的待定项。</strong> 固定价、客户价、协议价、询价、不同客户可见范围、有效期和改价确认等尚未选定。本版保留这些设计位置，不宣称已采用某个默认价格优先级。可以在原型中展示“待报价／待确认”，不能把未确定价格当成0元。</p>
+<p>后台采购价、来源链接和内部备注与对客内容分离。商品列表、详情、报价、购物车和导出应执行同一可见规则；具体公开范围在价格与报价问题中进一步确认。</p>
+<h3 id="section-6-4">6.4 提交采购需求与外部链接代采</h3>
+<p><strong>当前意向：</strong> 商品目录前期较少，客户可提交文字、图片、链接、规格和数量；文字和链接分开字段，图片可独立上传。收件人、地址在提交商品需求时不是必填，正式下单时再按购物袋填写。</p>
+<p>文字框附近给出建议，例如：“可描述商品用途、品牌型号、材质、期望交付时间或替代要求；规格、数量和商品链接请填写到对应栏位。收货信息可在下单时填写。”若客户仍在文字里写地址，应保留原文供管理员查看，不自动把它当成已确认收货地址。</p>
+<p>管理员查看需求、澄清规格、匹配已有商品，或补充商品档案与采购来源，再报价或供客户加入购物车。为客户按链接代采后，商品可以经管理员审核上架到系统，便于下次从历史订单再次下单。是仅该客户可见，还是进入公共目录，仍待R07；客户提交外部链接不等于自动批准全站上架。</p>
+<p>外部京东／淘宝链接属于采购来源；对客专业报价优先使用系统内商品页面链接。自动抓取价格、图片或资料属于候选增强，须在权限和接口可行性明确后再决定，不假定平台API可用。</p>
+<h3 id="section-6-5">6.5 购物车、多购物袋与地址簿</h3>
+<p>保留增删商品、改数量、备注、袋子新增复制删除、跨袋移动商品、地址簿选择和提交前校验。<strong>当前意向是一袋对应一个收件组；一袋只有一个收件人及地址。</strong> 同一订单内各袋可包含不同商品、不同数量，送到不同地点，但归属于同一个公司结算主体。</p>
+<p>一次提交的所有袋子属于同一订单。每袋保存名称或用途、商品、数量、收件人、电话、地址及备注；即使两个袋子地址相同，也不自动合并。袋内一部分商品分开发货时可以有多个包裹，袋子与包裹不是同一概念。</p>
+<p>地址簿保留新增、修改、删除、默认地址和标签。订单保存当时地址快照；更改地址簿不会改历史订单。购物车跨设备保存属于设计建议；多个命名购物车属于后续增强，不是多购物袋的前提。</p>
+<h3 id="section-6-6">6.6 历史整单再次下单与暂缓常购</h3>
+<p><strong>整单复购继续保留一期：历史订单 → 再次下单 → 购物车 → 改数量／删商品／核对分组与地址 → 提交新订单。</strong> 不直接生成不可编辑的新单。</p>
+<p>建议回填商品、数量和收货分组，并检查下架、可见范围、供货和本次价格。旧成交价可供对照，最终取价规则待定；不能复制旧订单的采购、发票、结清、签收或售后状态。</p>
+<p><strong>自动常购清单改为后续待办，待系统成熟稳定再展示给客户。</strong> 不把它作为一期验收门槛，也不需要现在继续追问购买次数和统计窗口。历史需求中的最近购买时间、历史价、当前价、收藏置顶和隐藏等保留为以后设计参考，“2次／365天”仍不是定稿规则。</p>
+<h3 id="section-6-7">6.7 我的订单、物流与收货确认</h3>
+<p>订单详情按购物袋显示商品、数量、地址与配送记录，每个包裹展示快递公司、单号、轨迹、更新时间和异常。一个袋子多包裹时按实际交付数量汇总，首个包裹签收不等于整袋或整单完成。</p>
+<p>自送提供快捷选项，建议命名为**“商家自配送”**，并明确“无需快递单号”。可记录配送人、预计或实际送达时间、联系方法与交付凭据；不能伪造快递轨迹。</p>
+<p><strong>当前意向：客户全部确认收到货物且无问题，订单履约完成。</strong> 未上传销项发票、尚未取得供应商发票或客户尚未线下结清，都不阻断履约完成。快递显示签收只是运输信息，不自动替代客户对全部商品的确认；由客户点击、管理员代确认还是其他方式留证，见R05。</p>
+<h3 id="section-6-8">6.8 发票、报价、通知和售后</h3>
+<p>客户可以查看本公司订单及已上传的有效销项发票；显示“尚未上传”比将空白误当成无发票需求更清楚。报价需要专业、好看的页面展示，具体字段见7.4；通过何种站内或外部方式通知客户，仍为交付细节。</p>
+<p>订单确认、发货、报价、发票上传等站内通知为建议。售后保留关联原商品、数量、收货组、原因、图片及处理进度的能力；退货、换货、补发影响履约和成本资料，涉及实际退款仍在线下处理，本系统不因此增加退款支付操作。</p>
+<h2 id="chapter-7">七、内部经营后台完整需求</h2>
+<h3 id="section-7-1">7.1 工作台与业务待办</h3>
+<p>集中显示订单、采购、销售金额、采购成本、已具备依据的费用与利润指标，以及待确认、待采购、待发货、配送异常、缺供应商发票、未上传销项发票、成本待核对和价格检查。经营报表初始范围按当前意向建议设为本月1日至当天，可切换周、月或自定义范围。业务待办队列则默认汇总跨月未处理事项，包括未上传销项票、缺供应商票、待核算和到期查价，不能因为进入新月份就隐藏上月未完成的事项。</p>
+<p>借鉴参考后台的指标卡与待办入口，但本版不建立收款／付款／现金净额看板，也不把尚未有数据依据的欠款统计伪装成自动计算结果。未来若采用订单结清标记，只按最终同意的范围展示状态，不扩张成资金流水。[S01]</p>
+<h3 id="section-7-2">7.2 商品、供应商供货资料与未来入驻</h3>
+<p>保留商品创建编辑、图片、分类、品牌、型号、规格、单位包装、编码、上架下架、起订量、可见范围及直发／经手标记。统一商品与供货记录分开，一件商品可关联多供应商、采购来源链接、报价日期、当前采购价、历史进价和采购条件。</p>
+<p><strong>当前意向：前期采购价由管理员手工填写。</strong> 后续可能由入驻供应商填报，或仍由管理员代录；并非所有供应商都会入驻。本版预留供应商提交资料与同步的接口，不预先开发完整供应商门户。</p>
+<p>建议保留资料来源、提交人、更新时间、待核对状态和修改历史；未来供应商提交信息先成为待审核或候选资料，不能无痕覆盖已确认订单。导入支持预览和错误行反馈，导出及打印按权限执行。基础比价同时考虑税、单位包装、运杂费、供货及报价时间。[S11][W2—W4]</p>
+<h3 id="section-7-3">7.3 公司客户、供应商和轻量跟进</h3>
+<p>客户档案以公司／单位为主体，记录公司名称、联系人、联系方式、主账号、税号、开票与合同资料、收货地址、历史订单和贡献分析。账期及常用开票日作为业务约定信息保留，可填写有合同或无合同的约定；账期起点和固定开票安排见R03，不因为保留账期就默认建设应收核销或强制信用额度系统。</p>
+<p>供应商覆盖本地、外地及平台等来源，保留名称、类型、联系人、开票资料、商品、历史采购和价格、外部订单号及必要备注。采购成本和待取得发票可管理，不设置独立付款流水。</p>
+<p>建议保留标签、负责人、最后跟进、下次待办及搜索筛选、导入导出打印。复杂线索、公海池、商机漏斗和外勤服务均后续按需启用。[S02][S03][S09]</p>
+<h3 id="section-7-4">7.4 专业报价与合同预留</h3>
+<p><strong>正式报价是本轮当前意向。</strong> 后台可整理商品，生成面向客户的专业展示页面，至少包含：商品标题、文字说明、主图、系统内商品链接、数量、单价和金额。外部采购链接不直接作为报价商品公开链接。</p>
+<p>报价设计建议包含报价编号、报价对象、日期、价格版本、有效期、商品主图、标题、说明、系统商品链接、数量、单位、单价、小计、总价、费用说明及联系人，提供适合电脑手机阅读以及打印／PDF导出的版式。推荐先使用站内报价中心＋站内通知推送给客户，微信／邮件等外部通知以后选配。访问权限见R07，价格与锁价见D01，接受报价、转订单和推送方式见D04；不先把建议变成用户承诺。</p>
+<p>普通明确价格的复购可走简化路径，不强制“商机→正式报价→合同→再次确认”。询价、价格或费用有变动时，应有清楚的变更与客户认可记录，具体规则未定。</p>
+<p><strong>合同当前只要求留接口。</strong> 保留订单／客户关联合同的扩展位置；完整合同编辑、签署、到期提醒和一合同多订单管理是未来选项。因未来可能出售系统而留扩展能力，不要求当前熟客业务每单必须有合同。[S04][S05]</p>
+<h3 id="section-7-5">7.5 销售订单与多袋履约</h3>
+<p>订单可由客户提交或后台代录，保存公司客户、来源、商品数量、各袋收件信息、已约定价格、客户备注和内部备注。后台核对供货，按当前业务安排采购和配送，处理拒绝、取消、数量变更、缺货替代及异常。</p>
+<p>一订单多袋、同公司结算；订单金额和订单数在主订单层计一次，各袋与包裹仅分解履约。若未来支持不同结算主体，须另作方案，当前不在同单内混放不同公司账务。</p>
+<p>变更价格、数量或地址时保存差异和原因，更新受影响的采购、报价及履约资料，不能静默改写既有记录。新价格模式未定前，不写死一套强制确认流程。未来子账号业务须显示来源和主账号审核链，本期不开放子账号提交。</p>
+<h3 id="section-7-6">7.6 采购执行与成本归属</h3>
+<p>保留手工采购单和从销售需求生成采购安排，按供应商、商品及收货组拆分；记录规格、数量、单价、渠道、外部平台订单号、采购日期、预计和实际到货、采购运费杂费、异常与取消。</p>
+<p>数量、成本和供应商发票能追溯至销售商品行及收货组。一销售订单可向多家供应商采购；未来合并采购多笔销售需求时仍需保留数量和金额归属，不能把同一份采购成本重复算给多个订单。</p>
+<p>支持供应商直发，以及管理员收到货后整批或分组发给客户。库存暂缓时，可记录实际采购、收货和配送，不强制库存入库。含税／不含税成本、税额与分摊方式保留清楚，采购价变更可追溯。[S10]</p>
+<h3 id="section-7-7">7.7 快递物流与商家自配送</h3>
+<h4 id="section-7-7-1">7.7.1 运单录入与查询</h4>
+<p>按订单、购物袋及实际发货商品创建配送记录，填快递单号，优先提供快递公司识别候选；无法识别或有多个候选时由管理员手选。单号识别是辅助，不能认为所有单号都能准确自动识别。</p>
+<p>客户和后台均能查询同一包裹的轨迹、签收、异常及最后更新时间。自动识别失败、无轨迹、接口错误、调用受限等情况应明确提示；历史已获取轨迹可按接入能力和授权保存，避免每次切换页面都无条件请求第三方。</p>
+<h4 id="section-7-7-2">7.7.2 自配送快捷入口</h4>
+<p>在“快递／物流”旁增加**“商家自配送”**快捷选项，旁注“由商家自行送达，无快递单号”。启用后不要求快递公司和单号，展示配送联系人、时间、状态、备注及可选交付凭据；签收／客户确认按同一订单履约原则处理。多袋可采用不同配送方式，所有袋子都确认完成后才汇总整单完成。</p>
+<h4 id="section-7-7-3">7.7.3 快递100官方核验与接入建议</h4>
+<p>以下为2026-11-13对官方页面和文档的核对，<strong>没有使用本系统账号进行API实测，也没有完成接入</strong>。官网的免费调试、正式套餐、调用限制和旧接口应分别理解。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 6，可横向滚动"><table>
+<thead>
+<tr>
+<th>核验事项</th>
+<th>官方资料所能支持的结论</th>
+<th>对本系统的影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>注册测试额度</td>
+<td>现行实时查询产品页介绍注册可获100单测试；相关文档说明未充值可调试，测试额度仅供联调，实际赠送量以账号后台为准</td>
+<td>不能写成每天100次或长期免费额度；上线前核对账户实际权限与正式费用 [K1][K2][K3]</td>
+</tr>
+<tr>
+<td>同运单调用限制</td>
+<td>查询技术文档要求同一运单查询间隔至少30分钟，24小时不超过48次，超限可能锁单</td>
+<td>前后台、自动任务和重试必须共享同一运单的调用限制，不能分别耗用48次 [K4]</td>
+</tr>
+<tr>
+<td>实时查询与持续更新</td>
+<td>官方实时查询产品说明面向用户主动点击；持续后台跟踪建议采用订阅推送</td>
+<td>不把每小时批量轮询全部运单设为默认；需要自动更新时优先评估订阅 [K5]</td>
+</tr>
+<tr>
+<td>快递公司识别</td>
+<td>识别文档要求具备相应正式套餐权限，可能返回候选或识别失败</td>
+<td>不假定100单测试附带识别；前台给候选、后台可手选，并校验最终快递公司 [K6]</td>
+</tr>
+<tr>
+<td>计费去重</td>
+<td>官方结算说明对同承运商、同运单在40天范围内的实时查询／订阅有去重计费规则</td>
+<td>去重计费不取消查询限频，也不表示接口免费；按实际产品和账户配置核对 [K7]</td>
+</tr>
+<tr>
+<td>旧云平台与旧跳转接口</td>
+<td>官方资料说明旧云平台已下架；旧免费H5／网页跳转接口已归档，不是持续维护的结构化轨迹接口</td>
+<td>不引用旧0元套餐作为当前承诺，不把打开查询网页当成已获取可持久保存的物流轨迹 [K8][K9]</td>
+</tr>
+</tbody></table>
+</div><p>本轮未从公开资料查到可统一适用于所有账户的100单试用有效期或全局QPS，不编造相应数字。实际赠送量、权限、正式套餐和计费仍需在选型时核对账户。</p>
+<p><strong>本系统接入建议，尚未定稿：</strong> 默认使用约60分钟的共享结果缓存作为起点，用户主动刷新也遵守官方单运单限制；用同一运单请求锁防止前后台同时发出重复请求，失败重试采用延后与退避，并提示额度或权限不足。60分钟是本系统建议，不是官方强制周期；即使改短也不能突破上述官方限制。</p>
+<p>若需要持续更新，优先使用正式支持的订阅推送；收到状态后更新同一份轨迹供前后台查看。运单签收后停止无必要的补查，但<strong>快递签收不等于客户确认全部货物无问题</strong>。接口不可用时保留既有结果、最后更新时间和手工纠正入口；商家自配送继续走独立记录。试用后是否采用正式套餐及需要多及时的更新，见R09。</p>
+<h3 id="section-7-8">7.8 发票上传、识别、人工核对与业务绑定</h3>
+<p>以下按目前普通采购销售流程整理；纯服务费代采中商品款与供应商发票抬头归属仍见R02，不能未经确认套用普通采购的进销票流程。</p>
+<p><strong>当前业务顺序：</strong> 客户下单，管理员采购并配送，客户确认货物无问题后订单履约完成；随后向各供应商取得采购发票，并在约定时段向客户开票。采购、收货、开票可跨月，不能把发票尚未上传视为订单没有完成。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 7，可横向滚动"><table>
+<thead>
+<tr>
+<th>方向</th>
+<th>本版处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>销项：给客户的发票</td>
+<td>按当前意向一销售订单一张当前有效发票；不因为多购物袋拆成多张普通销售发票，也不按本期方案合并多订单开一张普通票</td>
+</tr>
+<tr>
+<td>进项：供应商采购发票</td>
+<td>同一销售订单可能涉及多供应商、多张进项发票，分别关联采购业务并追溯到销售订单；不能套用销项“一单一票”限制</td>
+</tr>
+<tr>
+<td>更正与历史</td>
+<td>发票作废、更换或调整保留原附件、状态和关系；一张当前有效销项票与历史票据资料区别显示，例外处理待R08</td>
+</tr>
+<tr>
+<td>跨采购关联</td>
+<td>供应商一张发票是否覆盖多采购业务、如何分配对应金额仍待定，不把它视为自动获准的全部多对多规则</td>
+</tr>
+</tbody></table>
+</div><p>上传PDF或图片后，<strong>OCR是条件增强</strong>：提取发票号码、开票日期、购销方、金额、税额等可用信息，管理员核对后保存；识别失败、识别不全或暂未接入OCR时，允许手填。识别出的订单关联仅作候选，需要人工确认，不凭金额相同自动绑定。</p>
+<p>管理员也可从具体订单进入上传，以明确该附件归属；重复附件、票号或金额异常建议提示。进项缺票、销项尚未上传、已关联、已作废等状态可检索。系统管理发票资料与关联，<strong>不自动开具税务发票，不对接税务申报</strong>。</p>
+<h3 id="section-7-9">7.9 取消资金模块后的经营记录与利润边界</h3>
+<p><strong>当前意向：客户在线下公对公结算；对供应商或平台的实际采购付款在系统外完成。本系统不提供收款、付款或独立资金流水功能。</strong> V2.0中建议的收付款单、预收预付、资金分配核销、独立应收应付台账与网银对账，不再作为本版实施范围，也不改名为“结算台账”后重新加入。</p>
+<p>保留可支持业务分析的数据：对客成交金额、商品采购成本、税额及含税口径、采购与发货运杂费、直接费用和附件。代垫／报销性质可以作为待讨论的费用分类，但不默认建设报销支付、代垫回收或资金结算流程。</p>
+<p>用户目前用“收款减付款”理解佣金／收益，另有按客户提供链接代采、只收服务费的情形。这里需要按同一订单归集对应金额，不能直接用“本月收款合计减本月采购付款合计”代表本月订单利润，因为采购、交付和结账可能跨月。<strong>没有实际资金记录时，系统不能自动声称算出了实际现金差额。</strong> 商品买卖差价、独立服务费、订单成本差额和最终结算利润需要分开讨论；订单是否手工标记结清、是否仅手工记录该订单的结算总额与实际成本或直接录入核定收益、利润按何日期归属，分别待R01、R02、R04。上述方式是可选择的核算设计，本版没有把其中任一项当成已经批准的功能。</p>
+<p><strong>优先讨论的轻量方案：按订单归集经营金额，不建立资金流水。</strong> 普通采购销售可利用已保存的订单成交额、实际采购成本及直接费用，展示“预估订单收益”；资料完整后由管理员核对，保存一份核算结果。若最终约定金额与原订单不同，保留调整原因。这样能够分析每笔业务，而不需要登记银行账户、每次转账、资金分配或自动核销。是否采用这一方案由R02决定；特殊服务业务也可选择直接录入核定服务收益，但同一笔收益不能同时自动计算又手工累加。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 8，可横向滚动"><table>
+<thead>
+<tr>
+<th>业务情形</th>
+<th>建议如何表达</th>
+<th>需要继续确认的事实</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通采购销售</td>
+<td>对客订单金额与该单实际采购成本、直接费用配对，形成经营收益估算</td>
+<td>金额的含税口径、费用是否已经计入成本、何时确认核算</td>
+</tr>
+<tr>
+<td>经营者垫付商品款的服务代采</td>
+<td>商品采购金额、客户应承担的商品款和独立服务费分开表达；归还的商品垫款不重复增加收益</td>
+<td>客户最终承担的金额、服务费收取方式、供应商与客户票据对象</td>
+</tr>
+<tr>
+<td>客户直接承担商品款的服务代采</td>
+<td>商品仍保留档案、数量和参考货值以便复购；经营者的收益只围绕约定服务费及其承担的费用核算</td>
+<td>是否确实存在这种业务，谁付款、谁取得商品发票、对客报价如何展示</td>
+</tr>
+</tbody></table>
+</div><p>例如，在已统一金额口径且暂不考虑其他调整的演示中，同一订单对客金额1,200元、实际采购成本1,000元、未包含在采购成本中的配送费20元，则订单经营收益估算为180元。这个例子说明同单归集，不代表系统已知道款项到账，也不是已确定的税务或最终利润规则。</p>
+<p><strong>R01的推荐是保留极简结清标记，但由用户决定是否采纳：</strong> 仅订单状态、人工确认日期及可选备注，用来表示经营者已经在线下核对完成。它不能从收货或开票自动推断，不能被展示为银行到账验证，也不生成收付款明细。</p>
+<p>设计建议区分“预估／待核算／已核算”的利润状态，成本不齐时不按零生成高利润；成交价、采购成本、费用更正保留调整记录。税额、服务费、代垫、返利和售后影响如何计算，要在具体收益模式确认后确定公式，避免重复算入或扣除。</p>
+<p>本版不输出实际收款额、实际付款额、现金净额、自动账龄或现金利润报表，也不建设正式会计总账。保留订单和发票资料导出，供线下结算与核对使用；这种资料清单不应伪装成已核对资金的财务对账单。</p>
+<h3 id="section-7-10">7.10 A/B价格检查、强提醒与自动抓价候选</h3>
+<p><strong>既有要求：</strong> 有“已检查”动作、A/B两个可自定义周期、提醒列表与日志。<strong>当前意向：A拟默认30天，B拟默认7天；检查后未改价进入B，改了价格则重新进入A。</strong> 默认值只是当前意向，用户可继续调整。</p>
+<p>首次起算存在需要正面确认的差异：旧需求从“上次改价”起算A；本轮举例从“客户今天采购、已有价格a”起算A。不能把两者悄悄合并为同一规则，见R06。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 9，可横向滚动"><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>当前理解</th>
+<th>尚待明确</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>客户采购后有一个价格</td>
+<td>可能由此次采购触发A计时</td>
+<td>按提交、确认、实际采购还是其他时间；再次采购会不会重置</td>
+</tr>
+<tr>
+<td>A到期</td>
+<td>强提醒检查；对部分链接可尝试获得新价格候选</td>
+<td>到期对象是客户成交价、商品售价还是某来源采购价；抓价能力是否可用</td>
+</tr>
+<tr>
+<td>人工检查并保持原价</td>
+<td>从本次检查起进入B周期</td>
+<td>B到期再未改价是否继续B，本版建议是继续B但尚未最终确认</td>
+</tr>
+<tr>
+<td>人工改价</td>
+<td>从本次改价起重新进入A周期</td>
+<td>改哪个价格才算本对象改价；相关其他客户价格是否受影响</td>
+</tr>
+<tr>
+<td>定制周期</td>
+<td>支持自定义是当前意向</td>
+<td>按商品、客户、客户×商品或供应商来源分别配置的范围和覆盖顺序</td>
+</tr>
+</tbody></table>
+</div><p>建议数据能定位公司客户、商品、具体采购来源及价格类型，分别保存上次采购、改价、检查、提醒时间和操作日志。后台“强提醒”可采用醒目待办、逾期标记与需处理确认，不擅自等同短信轰炸、强制改价或阻断订单。批量检查、稍后提醒及分类供应商筛选保留为候选交互，不伪造已检查时间。</p>
+<p>建议的提醒状态如下，仅表达“改价回A、保持原价进入B”的方向；首次起算事件仍待R06确认，不表示每次复购都会重置时钟。</p>
+<figure class="flow-figure" aria-labelledby="flow-caption">
+<svg class="price-flow" viewbox="0 0 900 560" role="img" aria-labelledby="flow-title flow-desc">
+<title id="flow-title">A/B 价格检查状态流程</title>
+<desc id="flow-desc">首次起算事件待定或实际改价后，等待A，拟30天。到期待人工处理。改价并保存回到A，确认保持原价进入等待B，拟7天，B到期重新待处理。抓价失败或未处理保持到期不重置，仍待处理。</desc>
+<defs><marker id="arrow-red" markerwidth="8" markerheight="8" refx="7" refy="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#C44757"></path></marker><marker id="arrow-gray" markerwidth="8" markerheight="8" refx="7" refy="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#8992A0"></path></marker></defs>
+<g fill="none" stroke="#C44757" stroke-width="2" marker-end="url(#arrow-red)">
+<path d="M430 80 V130"></path><path d="M430 190 V260"></path>
+<path d="M550 280 H650 V160 H550"></path>
+<path d="M310 295 H195 V435"></path>
+<path d="M320 470 H370 V330"></path>
+</g>
+<g fill="none" stroke="#8992A0" stroke-width="2" marker-end="url(#arrow-gray)">
+<path d="M490 330 V390 H665 V435"></path><path d="M790 470 H850 V315 H550"></path>
+</g>
+<g font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="16" fill="#252C38" text-anchor="middle">
+<rect x="270" y="20" width="320" height="60" rx="10" fill="#FFFFFF" stroke="#DCE1E7"></rect><text x="430" y="56">首次起算事件待定，或实际改价</text>
+<rect x="310" y="130" width="240" height="60" rx="10" fill="#FFF1F2" stroke="#E3A5AF"></rect><text x="430" y="166" font-weight="650">等待 A：拟 30 天</text>
+<rect x="310" y="260" width="240" height="70" rx="10" fill="#C44757"></rect><text x="430" y="301" fill="#FFFFFF" font-weight="650">到期，待人工处理</text>
+<rect x="70" y="435" width="250" height="70" rx="10" fill="#FFF1F2" stroke="#E3A5AF"></rect><text x="195" y="476" font-weight="650">等待 B：拟 7 天</text>
+<rect x="540" y="435" width="250" height="70" rx="10" fill="#F3F5F7" stroke="#DCE1E7"></rect><text x="665" y="476" font-weight="650">保持到期，不重置</text>
+</g>
+<g font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="14" fill="#7C5360">
+<text x="665" y="211">改价并保存</text><text x="77" y="360">确认保持原价</text><text x="327" y="407">到期再检查</text><text x="540" y="379" fill="#697383">抓价失败或未处理</text>
+</g></svg>
+<figcaption id="flow-caption">A/B 提醒流程 · 首次起算事件仍待 R06 确认</figcaption>
+</figure><details class="source-details"><summary>查看原始 Mermaid 图示源码</summary><pre><code class="language-mermaid">flowchart TD
+    S["首次起算事件待定，或实际改价"] --&gt; A["等待A：拟30天"]
+    A --&gt; P["到期，待人工处理"]
+    P --&gt;|改价并保存| A
+    P --&gt;|确认保持原价| B["等待B：拟7天"]
+    B --&gt; P
+    P --&gt;|抓价失败或未处理| H["保持到期，不重置"]
+    H --&gt; P
+</code></pre>
+</details><p>自动抓价失败、后台未处理或仅打开查看均不自动重置提醒；同价复购也不建议无限顺延到期日，最终触发规则由R06确定。</p>
+<p>京东／淘宝自动抓价只作候选来源，未经人工核对不直接覆盖客户已确认价格。现阶段人工录价与检查即可运行；后续入驻供应商报价同步与外部平台抓价分别评估，不能假定第三方接口开放或稳定。</p>
+<h3 id="section-7-11">7.11 日期口径、跨月统计与条件汇总</h3>
+<p><strong>按当前意向，经营报表初始查询范围建议为本月1日至当天，支持自定义起止日期，并保留周、月快捷范围。</strong> 不同业务按各自日期统计，报表明确当前选择的日期字段，不能用开票日期改写下单或收货月份。未开票、缺供应商票、待核算、到期查价等待办默认跨月汇总未处理项，时间筛选是可选条件，不随报表月份自动收窄。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 10，可横向滚动"><table>
+<thead>
+<tr>
+<th>指标／列表</th>
+<th>日期建议</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>下单量、订单金额</td>
+<td>订单提交或确认日期，选择哪一个待业务最终确定</td>
+<td>同主订单计一次，不按袋和包裹重复计数</td>
+</tr>
+<tr>
+<td>采购金额、采购成本</td>
+<td>实际采购业务日期</td>
+<td>与供应商发票日期分开</td>
+</tr>
+<tr>
+<td>配送与完成</td>
+<td>发货日期、客户全部确认收货日期</td>
+<td>订单完成不等待发票和线下结清</td>
+</tr>
+<tr>
+<td>进销发票</td>
+<td>各发票实际开票日期；上传日期另存</td>
+<td>上传晚于开票时不改变票据原日期</td>
+</tr>
+<tr>
+<td>利润分析</td>
+<td>按已确认的利润口径及归属日期</td>
+<td>尚未决定按履约、核算或结清日期；不能擅自选择</td>
+</tr>
+</tbody></table>
+</div><p>保留按订单金额、利润阈值、客户、供应商／平台、商品、订单状态、配送状态及发票状态筛选；结果列表与数量、金额、利润汇总使用同一条件。成本未齐或利润未确定的订单单独标识，不混入“已核算利润超过某金额”的结果。</p>
+<p>客户维度保留订单量、销售额、成本与利润贡献；供应商／平台保留采购金额、占比和历史价；商品保留销量与毛利候选口径。复购分析可在数据充足后启用，不等于提前开放自动常购清单。库存周转、呆滞和访问转化率分别因库存或埋点未建设而暂缓。</p>
+<h3 id="section-7-12">7.12 权限、审计、附件、导出和备份恢复</h3>
+<p>客户与管理员权限隔离；内部采购、销售、会计子账号为可选扩展，与未来公司客户的子账号机制区别。商品成本、利润、采购来源、客户价格和敏感附件分别授权，查看、修改、导出和直接下载都遵守权限，不仅靠菜单隐藏。</p>
+<p>保留价格、成本、订单、发票绑定、客户法定资料、用户名和状态更正的操作日志，包括操作者、时间、原因及前后值。历史单据保留当时商品、价格与收货资料，后补成本和发票用关联和调整记录追踪，不静默重写原事实。[S13][S14][S17]</p>
+<p>支持商品、客户、供应商、订单、采购、发票、成本及报表Excel／CSV导出；报价、订单资料和经营清单可打印。附件保存商品图、需求图、采购凭据、发票、签收及售后资料，合同附件后续扩展。系统设置包括编号、单位包装、快递、自配送、通知与A/B规则；自定义业务字段后续可选。</p>
+<p>自动／手动备份记录时间、文件大小、结果和保留策略，设计恢复和恢复验证；具体频率、份数和保存位置依部署确定，不照搬截图24小时和3份。导出业务表格不能替代完整可恢复备份。[S16]</p>
+<h2 id="chapter-8">八、关键业务流程与一致性规则</h2>
+<h3 id="section-8-1">8.1 普通采购和链接代采</h3>
+<ol>
+<li>公司主账号选择系统商品，或提交文字、图片、独立链接、规格数量的采购需求。</li>
+<li>管理员澄清需求，匹配或补充商品档案，按需要给出专业报价；价格规则未确定前保留人工确认。</li>
+<li>客户在购物车修改商品数量，并按不同收件人和地址整理购物袋；一次提交形成一个订单。</li>
+<li>管理员安排采购，可向多家供应商采购，并记录实际价格、数量和成本归属。</li>
+<li>以快递物流或商家自配送按袋完成配送，双方查看适用的物流和交付信息。</li>
+<li>客户确认所有货物无问题，订单履约完成；后续仍可补充进销发票，客户按约定账期在线下一次结清。</li>
+<li>依据实际业务和最终选定口径整理成本、费用、票据与利润；系统不执行转账或资金核销。</li>
+</ol>
+<p>客户链接代采仅收服务费的业务需要单独梳理商品款谁先支付、供应商商品发票抬头开给谁、价格与服务收入如何表示；不能把普通采购中“供应商开给经营者、经营者给客户开一票”的流程未经确认套到纯服务费单。审核后的商品可以进入适当范围的系统目录，供历史整单再次下单。合同不成为每次复购的前置条件。</p>
+<h3 id="section-8-2">8.2 多购物袋、采购与包裹</h3>
+<p>一订单对应一个公司结算主体；一袋对应一个收件组；一袋可以分成多个包裹。采购可按供应商和收货组拆分，销售数量、采购数量、发货数量和收货确认数量保留对应关系。同地址袋子保留名称和用途，不自动合并。</p>
+<p>订单金额与订单数在主单层只算一次；成本和费用按可追溯规则分配至商品或袋子再汇总。包裹用于履约，不能按包裹重复计收入。普通采购当前按一订单一张有效销项发票、一笔线下结清理解，不扩展为同单多公司结算；纯服务费代采的票据对象另见R02。每单一次线下结清描述业务习惯，不要求系统匹配银行转账流水。</p>
+<h3 id="section-8-3">8.3 履约、发票与可选结清标记</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 11，可横向滚动"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>本版表达</th>
+<th>关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>订单确认</td>
+<td>待确认、处理中、已确认或已取消等，最终名称待设计</td>
+<td>价格／数量变更保留记录</td>
+</tr>
+<tr>
+<td>履约</td>
+<td>待采购、采购中、部分发货／收货、客户全部确认完成</td>
+<td>全部收货确认决定履约完成</td>
+</tr>
+<tr>
+<td>进项票据</td>
+<td>待取得、已上传待核对、已绑定、需更正等</td>
+<td>可晚于采购和收货，按各供应商管理</td>
+</tr>
+<tr>
+<td>销项票据</td>
+<td>尚未上传、待核对、当前有效票、作废／更换历史</td>
+<td>不阻断已经完成的履约</td>
+</tr>
+<tr>
+<td>订单结清标记</td>
+<td><strong>未决定是否设置</strong>，若同意也只按最终限定范围设计</td>
+<td>不设收付款明细，不让“未结清”阻断履约完成</td>
+</tr>
+<tr>
+<td>售后</td>
+<td>申请、处理中、已处理，关联原商品与数量</td>
+<td>已完成订单仍可有售后记录，是否重新开启履约待定</td>
+</tr>
+</tbody></table>
+</div><h3 id="section-8-4">8.4 跨月实例</h3>
+<p>用户描述的场景按业务事实保留：25日下单、26日开始采购、29日全部送达并由客户确认，则该月29日属于履约完成日期；供应商在次月开票、用户次月给客户开票，相关发票计入各自实际开票日期对应期间。实际上传时间另留，不将次月票据倒灌为上月已经开票。[U3]</p>
+<p>客户在账期内线下一次结清，账期究竟从收货、开票、账单日还是月结节点起算，以及是否把结清日期记到订单、利润如何按月归属，仍待R01、R03、R04。默认“本月1日至当天”只决定报表的初始查询区间，不决定所有业务统一使用同一个日期。</p>
+<p>次月处理发票时，“待开票／缺进项票”队列仍应列出上月29日完成但尚未补票的订单；不能因默认报表日期切换而漏单。按月生成的账单如需保留，仅是按订单汇总展示业务资料，并不把多订单合并开成一张发票，也不代表建立收付款核销台账。</p>
+<h3 id="section-8-5">8.5 历史价格、抓价与核算</h3>
+<p>订单已接受的商品、数量、地址和价格信息保留版本；再次下单是新交易，最终按待定的现行价格规则处理。A/B检查和自动抓价候选不静默改写已接受的报价、历史订单或发票。</p>
+<p>采购成本和运杂费可以后补，但缺失不当作零；修改实际成本应保存依据和影响。订单成交额、发票额、成本差额和现金收支含义不同，不能用“已开票”或“已完成”自动证明实际收款，也不能用发票金额直接推算现金利润。</p>
+<h2 id="chapter-9">九、参考系统与当前意向的冲突对照</h2>
+<p>“真正冲突”指照搬会违背当前要求或意向；“需适配”指参考能力需要调整；“参考未展示”仅说明本轮证据未覆盖，不代表竞品缺少该能力；“前后口径待定”标记用户不同阶段表述尚需合并的地方。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 12，可横向滚动"><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>性质</th>
+<th>参考或旧方案</th>
+<th>当前需求／意向</th>
+<th>本版处理</th>
+<th>待定点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>真正冲突</td>
+<td>火办网官方历史资料包含支付提现；V2.0建议收付款与核销</td>
+<td>不设收付款、独立资金流水，不接支付网银</td>
+<td>保留业务订单、成本和票据，移除资金模块；不换名重建</td>
+<td>R01、R02、R04</td>
+</tr>
+<tr>
+<td>02</td>
+<td>需适配</td>
+<td>客户易通采购说明确认入库增加库存，未展示是否为采购／发货强制前置</td>
+<td>完整库存暂缓，支持直发／经手</td>
+<td>采购、收货和配送独立记录，库存未来接入</td>
+<td>无需重问库存暂缓</td>
+</tr>
+<tr>
+<td>03</td>
+<td>需适配</td>
+<td>分设商机、报价、合同、签单入口，未证明必须依次执行</td>
+<td>正式报价需要，合同仅预留，普通复购简化</td>
+<td>设计专业报价页；不强制商机与合同</td>
+<td>D01、R07</td>
+</tr>
+<tr>
+<td>04</td>
+<td>需适配</td>
+<td>火办网不同公开页面的可见价格现象不一致，历史资料有客户价</td>
+<td>本轮价格模式继续待定</td>
+<td>全入口统一授权；暂不写死优先级</td>
+<td>D01</td>
+</tr>
+<tr>
+<td>05</td>
+<td>真正冲突</td>
+<td>参考软件收费会员、卡密激活</td>
+<td>已要求忽略收费体系；未来有出售系统想法</td>
+<td>保留产品扩展思路，不自行引入收费授权模块</td>
+<td>无需因出售意向加入</td>
+</tr>
+<tr>
+<td>06</td>
+<td>需适配</td>
+<td>网站有库存充足筛选</td>
+<td>无完整库存、多外部采购</td>
+<td>展示真实供货确认情况，不承诺实时可售数</td>
+<td>价格与供货呈现后定</td>
+</tr>
+<tr>
+<td>07</td>
+<td>参考未展示</td>
+<td>参考商城结算与多地址未核验</td>
+<td>一单多袋、一袋一收件组、同公司结算</td>
+<td>按原需求独立保留，订单收入与数量不按袋重复</td>
+<td>R05处理收货确认</td>
+</tr>
+<tr>
+<td>08</td>
+<td>需适配</td>
+<td>签单台账与物流签收可能被直接当成完成</td>
+<td>客户全部确认货物无问题才履约完成</td>
+<td>按实际商品数量汇总，并区分客户确认与快递签收</td>
+<td>R05</td>
+</tr>
+<tr>
+<td>09</td>
+<td>真正冲突</td>
+<td>V2.0含个人客户、开放注册、多账号候选</td>
+<td>当前公司客户、后台发号、注册关闭、子账号未来</td>
+<td>调整客户端和账号页面，保留关闭提示与未来接口</td>
+<td>D02、D03细化资料权限</td>
+</tr>
+<tr>
+<td>10</td>
+<td>前后口径待定</td>
+<td>用户用收款减付款理解佣金；系统取消资金记录</td>
+<td>仍希望统计不同业务的收益和利润</td>
+<td>说明数据依据缺口，不自动生成现金利润</td>
+<td>R01、R02、R04</td>
+</tr>
+<tr>
+<td>11</td>
+<td>真正冲突</td>
+<td>V2.0建议销售分批开票、多票多单</td>
+<td>当前一销售订单一张有效销项票</td>
+<td>不拆普通销项票；历史更正资料另留；多供应商进项独立管理</td>
+<td>R08</td>
+</tr>
+<tr>
+<td>12</td>
+<td>需适配</td>
+<td>工单含师傅、抢单、签到</td>
+<td>当前代采与自配送</td>
+<td>用订单配送、售后异常；完整外勤工单后续</td>
+<td>不增加一期外勤系统</td>
+</tr>
+<tr>
+<td>13</td>
+<td>需适配</td>
+<td>本地化存储及NAS／服务器目录说明</td>
+<td>公司客户需要远程访问</td>
+<td>网页访问、附件、备份恢复统一考虑</td>
+<td>R10部署</td>
+</tr>
+<tr>
+<td>14</td>
+<td>参考未展示</td>
+<td>截图无A/B规则；通知说明依赖时效管家</td>
+<td>A/B是核心提醒</td>
+<td>自有待办与日志，不依赖未选定的外部提醒软件</td>
+<td>R06</td>
+</tr>
+<tr>
+<td>15</td>
+<td>需适配</td>
+<td>火办网品类、促销、品牌与平台规模较大</td>
+<td>目录缓慢丰富、常购待成熟</td>
+<td>优先需求提交、商品维护、报价和整单复购，常购后续</td>
+<td>不再追问当前常购阈值</td>
+</tr>
+<tr>
+<td>16</td>
+<td>前后口径待定</td>
+<td>旧A从改价起算；本轮从客户采购已有价格举例</td>
+<td>拟A30／B7，未改价进B、改价回A</td>
+<td>并列呈现，不悄悄合并计时规则</td>
+<td>R06</td>
+</tr>
+<tr>
+<td>17</td>
+<td>参考未展示</td>
+<td>内部业务员角色不等于代采佣金功能</td>
+<td>用户经营收益和链接代采服务费</td>
+<td>佣金不等同员工提成，不套一套固定公式</td>
+<td>R02、R04</td>
+</tr>
+<tr>
+<td>18</td>
+<td>需适配</td>
+<td>参考视觉风格各异</td>
+<td>柔和红色、现代标签及悬停提示</td>
+<td>沿用第十章方向，色值仍为建议</td>
+<td>只待样稿定稿</td>
+</tr>
+<tr>
+<td>19</td>
+<td>前后口径待定</td>
+<td>V2.0常购一期、OCR后续、供应商门户未提出</td>
+<td>常购延后，上传识别可增强，供应商填报未来预留</td>
+<td>同步改页面地图、分期和验收，保留手工兜底</td>
+<td>不误写为已接入</td>
+</tr>
+<tr>
+<td>20</td>
+<td>需适配</td>
+<td>免费、试用、查询与订阅等接口名容易混用</td>
+<td>需要实际查到频率限制并控制调用</td>
+<td>以官方现行来源分别核验，不假设长期免费或批量轮询可用</td>
+<td>R09预算与模式</td>
+</tr>
+</tbody></table>
+</div><h2 id="chapter-10">十、视觉与交互设计规范</h2>
+<h3 id="section-10-1">10.1 既有方向与建议色板</h3>
+<p><strong>既有要求：主调采用比火办网稍浅、柔和的红色，不使用正红或大红；界面现代、简洁，必须具备标签页、悬停高亮和文字提示。</strong></p>
+<p>以下仅为设计建议，须通过实际页面样稿确定；不代表已取得火办网精确色值或已完成色差测量。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 13，可横向滚动"><table>
+<thead>
+<tr>
+<th>用途</th>
+<th>建议颜色</th>
+<th>使用方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>品牌主色</td>
+<td><code>#D96872</code></td>
+<td>品牌标记、少量装饰强调、选中指示；不直接用于承载小号白字</td>
+</tr>
+<tr>
+<td>主要按钮</td>
+<td><code>#C44757</code></td>
+<td>保存、提交、确认等主操作，采用比品牌色稍深的红色保证文字清晰</td>
+</tr>
+<tr>
+<td>主按钮悬停</td>
+<td><code>#B6404E</code></td>
+<td>稍加深反馈，保持柔和整体观感</td>
+</tr>
+<tr>
+<td>浅选中背景</td>
+<td><code>#FFF1F2</code></td>
+<td>当前标签、选中区域、轻提示</td>
+</tr>
+<tr>
+<td>页面与卡片</td>
+<td>中性浅灰底、白色卡片、细边框</td>
+<td>用留白和分区组织信息，减少满屏色块</td>
+</tr>
+<tr>
+<td>正文</td>
+<td>深灰文字，次要信息用较浅中性灰</td>
+<td>金额、状态、辅助说明形成明确层级</td>
+</tr>
+</tbody></table>
+</div><p>避免大块满红、彩虹多色标签及过重阴影。品牌红与删除等危险动作采用不同的文案、图标和确认提示；颜色不能是判断状态的唯一线索。精确色值、字体和组件库仍待设计定稿，不再次要求用户确认已经明确的红色方向。</p>
+<h3 id="section-10-2">10.2 标签页</h3>
+<ul>
+<li><strong>导航多标签页：</strong> 后台可同时打开客户、订单、采购、发票等工作页，方便来回核对；标签支持切换、关闭及明确的当前态。</li>
+<li><strong>状态筛选标签：</strong> 列表内“全部、待确认、待发货”等用于筛选当前列表，不能与打开工作页的标签混淆。</li>
+<li>切换或返回已打开页时，尽量保留筛选、分页、表格滚动位置和已展开详情；保留范围属于具体交互设计。</li>
+<li>关闭含未保存编辑的页面时提示保存或放弃，避免数据丢失；长标题可截断并提示完整名称。</li>
+<li>手机端采用可滚动标签或适当简化，保持当前页和返回路径清楚，不照搬桌面宽表。</li>
+</ul>
+<h3 id="section-10-3">10.3 鼠标悬停高亮与文字提示</h3>
+<p>表格行、按钮、链接和可操作卡片在悬停时轻微改变背景、边框或文字色；反馈稳定，不移动内容、不改变布局，不让纯展示区域误显为可点击。</p>
+<p>截断的客户名、商品规格、地址、备注和单据号可悬停查看完整文字；金额、利润、状态等可解释计算或业务含义。提示应有适当延迟、可关闭且不遮挡正在操作的重要内容。</p>
+<p>重要操作和关键业务说明不得只存在于悬浮提示中：键盘聚焦应能获得等价信息，手机可点按查看，必要说明同时放在表单或详情里。只显示图标的按钮需提供可理解名称。</p>
+<h3 id="section-10-4">10.4 现代后台布局</h3>
+<p>采用清晰导航、工作页标签、页面标题与主操作、筛选区、数据区和必要汇总的稳定层级。表格密度紧凑但可读，支持固定表头／必要操作列、列显示设置、分页、已选条件及清空筛选。表格金额对齐，单位一致，选中行与悬停行可区分。</p>
+<p>详情可使用抽屉或详情页，汇集基本资料、关联单据、附件和操作时间线。编辑表单分组，明确必填、保存结果与字段错误。所有页面设计空数据、加载、错误、无权限、部分数据不可用等状态；批量操作显示影响条数。</p>
+<h3 id="section-10-5">10.5 客户端与响应式</h3>
+<p>客户端优先呈现搜索、采购需求、专业报价、采购清单、多购物袋和订单物流；自动常购清单按当前意向延后，不在一期占据主导航。促销图和营销区域克制，避免挤占采购操作。电脑适合批量选购和多袋核对，手机适合找货、改数量、查订单及物流。后台手机端保留订单确认、录单号、查看待办与概览等高频操作，复杂报表可采用简化视图。</p>
+<h3 id="section-10-6">10.6 本轮新增页面的交互要求</h3>
+<p>注册关闭页清楚解释当前需联系管理员开通账号；账号资料区将“可编辑”与“需管理员纠错”的公司法定资料分开。未来子账号来源应在主账号审核区及正式业务详情中醒目标注。</p>
+<p>采购需求表把文字、图片、链接、规格、数量分组，文字框附近常驻填写提示，收货地址标为下单阶段填写，避免客户误以为每次商品需求都要先确认收件人。</p>
+<p>报价页采用整洁的商品图文、数量价格和合计层级，商品点击到系统内页面；不把采购来源和内部成本混入客户展示。报价公开链接是否免登录访问仍待定，“公开链接”的文案不能提前代表所有人都能看到客户专属报价。</p>
+<p>订单详情把“履约完成”和“发票尚未上传”同时清楚显示；未确定是否启用的结清标记不提前作为完成进度门槛。物流处提供“商家自配送”快捷选项，选中后隐藏不适用的快递单号必填要求。</p>
+<h2 id="chapter-11">十一、当前分期建议与可评审验收场景</h2>
+<h3 id="section-11-1">11.1 一期与后续范围</h3>
+<p>以下是按当前意向形成的实施建议，不是最终排期。相较V2.0，<strong>整单复购、多购物袋、A/B提醒与双端物流仍为一期核心；自动常购清单改为后续，不再作为一期完成条件。</strong></p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 14，可横向滚动"><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>建议范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>一期A：基础与采购入口</td>
+<td>公司主账号、后台发号、注册关闭提示、可编辑资料、商品和供应商、采购需求、购物车及多袋、地址、销售订单</td>
+</tr>
+<tr>
+<td>一期B：执行与资料</td>
+<td>专业报价页、实际采购及成本、快递／商家自配送、收货确认、进销发票上传与人工绑定、跨月统计</td>
+</tr>
+<tr>
+<td>一期C：效率与交付</td>
+<td>整单再次下单、A/B待办、筛选汇总与导出、权限审计、备份恢复、柔和红色现代UI与手机适配</td>
+</tr>
+<tr>
+<td>一期条件增强</td>
+<td>发票OCR及单号识别，可用时辅助人工；具体物流自动更新按官方产品与预算选型；利润展示深度须先明确依据</td>
+</tr>
+<tr>
+<td>本轮不设置</td>
+<td>在线支付、收付款操作、独立资金流水、核销台账、网银对账、税务自动开票；订单结清标记仍未决定</td>
+</tr>
+<tr>
+<td>明确延后／预留</td>
+<td>常购清单、开放自助注册、公司子账号、合同完整模块、供应商入驻与资料同步、完整库存</td>
+</tr>
+<tr>
+<td>后续可选</td>
+<td>复杂CRM／公海、外派工单、自动抓价／识图、营销返利、增强比价看板、批次序列号／保修、自定义字段、PWA／桌面／离线硬件</td>
+</tr>
+</tbody></table>
+</div><p>库存预留不要求先做虚拟扣减；供应商同步预留不代表已经验证任何平台开放接口；正式报价当前要设计，合同当前只预留，不把二者一并延后。</p>
+<h3 id="section-11-2">11.2 当前可以评审的验收场景</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 15，可横向滚动"><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>期望结果与规则状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>公司账号</td>
+<td>后台发号，一公司主账号访问本公司资料；注册关闭页有提示且不能提交；资料编辑限制清楚</td>
+</tr>
+<tr>
+<td>公司信息纠错</td>
+<td>客户不能自行改法定／开票合同名称；管理员纠正留痕，历史单据不被静默改写</td>
+</tr>
+<tr>
+<td>采购需求</td>
+<td>可提交文字图链接规格数量，链接独立字段，地址不必填；资料审核后再进入适当商品目录</td>
+</tr>
+<tr>
+<td>专业报价</td>
+<td>展示标题、文字、主图、系统商品链接、数量及价格；客户权限与有效期按最终规则补齐</td>
+</tr>
+<tr>
+<td>多购物袋</td>
+<td>同一订单不同收件组、商品和数量对应正确；同地址袋不自动合并；金额和订单数不重复</td>
+</tr>
+<tr>
+<td>整单复购</td>
+<td>返回购物车可改数量删商品及核对地址，不带入旧采购、发票和收货状态</td>
+</tr>
+<tr>
+<td>全部收货完成</td>
+<td>全部货物按最终确认机制确认后完成；未开票、未结清不阻断；快递首包签收不误判整单</td>
+</tr>
+<tr>
+<td>发票</td>
+<td>一单一张当前有效销项票；多供应商进票分别绑定；OCR失败可手填，候选信息和绑定经人工核对</td>
+</tr>
+<tr>
+<td>跨月统计</td>
+<td>下单、采购、完成、开票使用各自日期；默认本月1日至当天可改；上传时间不替代开票日期</td>
+</tr>
+<tr>
+<td>价格提醒</td>
+<td>A30／B7作为拟默认可改，未改价进入B、改价回A；首次起算和作用对象待R06后补齐验收</td>
+</tr>
+<tr>
+<td>成本利润</td>
+<td>成本缺失标待核算，不按零虚增利润；无资金数据不声称计算实际收付或现金利润</td>
+</tr>
+<tr>
+<td>无资金模块</td>
+<td>不出现收付款单、资金流水、核销或网银对账；可选订单结清标记未经确定不提前实现</td>
+</tr>
+<tr>
+<td>双端物流与自送</td>
+<td>查询结果有时间与错误提示；手选快递兜底；商家自配送无需单号；频率按最终官方方案控制</td>
+</tr>
+<tr>
+<td>通用UI与数据</td>
+<td>现代标签、轻悬停、完整文字提示、手机可用；权限、导出、审计、备份和恢复可验证</td>
+</tr>
+</tbody></table>
+</div><p>常购、子账号、供应商入驻、合同完整功能不作为当前一期验收项目，待后续重新启用时再形成详细验收条件。</p>
+<h2 id="chapter-12">十二、旧问题答复追踪与新一轮待定问题</h2>
+<h3 id="section-12-1">12.1 V2.0的Q01—Q10答复追踪</h3>
+<p>下表记录用户已经作答的内容，不代表把设计意向升级为最终方案。旧Q编号用于追踪，本轮遗留问题使用R编号。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 16，可横向滚动"><table>
+<thead>
+<tr>
+<th>旧编号</th>
+<th>用户本轮回答要点</th>
+<th>本版处理</th>
+<th>尚未解决的部分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Q01 收益与利润</td>
+<td>线下公对公，系统不需要收付款；有采购后按账期结算，也有客户给链接只收服务费；利润方式可能不同；默认本月1日至当天可自定</td>
+<td>移除独立资金模块，保留成本和资料；分别呈现收益模式与数据依据缺口</td>
+<td>R01、R02、R04；不能自动把“收款减付款”变成无资金来源的已实现利润</td>
+</tr>
+<tr>
+<td>Q02 价格</td>
+<td>业务尚不明确，价格待定，先记录</td>
+<td>不写死客户价／协议价等优先级，保留待报价和相关设计位置</td>
+<td>D01，后续业务明确再决定</td>
+</tr>
+<tr>
+<td>Q03 账号</td>
+<td>自助注册预留但关闭并提示；后台发号；客户改允许资料；用户名每年一次；公司名固定；子账号未来主账号审核提交并标来源</td>
+<td>重写账号和权限，当前公司一主账号；未来审核机制明确预留</td>
+<td>D02、D03的年限、可改字段和纠错细节</td>
+</tr>
+<tr>
+<td>Q04 发票跨月</td>
+<td>收货确认即订单完成；供应商多，开票和采购发货可跨月；上传发票希望自动识别，不行手填；销售一单一票</td>
+<td>区分履约完成和票据，上传识别＋人工核对，销项一张有效票，进项多来源</td>
+<td>R08关联和更正例外；利润日期见R04，账期起点见R03</td>
+</tr>
+<tr>
+<td>Q05 采购价与A/B</td>
+<td>前期自己填，供应商未来可提交或代填；拟A30/B7可按客户商品自定；采购有价后A提醒／抓价，未改价B、改价A</td>
+<td>供应商接口未来预留；完整列出计时状态和对象；抓价作候选</td>
+<td>R06首次起算、重复采购、检查对象与覆盖顺序</td>
+</tr>
+<tr>
+<td>Q06 多袋与完成</td>
+<td>一袋一收件组，同订单各地不同商品数量；全部收到确认完成；后补发票；同单客户一次结清</td>
+<td>一单多袋、同公司主体，按数量汇总；未开票未结清不阻断完成</td>
+<td>R05谁确认、部分异常及售后；结清标记R01</td>
+</tr>
+<tr>
+<td>Q07 常购</td>
+<td>系统成熟稳定后再向客户展示</td>
+<td>调整为后续待办，移出一期导航和验收</td>
+<td>不继续追问当前常购阈值</td>
+</tr>
+<tr>
+<td>Q08 采购需求</td>
+<td>文字图片链接规格数量；链接单列；地址可不带；文字框附近给提示</td>
+<td>纳入客户需求表及商品目录渐进流程</td>
+<td>R07上架可见范围与授权边界</td>
+</tr>
+<tr>
+<td>Q09 报价合同</td>
+<td>现有合同少，考虑完整系统及出售要留接口；正式报价要推送并专业展示，使用系统商品链接</td>
+<td>报价进入当前设计，合同预留；不加收费会员卡密</td>
+<td>R07链接公开范围；D04通知与接受报价方式</td>
+</tr>
+<tr>
+<td>Q10 物流</td>
+<td>填单号，尽可能识别，不能则手选；查官方免费API限制及频率；要自配送快捷选项</td>
+<td>单号识别候选、手选兜底、官方选型；推荐“商家自配送”</td>
+<td>R09实际接口模式与预算，R10及D05涉及部署方向；不猜免费额度</td>
+</tr>
+</tbody></table>
+</div><h3 id="section-12-2">12.2 新一轮需要讨论的问题（R01—R10）</h3>
+<p>下列问题聚焦仍有冲突或缺少依据的部分，均未最终定稿。自动常购已经延后、注册暂关、合同及供应商同步预留等不重复询问；价格业务规则继续记为待定专题，不强迫本轮一次定完。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 17，可横向滚动"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>需要进一步理清的问题</th>
+<th>建议／讨论起点，均未定稿</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R01</td>
+<td>是否接受仅在订单上手工标记“未结清／已结清”及结清日期？还是系统完全不记录结清？</td>
+<td>建议保留极简状态、人工确认日期及可选备注，是否采纳由用户决定；不加资金流水、分次收付或核销，也不阻断履约完成</td>
+</tr>
+<tr>
+<td>R02</td>
+<td>普通采购销售的收益依据用什么金额？纯服务费代采的商品款由谁先付，供应商商品票抬头开给你还是客户？同一订单能否混合普通销售与服务费代采？</td>
+<td>建议区分订单类型、必要时细分商品行类型；先确认付款和票据对象，再讨论人工订单结算总额与实际成本或直接录核定收益。混合类型仍待定，不据此增加资金功能或给出票税结论</td>
+</tr>
+<tr>
+<td>R03</td>
+<td>账期从收货、开票、账单日期还是月结节点起算？每月固定开票日是否按客户不同？</td>
+<td>将账期约定、固定开票日与履约日期分开；若显示账单，只按订单汇总，不因此合并成一张销项发票</td>
+</tr>
+<tr>
+<td>R04</td>
+<td>不同类型订单何时确认收益，按收货、开票、人工核算还是结清日期归入报表？跨月待办如何处理？</td>
+<td>本月1日至当天仅为报表初始范围建议；未开票、缺供应商票、待核算及到期查价默认跨月汇总。利润不直接用某月收付合计相减</td>
+</tr>
+<tr>
+<td>R05</td>
+<td>客户全部确认无问题，由主账号逐袋确认、整单确认，还是管理员代录凭证？缺货、破损、补发时如何完成？</td>
+<td>按商品数量核对，快递签收不替代客户确认；有问题部分保留处理记录，后台代确认需有依据</td>
+</tr>
+<tr>
+<td>R06</td>
+<td>A/B检查什么价格？首次A从采购、订单确认还是改价起算？同价复购是否重置？客户、商品、客户×商品及供应商来源的周期谁优先？</td>
+<td>A30／B7为拟默认；未改价B、改价A；建议同价复购不无限顺延，抓价失败或未处理不重置，外部价格只是人工核对候选</td>
+</tr>
+<tr>
+<td>R07</td>
+<td>客户提出的商品审核后对谁可见？系统商品链接的公开范围与客户专属报价的访问权限如何分开？</td>
+<td>管理员选公开或客户可见范围；来源链接和需求原文不默认公开。站内商品链接可分享不代表整份专属报价匿名公开</td>
+</tr>
+<tr>
+<td>R08</td>
+<td>发票是否优先从订单上传，再由OCR提出资料和匹配候选？供应商一票能否覆盖多采购；销项更换和历史附件如何保存？</td>
+<td>OCR和绑定经人工核对，失败可手填；普通销售一单一张当前有效票，历史更正另留，进项规则独立决定</td>
+</tr>
+<tr>
+<td>R09</td>
+<td>100单调试额度后是否接受正式物流套餐？需要主动按需查询，还是持续订阅推送？</td>
+<td>优先共享缓存与受限主动刷新；持续更新用官方支持的订阅，保留手选快递和商家自配送。先定需要和预算，再开通实际权限</td>
+</tr>
+<tr>
+<td>R10</td>
+<td>未来出售系统主要是每个经营者独立部署，还是多个经营者共用一个平台？</td>
+<td>先将此作为后续产品方向；当前不擅自加入多租户SaaS、收费支付、卡密授权。部署、备份、维护范围随后按所选方式确定</td>
+</tr>
+</tbody></table>
+</div><h3 id="section-12-3">12.3 后续细则（D级，不阻塞当前需求梳理）</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 18，可横向滚动"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>继续保留的细则</th>
+<th>当前状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D01</td>
+<td>标准价／客户价／协议价／询价的范围、取价优先级、改价接受与复购取价</td>
+<td>用户明确暂时待定；现阶段只保留设计位置，后续单独讨论</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>用户名一年一次按自然年还是滚动12个月；初次命名是否计一次；管理员特殊纠错</td>
+<td>当前只记录一年一次意向，不能擅自决定计次方式</td>
+</tr>
+<tr>
+<td>D03</td>
+<td>客户可编辑字段清单；法定名称更名与纠错；未来子账号“所有内容”具体审核范围、修改后重新审核</td>
+<td>按主账号审核提交的方向预留，具体权限后续定义</td>
+</tr>
+<tr>
+<td>D04</td>
+<td>报价接受方式、有效期默认值、版本变更、打印PDF版式、站内通知及未来外部通知</td>
+<td>专业报价为当前意向，细节与价格专题一并完善</td>
+</tr>
+<tr>
+<td>D05</td>
+<td>服务器、域名、备份位置、恢复目标、维护责任及是否需要桌面封装</td>
+<td>在产品部署方向明确后细化；网页形态和柔和红色方向不重问</td>
+</tr>
+</tbody></table>
+</div><h2 id="chapter-13">十三、后续完整更新规则</h2>
+<ol>
+<li>小范围需求调整继续使用V2.2、V2.3等小版本；只有结构或范围发生需要重新立项的大变化时再考虑大版本。</li>
+<li>每次回答、新需求或新的接口证据都更新一份完整文档，直接同步到页面、模块、流程、冲突、分期和验收，不只在末尾追加。</li>
+<li>记录“用户已经回答”和“规则已经最终定稿”的区别；本轮回答保持当前意向，只有后续明确认可时才升级状态。</li>
+<li>保留旧Q01—Q10追踪，本轮R01—R10及后续D级细则按编号延续；已解决的记录结论，未解决的继续列出，不用默认建议替代答复。</li>
+<li>已延后的功能保留背景和重新启用入口，但不在一期页面和验收中偷偷恢复；用户改变范围时同步清除旧段落中的矛盾要求。</li>
+<li>参考截图、公开页面观察、历史官方资料、当前API官方说明分别标明来源和日期；接口调试、免费、试用、商用与可持久化能力不得混称。</li>
+</ol>
+<h2 id="chapter-14">十四、来源索引</h2>
+<h3 id="section-14-1">14.1 需求与版本依据</h3>
+<ul>
+<li><strong>[B0]</strong> <code>采购会计系统_功能汇总_2026-11-13.md</code>：早期需求基线，保留功能起源与原讨论边界；已被本轮调整的部分以当前意向说明为准。</li>
+<li><strong>[B1]</strong> <code>采购会计系统功能建议_2026-11-13-10-46-15.md</code>：原始聊天记录；用于核对用户明确要求与AI建议的区别。</li>
+<li><strong>[B2]</strong> <code>采购会计系统_完整需求文档_v2_2026-11-13.md</code>：已交付V2.0完整稿。</li>
+<li><strong>[U3]</strong> 用户针对V2.0的Q01—Q10逐项答复（2026-11-13）：明确说明均为当前设计需求理解，不代表最终方案；本版最新整理依据。</li>
+<li><strong>[U2]</strong> 上轮用户答复：主色比火办网稍浅柔和，不用正红／大红；现代UI，包含标签页、鼠标悬停高亮及文字悬浮提示。</li>
+</ul>
+<h3 id="section-14-2">14.2 用户提供的18张截图</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="文档表格 19，可横向滚动"><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>文件名</th>
+<th>主要引用范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S01</td>
+<td><code>1、工作台.jpg</code></td>
+<td>指标卡、经营概览、待办</td>
+</tr>
+<tr>
+<td>S02</td>
+<td><code>2-1客户管理-客户列表.jpg</code></td>
+<td>客户字段、筛选、导入导出打印及侧栏入口</td>
+</tr>
+<tr>
+<td>S03</td>
+<td><code>3-1、销售管理-商机管理.jpg</code></td>
+<td>五阶段漏斗、商机分析</td>
+</tr>
+<tr>
+<td>S04</td>
+<td><code>3-2、销售管理-报价管理.jpg</code></td>
+<td>报价列表</td>
+</tr>
+<tr>
+<td>S05</td>
+<td><code>3-3、销售管理-合同管理.jpg</code></td>
+<td>合同及关联订单</td>
+</tr>
+<tr>
+<td>S06</td>
+<td><code>3-4、销售管理-订单管理.jpg</code></td>
+<td>签单、金额、已收、欠款</td>
+</tr>
+<tr>
+<td>S07</td>
+<td><code>4-1、工单管理-工单列表.jpg</code></td>
+<td>工单字段、师傅和费用</td>
+</tr>
+<tr>
+<td>S08</td>
+<td><code>4、2、工单管理-我的工单.jpg</code></td>
+<td>我的工单、工单池及业务说明</td>
+</tr>
+<tr>
+<td>S09</td>
+<td><code>5-1、采购管理-供应商管理.jpg</code></td>
+<td>供应商资料及批量操作</td>
+</tr>
+<tr>
+<td>S10</td>
+<td><code>5-2、采购管理-采购订单.jpg</code></td>
+<td>采购、付款及入库说明</td>
+</tr>
+<tr>
+<td>S11</td>
+<td><code>6-1、库存管理-商品管理.jpg</code></td>
+<td>商品资料、库存字段及侧栏入口</td>
+</tr>
+<tr>
+<td>S12</td>
+<td><code>7、财务管理.jpg</code></td>
+<td>财务流水、分批开票与附件说明</td>
+</tr>
+<tr>
+<td>S13</td>
+<td><code>8-1、权限管理-用户管理.jpg</code></td>
+<td>内部账号管理</td>
+</tr>
+<tr>
+<td>S14</td>
+<td><code>8-2、权限管理-角色管理.jpg</code></td>
+<td>角色名称与菜单权限说明</td>
+</tr>
+<tr>
+<td>S15</td>
+<td><code>9、系统管理-会员中心（此系统的收费系统）.jpg</code></td>
+<td>仅识别排除范围；收费会员、卡密、激活不纳入</td>
+</tr>
+<tr>
+<td>S16</td>
+<td><code>9-7、系统管理-数据备份.jpg</code></td>
+<td>备份配置、执行及记录</td>
+</tr>
+<tr>
+<td>S17</td>
+<td><code>10、审计日志.jpg</code></td>
+<td>日志检索、对象、结果及差异对比说明</td>
+</tr>
+<tr>
+<td>S18</td>
+<td><code>11、帮助中心.jpg</code></td>
+<td>本地化存储及通知依赖的产品说明</td>
+</tr>
+</tbody></table>
+</div><h3 id="section-14-3">14.3 火办网与官方资料</h3>
+<p>以下W1—W5为V2.0阶段在2026-11-13进行的公开未登录页面观察，V2.1沿用；W6—W7为官方补充资料。</p>
+<ul>
+<li><strong>[W1]</strong> <a href="https://www.huoffice.com/" target="_blank" rel="noopener noreferrer">火办网首页</a>：顶部导航、搜索、分类、品牌商品、教学视频及浮动服务入口。</li>
+<li><strong>[W2]</strong> <a href="https://www.huoffice.com/list.html?cat2=2" target="_blank" rel="noopener noreferrer">分类商品列表</a>：类目、克重、规格、包装、价格与配送筛选等；本次显示0项结果。</li>
+<li><strong>[W3]</strong> <a href="https://www.huoffice.com/solution/solution-brandzone.html?cat_id=1" target="_blank" rel="noopener noreferrer">品牌中心</a>：品牌搜索与首字母目录。</li>
+<li><strong>[W4]</strong> <a href="https://www.huoffice.com/solution/solution-brandzone-itemlist.html?brand_id=52" target="_blank" rel="noopener noreferrer">品牌商品列表</a>：目录、排序、价格区间、商品编码与收藏；本次未登录可见个别商品价格。</li>
+<li><strong>[W5]</strong> <a href="https://www.huoffice.com/passport-signin.html" target="_blank" rel="noopener noreferrer">登录页</a>：账号密码、自动登录、找回密码及注册入口；部分业务入口要求登录。</li>
+<li><strong>[W6]</strong> <a href="https://www.onhing.com.cn/" target="_blank" rel="noopener noreferrer">安兴集团官网</a>：火办网归属及官方介绍来源。</li>
+<li><strong>[W7]</strong> <a href="https://www.onhing.com.cn/public/source/document/71%E7%81%AB%E5%8A%9E%E7%BD%91%E7%BB%8F%E9%94%80%E5%95%86%E7%BD%91%E5%BA%97%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E5%8F%91%E5%B1%95%E6%9C%BA%E4%BC%9A.pdf" target="_blank" rel="noopener noreferrer">火办网经销商网店数字经济发展机会（官方PDF）</a>：14页，元数据创建日期2023-09-12；主要参考物理第9页／印刷08及物理第13页／印刷12，作为历史官方功能描述使用。</li>
+</ul>
+<h3 id="section-14-4">14.4 快递100官方资料</h3>
+<p>以下为2026-11-13官方页面核验，均非本系统API实测；产品文档与实际账户权限可能有差异，具体接入以前者及账户实际可用权限共同核对。</p>
+<ul>
+<li><strong>[K1]</strong> <a href="https://api.kuaidi100.com/product/query/" target="_blank" rel="noopener noreferrer">实时查询产品页</a>：注册100单测试的现行说明。</li>
+<li><strong>[K2]</strong> <a href="https://api.kuaidi100.com/document/ceshidanlaing" target="_blank" rel="noopener noreferrer">未充值测试说明</a>：未充值调试范围。</li>
+<li><strong>[K3]</strong> <a href="https://api.kuaidi100.com/document/jiekouceshidanliang" target="_blank" rel="noopener noreferrer">接口测试单量说明</a>：测试额度用于联调，实际赠送量核对后台。</li>
+<li><strong>[K4]</strong> <a href="https://api.kuaidi100.com/document/5f0ffb5ebc8da837cbd8aefc" target="_blank" rel="noopener noreferrer">实时查询技术文档</a>：同运单至少30分钟间隔、24小时不超过48次及锁单规则。</li>
+<li><strong>[K5]</strong> <a href="https://api.kuaidi100.com/document/shishichaxunchanpinjieshao" target="_blank" rel="noopener noreferrer">实时查询产品说明</a>：主动查询的适用场景，以及持续跟踪应采用订阅推送的说明。</li>
+<li><strong>[K6]</strong> <a href="https://api.kuaidi100.com/document/5f1106542977d50a94e10241.html" target="_blank" rel="noopener noreferrer">快递公司识别文档</a>：正式套餐权限与识别接口条件。</li>
+<li><strong>[K7]</strong> <a href="https://api.kuaidi100.com/document/jiesuanzhouqi01" target="_blank" rel="noopener noreferrer">结算周期说明</a>：同承运商同运单40天内实时查询／订阅的计费去重说明；不替代调用限制。</li>
+<li><strong>[K8]</strong> <a href="https://api.kuaidi100.com/document/yunpingtaigoumai" target="_blank" rel="noopener noreferrer">旧云平台购买说明</a>：旧云平台下架，不能继续套用历史免费套餐。</li>
+<li><strong>[K9]</strong> <a href="https://www.kuaidi100.com/openapi/mobileapi.shtml" target="_blank" rel="noopener noreferrer">旧手机查询跳转接口</a>与<a href="https://www.kuaidi100.com/openapi/api_jump.shtml" target="_blank" rel="noopener noreferrer">旧页面跳转接口</a>：归档的页面查询方案，不作为当前结构化物流API选型依据。</li>
+</ul>
+<footer class="document-footer"><span>上海臻朴实业有限公司 · V2.1 需求文档</span><span><a href="index.html">返回系统预览</a>　·　<a href="names.html">查看名称备选</a></span></footer></article></main></div>
+<button id="back-top" class="icon-btn back-top" type="button" aria-label="返回文档顶部" title="返回顶部"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5m-6 6 6-6 6 6M5 3h14"/></svg></button><div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script id="source-markdown" type="text/plain">IyDph4fotK3kvJrorqHns7vnu5/lrozmlbTpnIDmsYLmlofmoaMKCioq54mI5pys77yaVjIuMe+9nOabtOaWsOaXpeacn++8mjIwMjYtMTEtMTPvvZznirbmgIHvvJrlrozmlbTpnIDmsYLorqjorrrnqL/vvIzlsJrmnKrlrprnqL8qKgoK5pys57O757uf55So5LqO6Z2i5ZCR5YWs5Y+444CB5Y2V5L2N5a6i5oi355qE6YeH6LSt5Luj5Yqe5Lia5Yqh77yM5Lul5a6i5oi36YeH6LSt6Zeo5oi35ZKM5YaF6YOo57uP6JCl5ZCO5Y+w6LSv6YCa5ZWG5ZOB6LWE5paZ44CB6YeH6LSt6ZyA5rGC44CB5oql5Lu344CB6K6i5Y2V44CB5aSa5Zyw5Z2A6YWN6YCB44CB6L+b6ZSA5Y+R56Wo44CB5oiQ5pys5Yip5ram5ZKM57uf6K6h44CC572R6aG15pSv5oyB55S16ISR5ZKM5omL5py65rWP6KeI5Zmo5L2/55So77yM5ZWG5ZOB55uu5b2V6ZqP5a6e6ZmF5Lia5Yqh6YCQ5q2l5Liw5a+M44CCCgoqKuacrOi9rjEw5p2h5Zue562U5YWo6YOo5oyJ4oCc5b2T5YmN6K6+6K6h5oSP5ZCR4oCd5pW055CG77yM5LiN6KGo56S65pyA57uI5pa55qGI5bey57uP56Gu5a6a44CCKiog5pys54mI5bCG6L+Z5Lqb5oSP5ZCR5YaZ5Zue55u45YWz6aG16Z2i44CB5qih5Z2X44CB5rWB56iL44CB5YiG5pyf5LiO6aqM5pS277yM5pu/5LujVjIuMOS4reS4juS5i+WGsueqgeeahOW7uuiuru+8m+WQjOaXtuS/neeVmeS7jemcgOiuqOiuuueahOinhOWImeWSjOWOn+Wni+aEj+Wbvu+8jOS+m+S4i+S4gOi9ruagoeato+OAguacrOaWh+S4jeaYr+W8gOWPkeWujOaIkOaKpeWRiu+8jOS5n+S4jeaYr+S7hei/veWKoOWGheWuueeahOihpeS4geOAggoKIyMg5LiA44CB54mI5pys6K+05piO44CB6ZyA5rGC54q25oCB5LiO5b2T5YmN6IyD5Zu0CgojIyMgMS4xIOeJiOacrOWPmOWMlgoKfCDpobnnm64gfCBWMi4x5aSE55CGIHwKfC0tLXwtLS18Cnwg5a6i5oi35LiO6LSm5Y+3IHwg5b2T5YmN6Z2i5ZCR5YWs5Y+477yP5Y2V5L2N77yb5ZCO5Y+w5Y+R5Y+377yb6Ieq5Yqp5rOo5YaM5L+d55WZ5L2G5YWz6Zet5bm25o+Q56S677yb5LiA5YWs5Y+45LiA5Li76LSm5Y+377yM5a2Q6LSm5Y+35pyq5p2l6aKE55WZIHwKfCDotYTph5Hlip/og70gfCDmjInlvZPliY3mhI/lkJHkuI3orr7nva7mlLbku5jmrL7mk43kvZzjgIHni6znq4votYTph5HmtYHmsLTlj4rmoLjplIDmqKHlnZfvvIzkuI3lr7nmjqXmlK/ku5jmiJbnvZHpk7bvvJvorqLljZXnu5PmuIXmoIforrDkuI7liKnmtqbkvp3mja7ku43lvoXorqjorrogfAp8IOWkmui0reeJqeiiiyB8IOS4gOasoeaPkOS6pOW9ouaIkOS4gOS4quiuouWNle+8m+S4gOiii+WvueW6lOS4gOS4quaUtuS7tue7hO+8m+WQjOWFrOWPuOe7k+eul+OAgeWuouaIt+e6v+S4i+S4gOasoee7k+a4he+8m+WFqOmDqOehruiupOaUtui0p+WNs+Wxpee6puWujOaIkCB8Cnwg5Y+R56Wo5LiO6Leo5pyIIHwg5b2T5YmN5LiA6ZSA5ZSu6K6i5Y2V5LiA5byg5pyJ5pWI6ZSA6aG55Y+R56Wo77yb5aSa5Liq5L6b5bqU5ZWG55qE6YeH6LSt5Y+R56Wo5Y+m6KGM566h55CG77yb5byA56Wo44CB6YeH6LSt44CB5Y+R6LSn5Y+v6Leo5pyI77yM5oyJ5ZCE5Lia5Yqh5pel5pyf57uf6K6hIHwKfCDllYblk4HkuI7mj5DphpIgfCDliY3mnJ/ph4fotK3ku7fnrqHnkIblkZjloavlhpnvvIzkvpvlupTllYblhaXpqbvlj4rlkIzmraXmnKrmnaXpooTnlZnvvJtB77ydMzDlpKnjgIFC77ydN+WkqeS4uuaLn+Wumum7mOiupO+8jOWPr+iHquWumuS5ie+8m+mmluasoei1t+eul+WtmOWcqOW+heiuqOiuuuWGsueqgSB8Cnwg6YeH6LSt6ZyA5rGC5LiO5oql5Lu3IHwg6ZyA5rGC6KGo5YiG5byA5o+Q5Lqk5paH5a2X44CB5Zu+54mH44CB6ZO+5o6l44CB6KeE5qC844CB5pWw6YeP77yM5Zyw5Z2A6Z2e5b+F5aGr77yb5q2j5byP5oql5Lu35Y+K5LiT5Lia5bGV56S66aG157qz5YWl5b2T5YmN5oSP5ZCR77yb5ZCI5ZCM6aKE55WZ5o6l5Y+jIHwKfCDlpI3otK3kuI7luLjotK0gfCDljoblj7LmlbTljZXlho3mrKHkuIvljZXkv53nlZnlnKjkuIDmnJ/vvJvoh6rliqjluLjotK3muIXljZXmlLnkuLrmiJDnhp/nqLPlrprlkI7nmoTlvoXlip4gfAp8IOeJqea1geS4jlVJIHwg5L+d55WZ5Y+M56uv54mp5rWB5p+l6K+i77yM6K+G5Yir5Y2V5Y+35Li65YCZ6YCJ44CB5omL6YCJ5YWc5bqV77yb6Ieq6YCB5bu66K6u5ZG95ZCN4oCc5ZWG5a626Ieq6YWN6YCB4oCd77yb5rK/55So5p+U5ZKM57qi6Imy5LiO546w5Luj5Lqk5LqSIHwKfCDmm7TmlrDmlrnlvI8gfCDku43ovpPlh7rlrozmlbTmlofmoaPvvJvml6dRMDHigJRRMTDorrDlvZXnrZTlpI3ov5vlsZXvvIzmlrDnmoTpgZfnlZnpl67popjmlLnnlKhS57yW5Y+377yM6YG/5YWN5oqK4oCc5pyJ5Zue562U4oCd562J5ZCM5LqO4oCc5bey5a6a56i/4oCdIHwKCiMjIyAxLjIg5Zub57G76ZyA5rGC54q25oCBCgotICoq5pei5pyJ6KaB5rGCKirvvJrmraTliY3lt7LmmI7noa7kuJTmnKzova7msqHmnInmlLnlj5jnmoTnm67moIfvvIzlpoLml6DlnKjnur/mlK/ku5jjgIHlpJrotK3nianooovjgIHmlbTljZXlpI3otK3lhYjlhaXotK3nianovabjgIHlj4znq6/nianmtYHjgIHlupPlrZjmmoLnvJPjgIHmn5TlkoznuqLoibJVSeOAggotICoq5b2T5YmN5oSP5ZCRKirvvJrmnKzova7nlKjmiLfmraPlnKjmorPnkIbnmoTorr7orqHmg7Pms5XjgILmnKzniYjmja7mraTlronmjpLnu5PmnoTvvIzkvYbkuI3miorlroPku6znp7DkuLrmnIDnu4jnoa7orqTop4TliJnjgIIKLSAqKuiuvuiuoeW7uuiurioq77ya55So5LqO5a6e546w55uu5qCH5oiW6Kej5Yaz5Yay56qB55qE5o6o6I2Q5pa55byP77yM562J5b6F55So5oi35Yik5pat44CCCi0gKirlvoXlrprvvI/lkI7nu60qKu+8muS7jee8uuS4muWKoeinhOWImeaIluaYjuehruW7tuWQjueahOWKn+iDveOAguaXp+aWueahiOS4juW9k+WJjeaEj+WQkeS4jeWQjOeahOWcsOaWueaYjuehruWGmeWHuu+8jOS4jea3t+adguaJp+ihjOOAggoK4oCc5Yqf6IO95L+d55WZ4oCd5LiO4oCc5pys5pyf5ZCv55So4oCd5YiG5byA44CC5Y6f5pys5pyJ6L+H6K6o6K6655qE5pS25LuY5qy+44CB5bi46LSt44CB5Liq5Lq65a6i5oi3562J77yM5LiN5Lya5Zug5Y6G5Y+y5paH5qGj5Ye6546w6L+H5bCx57un57ut5L2c5Li65pys54mI55qE5b2T5YmN5a6e5pa96KaB5rGC44CCW0IwXVtCMV1bQjJdW1UzXQoKIyMjIDEuMyDmnKzniYjlt6XkvZzojIPlm7QKCnwg6aKG5Z+fIHwg5b2T5YmN5bel5L2c6IyD5Zu0IHwg54q25oCBIHwKfC0tLXwtLS18LS0tfAp8IOe7j+iQpeWvueixoSB8IOWFrOWPuO+8j+WNleS9jeWuouaIt++8jOiBlOezu+S6uuS7jeS9nOS4uuS4quS6uui1hOaWme+8m+WOn+acieeLrOeri+S4quS6uuWuouaIt+WcuuaZr+aaguS4jee6s+WFpeW9k+WJjeS9v+eUqOiMg+WbtCB8IOW9k+WJjeaEj+WQkSB8Cnwg6YeH6LSt5p2l5rqQIHwg5pys5Zyw44CB5aSW5Zyw5L6b5bqU5ZWG77yM5Lqs5Lic77yP5reY5a6d562J5a6i5oi35o+Q5L6b5oiW566h55CG5ZGY57u05oqk55qE5aSW6YOo6ZO+5o6lIHwg5pei5pyJ6KaB5rGC5LiO5b2T5YmN5oSP5ZCRIHwKfCDllYblk4HotYTmlpkgfCDmiYvlt6Xnu7TmiqTjgIHmlofku7blr7zlhaXvvIzpmo/ph4fotK3ooaXlhYXnm67lvZXvvJvnu5/kuIDllYblk4Hlj6/mnInlpJrkuKrkvpvlupTllYbkvpvotKforrDlvZUgfCDml6LmnInopoHmsYLvvIvorr7orqHlu7rorq4gfAp8IOWuouaIt+S4i+WNlSB8IOa1j+iniOi0p+a6kOOAgemHh+i0remcgOaxguOAgei0reeJqei9puOAgeWkmui0reeJqeiii+OAgeaVtOWNleWkjei0reOAgeWQjuWPsOehruiupOWPiumHh+i0remFjemAgSB8IOaXouacieimgeaxgu+8jOmcgOaxguS4juaKpeS7t+S4uuW9k+WJjeaEj+WQkSB8Cnwg6LWE6YeR6L6555WMIHwg57q/5LiL5YWs5a+55YWs6L2s6LSm5Zyo57O757uf5aSW5a6M5oiQ77yb5LiN6K6+572u5pS25LuY5qy+5pON5L2c44CB5LiN5YGa54us56uL5rWB5rC05Y+K6YeR6aKd5qC46ZSAIHwg5b2T5YmN5oSP5ZCR77yM5bu257ut5peg5Zyo57q/5pSv5LuY6KaB5rGCIHwKfCDnu4/okKXorrDlvZUgfCDorqLljZXmiJDkuqTjgIHph4fotK3miJDmnKzjgIHov5DmnYLotLnjgIHnqI7otLnjgIHlj5HnpajjgIHkuqTku5jlj4rliKnmtqbliIbmnpDvvJvliKnmtqbkvp3mja7mnKrlrpogfCDml6LmnInnm67moIfvvIzlhbfkvZPmoLjnrpflvoXlrpogfAp8IOWPkeelqCB8IOi/m+mhue+8j+mUgOmhueeZu+iusOOAgemZhOS7tuOAgeWFs+iBlOS4jueKtuaAge+8m+S4iuS8oOivhuWIq+S4uuadoeS7tuWinuW8uu+8jOaJi+Whq+S4juS6uuW3peaguOWvueWFnOW6lSB8IOW9k+WJjeaEj+WQke+8i+iuvuiuoeW7uuiuriB8Cnwg5a6M5oiQ5qCH5YeGIHwg5a6i5oi35YWo6YOo56Gu6K6k6LSn54mp5peg6Zeu6aKY5ZCO77yM6K6i5Y2V5bGl57qm5a6M5oiQ77yb5ZCO57ut5pyq5byA56Wo44CB5pyq57uT5riF5LiN6Zi75pat5a6M5oiQIHwg5b2T5YmN5oSP5ZCRIHwKfCDku7fmoLznu7TmiqQgfCBBL0Lmj5DphpLjgIHml6Xlv5fjgIHoh6rlrprkuYnlkajmnJ/kv53nlZnvvJvmnKzova7pu5jorqTlgLzkuI7pppbmrKHotbfnrpfliIbliKvmoIfmmI4gfCDml6LmnInopoHmsYLvvIvlvZPliY3mhI/lkJHvvIzpg6jliIblvoXlrpogfAp8IOW6k+WtmCB8IOWujOaVtOW6k+WtmOaague8k++8jOS/neeVmeaOpeWPo++8m+mHh+i0reWSjOmFjemAgeS4jeW8uuWItuS+nei1luW6k+WtmOWFpeW6kyB8IOaXouacieimgeaxgiB8Cnwg6YCa55So6IO95YqbIHwg5p2D6ZmQ6ZqU56a744CB6ZmE5Lu244CB5pON5L2c5a6h6K6h44CB5a+85Ye644CB5aSH5Lu95Y+K5oGi5aSN44CB55S16ISR5omL5py66YCC6YWNIHwg5pei5pyJ6KeE5YiS77yM57uG6IqC5Li66K6+6K6h5bu66K6uIHwKfCDop4bop4kgfCDmr5Tngavlip7nvZHnqI3mtYXmn5TlkoznmoTnuqLoibLvvJvnjrDku6PmoIfnrb7pobXjgIHmgqzlgZzpq5jkuq7jgIHmloflrZfmgqzmta7mj5DnpLogfCDml6LmnInopoHmsYIgfAoK55So5oi35o+Q5Ye65pyq5p2l5Y+v6IO95Ye65ZSu57O757uf77yM5Zug5q2k5Y+v6ICD6JmR6YWN572u5ZKM5qih5Z2X5omp5bGV77ybKirov5nkuI3oh6rliqjnrYnkuo7mnKzmnJ/lu7rorr7lpJrnp5/miLdTYWFT44CB5pS26LS55Lya5ZGY44CB5Y2h5a+G5r+A5rS75oiW5a6M5pW05L6b5bqU5ZWG5YWl6am75bmz5Y+wKirjgILmmbrmhaforrDoh6rliqjlkIzmraXjgIHljoblj7Lov4Hnp7vku43mnKrmj5Dlh7rjgILmoYzpnaLlsIHoo4XjgIHpg6jnvbLkvY3nva7lkoznu7TmiqTmlrnlvI/lkI7nu63pgInlrprjgIIKCiMjIOS6jOOAgeWPguiAg+ivgeaNruiMg+WbtAoKIyMjIDIuMSDigJzlrqLmiLfmmJPpgJrigJ3miKrlm77nmoTkvb/nlKjovrnnlYwKCuayv+eUqFYyLjDlr7nnlKjmiLfmj5DkvpvnmoQxOOW8oOWQjuWPsOaIquWbvueahOaguOWvue+8jOWMheWQq+W3peS9nOWPsOOAgeWuouaIt+OAgeWVhuacuuOAgeaKpeS7t+OAgeWQiOWQjOOAgeiuouWNleOAgeW3peWNleOAgeS+m+W6lOWVhuOAgemHh+i0reOAgeWVhuWTgeOAgei0ouWKoeOAgeeUqOaIt+OAgeinkuiJsuOAgeWkh+S7veOAgeWuoeiuoeWSjOW4ruWKqeetiemhtemdouOAguaUtui0ueS8muWRmOaIquWbvuS7heeUqOS6juivhuWIq+aOkumZpOiMg+WbtO+8jOS4jee6s+WFpeezu+e7n+mcgOaxguOAgltTMDHigJRTMThdCgrmiKrlm77og73lpJ/or4HmmI7lvZPml7blsZXnpLrnmoTmoI/nm67jgIHlrZfmrrXjgIHlhaXlj6Plkozkuqflk4Hor7TmmI7vvIzkuI3og73or4HmmI7lrozmlbTkuJrliqHlt7Lnu4/lrp7pmYXot5HpgJrjgILnqbrooajjgIHngbDoibLmjInpkq7kuI3nrYnkuo7lip/og73kuI3mlK/mjIHvvJvlj6rnnIvliLDkvqfmoI/lhaXlj6PnmoTlip/og73kuI3mjqjmlq3lhbblrozmlbTop4TliJnjgILlrqLmiLfoh6rliqnnq6/jgIHlpJrotK3nianooovjgIHkvaPph5HlkoxBL0Lku7fmoLzmo4Dmn6XlnKjov5nnu4TmiKrlm77kuK0qKuacquWxleekuioq77yM5LiN6IO95o2u5q2k5pat6KiA5Y6f5Lqn5ZOB5rKh5pyJ44CCCgojIyMgMi4yIOeBq+WKnue9keeahOS9v+eUqOi+ueeVjAoKMjAyNi0xMS0xM+aguOmqjOS6hueBq+WKnue9keWFrOW8gOOAgeacqueZu+W9lemhtemdou+8jOimhueblummlumhteOAgeWIhuexu+WIl+ihqOOAgeWTgeeJjOS4reW/g+OAgeWTgeeJjOWVhuWTgeWIl+ihqOS4jueZu+W9lemhteOAgltXMeKAlFc1XQoKLSDllYblk4Hor6bmg4XjgIHotK3nianovabnrYnorr/pl67op6blj5HnmbvlvZXot7PovazvvIzlm6DmraTmsqHmnInmoLjpqoznmbvlvZXlkI7nmoTor6bmg4XjgIHnu5PnrpfjgIHmiJHnmoTorqLljZXjgIHkvJrlkZjkuK3lv4PmiJbllYblrrblkI7lj7DjgIIKLSDpppbpobXnmoTigJzpobnnm67mmbrog73miqXku7fjgIHorqLljZXmmbrog73ph4fotK3jgIHnianmtYHml7bmlYjpgJ/mn6XigJ3nrYnlhaXlj6PnnJ/lrp7pk77mjqXliLDmlZnlrabop4bpopHvvIzmjInmlZnlrablhaXlj6PlkozkuJrliqHkuLvpopjorrDlvZXvvIzkuI3mj4/ov7DkuLrmnKzova7lt7Llrp7mtYvkuJrliqHlt6XlhbfjgIIKLSDmn5DliIbnsbvliJfooajmnKzmrKHmmL7npLow6aG557uT5p6c77yM5Y+q6IO95o+P6L+w5b2T5qyh6aG16Z2i546w6LGh77yM5LiN6IO95o2u5q2k6K6k5a6a5peg6LSn5oiW562b6YCJ5LiN5Y+v55So44CCCi0g5a6J5YW06ZuG5Zui5a6Y572R5Y+K5a6Y5pa5UERG6KGl5YWF54Gr5Yqe572R55qE5b2S5bGe5ZKM5Yqf6IO96LWE5paZ44CCUERG5YWD5pWw5o2u5Yib5bu65pel5pyf5Li6MjAyMy0wOS0xMu+8jOWFsTE06aG177yM5bGe5LqO5Y6G5Y+y5a6Y5pa55p2Q5paZ77yM5LiN6IO95b2T5L2cMjAyNuW5tOWQjuWPsOeOsOWcuuaguOmqjOOAgltXNl1bVzddCgrmnKzmrKHmmK/lip/og73kuI7pobXpnaLop4TliJLmlbTlkIjvvIzlsJrmnKrpqozor4Hngavlip7nvZHjgIHkuqzkuJznrYnlubPlj7DnmoTlvIDmlL7mjqXlj6PjgILln7rnoYDotKfmupDmlK/mjIHmiYvlt6Xnu7TmiqTlj4rmlofku7blr7zlhaXvvJvoh6rliqjlkIzmraXjgIHoh6rliqjku6PkuIvljZXkuI3lsZ7kuo7lt7LmjqXlhaXmiJblt7Lnoa7orqTlj6/nlKjnmoTog73lipvjgIIKCiMjIOS4ieOAgeKAnOWuouaIt+aYk+mAmuKAneWQjuWPsOWPr+WAn+mJtOeahOWGheWuuQoKfCDlj4LogIPmqKHlnZcgfCDmiKrlm77kuK3lrp7pmYXlsZXnpLogfCDlr7nmnKzns7vnu5/nmoTlpITnkIYgfAp8LS0tfC0tLXwtLS18Cnwg5bel5L2c5Y+wIHwg5a6i5oi344CB6Lef6L+b5b6F5Yqe44CB5pyI562+5Y2V6YeH6LSt5Ye65bqT6YCA6LSn44CB5b6F5byA56Wo5L2O5bqT5a2Y5L6b5bqU5ZWG77yM5bqU5pS25a6e5pS25bqU5LuY5Y+K5bm05bqm5pS25YWl5oiQ5pys5Yip5ram562J5Y2h54mHIHwg5YCf6Ym05b6F5Yqe5LiO57uP6JCl5qaC6KeI77yb5pS55Li65Luj6YeH44CB5Y+R56Wo44CB5oiQ5pys5ZKM5Lu35qC85qOA5p+l55qE6YeN54K577yM5LiN54Wn5pCs5pS25LuY5qy+5oyH5qCH77yM5bqT5a2Y5oyH5qCH6ZqP5bqT5a2Y5qih5Z2X5pqC57yTIHwKfCDlrqLmiLcgfCDnvJblj7fjgIHlkI3np7DjgIHnuqfliKvjgIHnirbmgIHjgIHmoIfnrb7jgIHkuJrliqHlkZjjgIHmiYvmnLrjgIHmnIDlkI7ot5/ov5vvvJvmkJzntKLnrZvpgInjgIHmiZPljbDjgIHlr7zlhaXlr7zlh7ogfCDkv53nlZnlrqLmiLfmoaPmoYjvvIzlu7rorq7lop7liqDovbvph4/ot5/ov5vjgIHmoIfnrb7kuI7lvoXlip7vvJvnur/ntKLjgIHlhazmtbfmsaDnrYnku4XnnIvliLDlhaXlj6PvvIzlpI3mnYJDUk3lkI7nu63lj6/pgIkgfAp8IOWVhuacuiB8IOS6lOmYtuautea8j+aWl+OAgemihOiuoeaIkOS6pOOAgei1oui+k+WNleeOh+WPiui0n+i0o+S6uuaKpeihqCB8IOWPr+S+m+mhueebruS4muWKoeWPguiAg++8jOaZrumAmuWkjei0reS4jeW8uuWItuW7uueri+WVhuacuiB8Cnwg5oql5Lu3IHwg57yW5Y+344CB5pel5pyf44CB5a6i5oi344CB5Lia5Yqh5ZGY44CB6YeR6aKd44CB5oqY5omj44CB54q25oCBIHwg5q2j5byP5oql5Lu35bey6L+b5YWl5b2T5YmN5oSP5ZCR77yM54mI5pys44CB5pyJ5pWI5pyf5Y+K6L2s6K6i5Y2V5Li66K6+6K6h5bu66K6u77yb5LiN5oqK5q+P5qyh5pmu6YCa5LiL5Y2V5Y+Y5oiQ5oql5Lu35a6h5om5IHwKfCDlkIjlkIwgfCDnvJblj7fjgIHlkI3np7DjgIHnsbvlnovjgIHlrqLmiLfjgIHotbfmraLml6XmnJ/jgIHnirbmgIHjgIHph5Hpop3jgIHlhbPogZTorqLljZXmlbAgfCDlvZPliY3kv53nlZnlkIjlkIzlhbPogZTmjqXlj6PvvJvlrozmlbTlkIjlkIzpmYTku7bjgIHmnJ/pmZDlkozlpJrorqLljZXnrqHnkIblkI7nu63lkK/nlKggfAp8IOmUgOWUruiuouWNlSB8IOKAnOetvuWNleKAnee8luWPt+OAgeaXpeacn+OAgeWuouaIt+OAgeWQiOWQjOOAgeS4muWKoeWRmOOAgemHkemineOAgeW3suaUtuOAgeasoOasviB8IOWAn+mJtOiuouWNleWPsOi0pu+8jOihpeW+heehruiupOOAgemHh+i0reOAgeaUtui0p+WIhue7hOWSjOeJqea1ge+8m+S4jeeFp+aQrOW3suaUtu+8j+asoOasvui1hOmHkeWPsOi0piB8Cnwg5bel5Y2VIHwg57G75Z6L44CB5a6i5oi344CB6IGU57O75Lq644CB5Zyw5Z2A44CB6aKE57qm44CB54q25oCB44CB5biI5YKF44CB6LS555So77yb5oiR55qE5bel5Y2V77yP5bel5Y2V5rGg5o+Q5Yiw5o6l5Y2V44CB562+5Yiw44CB5a6M5bel44CB5oqi5b6F5rS+5Y2VIHwg5b2T5YmN5YWI55So5ZSu5ZCO5LiO5byC5bi45LqL6aG577yb5aSW5rS+5biI5YKF44CB5oqi5Y2V562+5Yiw5Y+m5YiX5ZCO57ut6YCJ6aG5IHwKfCDkvpvlupTllYbkuI7ph4fotK0gfCDkvpvlupTllYbmoaPmoYjlj4rlr7zlhaXlr7zlh7rvvJvph4fotK3ljZXkvpvlupTllYbjgIHnu4/lip7kurrjgIHph5Hpop3jgIHlt7Lku5jjgIHmrKDmrL7jgIHnirbmgIHvvJvor7TmmI7noa7orqTlhaXlupPlkI7lop7liqDlupPlrZggfCDlgJ/pibTph4fotK3lj7DotKbkuI7miJDmnKzotYTmlpnvvIzpgILphY3nm7Tlj5Hlkoznu4/miYvlj5HotKfvvJvkuI3lvLrliLblhaXlupPvvIzkuI3lop7liqDku5jmrL7nmbvorrAgfAp8IOWVhuWTgeS4juW6k+WtmCB8IOWbvueJh+OAgeWQjeensOOAgeWei+WPt+OAgeWIhuexu+OAgeWNleS9jeOAgeWUruS7t+OAgeW6k+WtmOOAgeWvvOWFpeWvvOWHuu+8m+S+p+agj+acieWHuuW6k+OAgemAgOi0p+OAgeW+heWFpeW6k+OAgeW6k+WtmOmihOitpiB8IOWAn+mJtOWVhuWTgeWtl+auteS4juaJuemHj+e7tOaKpO+8m+S7heacieWFpeWPo+eahOS7k+W6k+WKn+iDveS4jeinhuS4uuW3suaguOmqjOa1geeoi++8jOW6k+WtmOS7jeaague8kyB8Cnwg6LSi5YqhIHwg5rWB5rC05pel5pyf44CB57G75Z6L44CB6YeR6aKd44CB5pa55byP44CB5YWz6IGU5Y2V5o2u44CB5a+55pa544CB5aSH5rOo77yM5pS25qy+77yP5LuY5qy+77yP5YeA6aKd5rGH5oC777yb6K+05piO5pSv5oyB5YiG5om55byA56Wo5ZKM5aSa5LiqUERG6ZmE5Lu2IHwg5ZC45pS25Y+R56Wo6ZmE5Lu25ZKM5Lia5Yqh5YWz6IGU5Y+C6ICD77yb5pys54mI5LiN5ZC45pS26LWE6YeR5rWB5rC077yM5Lmf5LiN5oqK5YiG5om56ZSA6aG55byA56Wo5bim5YWl5LiA5Y2V5LiA56Wo5oSP5ZCRIHwKfCDnlKjmiLfkuI7op5LoibIgfCDlhoXpg6jotKblj7flkK/lgZzjgIHmlLnlr4bvvJvnrqHnkIblkZjjgIHkuJrliqHlkZjjgIHosIPluqblkZjjgIHluIjlgoXjgIHotKLliqHjgIHku5PnrqHnrYnop5LoibLlkozoj5zljZXmnYPpmZDmj4/ov7AgfCDljLrliIblhoXpg6jotKblj7fkuI7lpJbpg6jlrqLmiLfotKblj7fvvJvmnKzns7vnu5/mnYPpmZDmjInlrp7pmYXmk43kvZzlkozmlbDmja7ojIPlm7TlrprkuYnvvIzkuI3nm7TmjqXnhafmioTop5LoibIgfAp8IOezu+e7n+iuvue9riB8IOWtl+WFuOOAgeezu+e7n+mFjee9ruOAgeiHquWumuS5ieWtl+auteOAgeW3peWNleexu+Wei+OAgeaXtuaViOeuoeWutuetieS+p+agj+WFpeWPoyB8IOWfuuehgOmFjee9rue6s+WFpeWOn+aWueahiO+8jOiHquWumuS5ieWtl+auteWSjOWkjeadguW3peWNlemFjee9ruWQjue7reWPr+mAiSB8Cnwg5aSH5Lu95LiO5a6h6K6hIHwg5aSH5Lu95byA5YWz44CB55uu5b2V44CB6Ze06ZqU44CB5L+d55WZ5Lu95pWw44CB5omL5Yqo5omn6KGM44CB5aSn5bCP5pe26Ze054q25oCB77yb5a6h6K6h5qih5Z2X44CB5pON5L2c5Lq644CB5pe26Ze044CB5a+56LGh44CB5pGY6KaB44CB57uT5p6c562J5a2X5q6177yb6aG16Z2i6K+05piO5pSv5oyB5beu5byC5a+55q+U77yM6K+m5oOF5pyq5bGV56S6IHwg5bu66K6u6KGl5YWF5oGi5aSN5rWB56iL5ZKM5oGi5aSN6aqM6K+B77yb5oiq5Zu+5LitMjTlsI/ml7bjgIHkv53nlZkz5Lu95Y+q5piv5Y+C6ICD5YC877yM5oGi5aSN6IO95Yqb5pyq5bGV56S6IHwKfCDluK7liqnor7TmmI4gfCDluK7liqnpobXku4vnu43mnKzlnLDljJblrZjlgqjlj4rpgJrnn6Xkvp3otZbml7bmlYjnrqHlrrbvvJvlpIfku73pobXlj6bmj5DkvptOQVPvvI/mnI3liqHlmajnm67lvZXor7TmmI4gfCDkvZzkuLrpg6jnvbLkuI7mj5DphpLnmoTlj4LogIPnur/ntKLvvIzkuI3lvZPkvZzmioDmnK/pqozor4HvvJvpnIDmjInlrqLmiLflpJbnvZHorr/pl67lkozlhoXnva5BL0Lmj5DphpLph43mlrDorr7orqEgfAoK5oiq5Zu+5LqL5a6e5LiO5pys54mI6YeH57qz6IyD5Zu05YiG5byA5YiX56S677yb5pys6L2u6LCD5pW06YeH57qz6IyD5Zu077yM5LiN5pS55YaZ5oiq5Zu+5omA5pi+56S655qE5LqL5a6e44CC5p2l5rqQ5paH5Lu25Zyo5paH5pyr6YCQ6aG55YiX5piO44CCW1MwMeKAlFMxOF0KCiMjIOWbm+OAgeeBq+WKnue9kemhtemdouaehOaIkOS4juWPguiAg+S7t+WAvAoKfCDpobXpnaLvvI/ljLrln58gfCDmnKzova7lj6/op4HlhoXlrrkgfCDlu7rorq7lkLjmlLbnmoTpg6jliIYgfAp8LS0tfC0tLXwtLS18Cnwg6aG26YOo5a+86IiqIHwg55m75b2V44CB5rOo5YaM44CB6YKA6K+356CB5rOo5YaM44CB5oiR55qE6K6i5Y2V44CB5Lya5ZGY5Lit5b+D44CB5ZWG5a625Lit5b+D44CBQVBQ562J5YWl5Y+jIHwg5a6i5oi36LSm5Y+35LiO6K6i5Y2V5YWl5Y+j5riF5pmw77yb5pys54mI5rOo5YaM5pqC5YWz77yM5LiN55u05o6l5aSN5Yi25byA5pS+5rOo5YaM5oiW6YKA6K+356CB5py65Yi2IHwKfCDpppbpobXmkJzntKLljLogfCDlk4HniYzmoIfor4bjgIHlhbPplK7or43mkJzntKLjgIHmib7lkIzmrL7jgIHotK3nianovabvvJvmib7lkIzmrL7mk43kvZzopoHmsYLnmbvlvZUgfCDlvLrljJblhbPplK7or43mkJzntKLjgIHotK3nianovabvvJvmib7lkIzmrL7vvI/lm77niYfor4bliKvkuI3mmK/kuIDmnJ/pu5jorqTog73lipsgfAp8IOmmlumhteWIhuexu+S4juWGheWuuSB8IOW3puS+p+WKnuWFrOWIhuexu++8jOS4remDqOS/g+mUgOaoquW5he+8jOWPs+S+p01ST+WIhuexu++8m+S4i+aWueWTgeeJjOOAgeWTgeexu+OAgeWVhuWTgeWNoeWPiuS/g+mUgO+8j+ebtOWPkeagh+etviB8IOmHh+eUqOa4heaZsOWIhuexu+OAgeWTgeeJjOWSjOWxpee6puaPkOekuu+8m+aMieiHqui6q+i0p+a6kOmAkOatpeaJqeWxleWIhuexu++8jOWHj+WwkeWkp+S/g+mUgOWMuuWfnyB8Cnwg6aaW6aG15pyN5Yqh5YWl5Y+jIHwg6aG555uu5oql5Lu344CB5pm66IO96YeH6LSt44CB54mp5rWB5pe25pWI44CB6YCA6LSn562J5pWZ5a2m6KeG6aKR5YWl5Y+j77yb5rWu5Yqo5a6i5pyN44CB6LSt54mp6L2m44CB5ZSu5ZCOIHwg5bCG6YeH6LSt44CB54mp5rWB44CB5ZSu5ZCO6K6+6K6h5Li65Y+v55CG6Kej55qE5Lia5Yqh5YWl5Y+j77yb5LiN5oqK5pWZ5a2m6ZO+5o6l5b2T5L2c5bey6aqM6K+B6Ieq5Yqo5YyW6IO95YqbIHwKfCDliIbnsbvliJfooaggfCDnsbvnm67jgIHlhYvph43jgIHop4TmoLzjgIHljIXoo4XnrZvpgInvvJvplIDph4/vvI/ku7fmoLzmjpLluo/vvIzku7fmoLzojIPlm7TjgIHlupPlrZjlhYXotrPjgIHphY3pgIHlnLDljLrjgIHlpKflm77lsZXnpLrlkozllYblk4HmlbAgfCDlj4LogIPop4TmoLznrZvpgInlkozliJfooajmk43kvZzvvJvkvpvotKfog73lipvkuI3og73ku6XmnKrmjqXlupPlrZjnmoTigJzlupPlrZjlhYXotrPigJ3mm7/ku6MgfAp8IOWTgeeJjOS4reW/gyB8IOaQnOe0ouOAgUHigJRa5Y+K5pWw5a2X6aaW5a2X5q+N44CB5ZOB54mM5YWl5Y+jIHwg5bu66K6u5ZWG5ZOB6LWE5paZ5aKe5Yqg5ZOB54mM77yM5ZWG5ZOB6YeP5aKe6ZW/5ZCO5ZCv55So5ZOB54mM5qOA57SiIHwKfCDlk4HniYzllYblk4HliJfooaggfCDmjInnm67lvZXliIbnsbvjgIHpu5jorqTvvI/plIDph4/vvI/kurrmsJTvvI/ku7fmoLzmjpLluo/jgIHku7fljLrpl7TjgIHlupPlrZjnrZvpgInjgIHllYblk4HnvJbnoIHjgIHmlLbol48gfCDlj4LogIPllYblk4HnvJbnoIHjgIHmlLbol4/jgIHliIbnsbvlj4rmjpLluo/vvJvkurrmsJTmjpLluo/pnIDlhYjlhbflpIfnm7jlupTmlbDmja4gfAp8IOeZu+W9lemhtSB8IOi0puWPt+WvhueggeOAgeiHquWKqOeZu+W9leOAgeaJvuWbnuWvhueggeOAgeaZrumAmuWPiumCgOivt+eggeazqOWGjOWFpeWPoyB8IOS/neeVmeS+v+aNt+eZu+W9leWPiuaJvuWbnu+8m+acrOeJiOmHh+eUqOWQjuWPsOWPkeWPt++8jOazqOWGjOWFs+mXreaPkOekuu+8jOWNleS9jeWkmui0puWPt+acquadpemihOeVmSB8CgrmnaXmupDkuLrmnKzova7lhazlvIDpobXpnaLop4Llr5/jgIJbVzHigJRXNV0KCioq5Lu35qC85p2D6ZmQ5pyJ5LiA5aSE5YC85b6X54m55Yir5rOo5oSP77yaKiog6aaW6aG15aSa5pWw5ZWG5ZOB5Y2h5pi+56S655m75b2V5p+l55yL5Lu35qC877yM5L2G5pys6L2u5Zyo5ZOB54mM5ZWG5ZOB5YiX6KGo5LuN55yL5Yiw5LiA5Lu25ZWG5ZOB55qE5Lu35qC844CC5Zug5q2k5LiN6IO95qaC5ous5Li654Gr5Yqe572R5YWo56uZ4oCc5b+F6aG755m75b2V5omN6IO955yL5Lu34oCd44CC5pys57O757uf5bqU5Zyo5YiX6KGo44CB6K+m5oOF44CB5pCc57Si44CB6LSt54mp6L2m44CB5a+85Ye65Y+K55u05o6l6K6/6Zeu5YWl5Y+j5omn6KGM5ZCM5LiA5aWX5a6i5oi35Lu35qC85p2D6ZmQ44CCW1cxXVtXNF0KCuWumOaWueWOhuWPslBERuaPj+i/sOS6huWuouaIt+WJjeWPsOOAgee7j+mUgOWVhuWQjuWPsOOAgeWVhuWfjuWQjuWPsO+8jOS7peWPiuWuouaIt+S4juWVhuWTgee7tOaKpOOAgeWuouaIt+S7t+agvOOAgei0puacn+mineW6puOAgemFjemAgeOAgeetvuaUtuOAgee7j+iQpeaVsOaNruOAgeWvuei0puW8gOelqOWSjOmAgOaNoui0p+etieiDveWKm+OAguWvueacrOezu+e7n+eahOWQr+WPkeaYr+aKiuWuouaIt+mHh+i0reS4juWGhemDqOaJp+ihjOi0r+mAmu+8m+aUr+S7mOaPkOeOsOOAgeW6k+WtmOaOpeWFpeOAgeW5s+WPsOiQpemUgOWPiuacjeWKoeaXtuaViOaJv+ivuuS4jeebtOaOpeWkjeWItuOAglBERueJqeeQhuesrDnpobXlkoznrKwxM+mhteWIhuWIq+WvueW6lOWNsOWIt+mhtTA45ZKMMTLjgIJbVzddCgojIyDkupTjgIHns7vnu5/nu5PmnoTkuI7lrozmlbTpobXpnaLlnLDlm74KCiMjIyA1LjEg5oC75L2T57uT5p6ECgrph4fnlKjigJzlrqLmiLfph4fotK3pl6jmiLfvvIvlhoXpg6jnu4/okKXlkI7lj7DigJ3nu5/kuIDnu7TmiqTllYblk4HjgIHlhazlj7jlrqLmiLfjgIHph4fotK3pnIDmsYLjgIHmiqXku7fjgIHplIDllK7kuI7ph4fotK3orqLljZXjgIHlsaXnuqbjgIHlj5Hnpajlkoznu4/okKXmlbDmja7jgILnlLXohJHpgILlkIjmibnph4/lpITnkIbvvIzmiYvmnLrpgILlkIjpgInotK3jgIHmlLnmlbDph4/jgIHmn6XnianmtYHlkozlv6vpgJ/lpITnkIblvoXlip7jgIIKCuaZrumAmuWkjei0rei1sOefrea1geeoi++8m+aKpeS7t+eUqOS6juS4k+S4muWRiOeOsOWVhuWTgeWSjOS7t+agvO+8jOWQiOWQjOS/neeVmeaJqeWxleS9jee9ruOAguWJjeWPsOaYvuekuuWuouaIt+iHquW3seeahOS4muWKoei1hOaWme+8jOWQjuWPsOS/neWtmOS+m+i0p+adpea6kOOAgeaIkOacrOOAgeWGhemDqOivtOaYjuWSjOWuoeiuoeS/oeaBr+OAguS4jeW+l+WboOS4uuWPlua2iOi1hOmHkea1geawtOiAjOWPlua2iOaIkOacrOiusOW9le+8jOS5n+S4jeW+l+S4uuS6huiuoeeul+WIqea2pumHjeaWsOWhnuWFpeaUtuS7mOasvuWPsOi0puOAggoKfCDnq6/vvI/moI/nm64gfCDmnKzniYjpobXpnaLkuI7ogYzotKMgfCDnirbmgIEgfAp8LS0tfC0tLXwtLS18Cnwg5a6i5oi377ya6aaW6aG177yP5ZWG5ZOBIHwg5pCc57Si44CB5YiG57G744CB5ZWG5ZOB5YiX6KGo6K+m5oOF77yb5ZOB54mM44CB6KeE5qC844CB5Y2V5L2N5YyF6KOF5LiO5Y+v6KeB5Lu35qC8IHwg5pei5pyJ6KaB5rGC77yM5Lu35qC85qih5byP5b6F5a6aIHwKfCDlrqLmiLfvvJrmj5DkuqTph4fotK3pnIDmsYIgfCDmloflrZfjgIHlm77niYfjgIHni6znq4vpk77mjqXlrZfmrrXjgIHop4TmoLzjgIHmlbDph4/vvJvmn6XnnIvlpITnkIbov5vlsZUgfCDlvZPliY3mhI/lkJEgfAp8IOWuouaIt++8muaKpeS7tyB8IOS4k+S4muaKpeS7t+WxleekuumhteOAgeWVhuWTgeS4u+WbvuWPiuezu+e7n+WVhuWTgemTvuaOpeOAgeaVsOmHj+S7t+agvOOAgeafpeeci+WSjOWPjemmiCB8IOW9k+WJjeaEj+WQke+8m+ehruiupOaWueW8j+W+heWumiB8Cnwg5a6i5oi377ya6LSt54mp6L2m77yP6LSt54mp6KKLIHwg5pS55pWw6YeP44CB5YiG57uE5pS25Lu244CB5Zyw5Z2A57C/44CB5o+Q5Lqk5qOA5p+l77yM5LiA5qyh5o+Q5Lqk5LiA5Liq6K6i5Y2VIHwg5pei5pyJ6KaB5rGC77yL5b2T5YmN5oSP5ZCRIHwKfCDlrqLmiLfvvJrorqLljZXvvI/nianmtYEgfCDorqLljZXor6bmg4XjgIHlkITooovphY3pgIHjgIHlv6vpgJLovajov7njgIHllYblrrboh6rphY3pgIHjgIHmlLbotKfnoa7orqTjgIHlho3mrKHkuIvljZUgfCDml6LmnInopoHmsYLvvIvlvZPliY3mhI/lkJEgfAp8IOWuouaIt++8muWPkeelqO+8j+i1hOaWmSB8IOW3suS4iuS8oOmUgOmhueWPkeelqOWPiueKtuaAgeOAgeiuouWNlei1hOaWmeWvvOWHuuOAgemAmuefpeOAgeWPr+e8lui+keeahOi0puWPt+i1hOaWmSB8IOW9k+WJjeaEj+WQke+8jOadg+mZkOi+ueeVjOW+heWumiB8Cnwg5a6i5oi377ya5bi46LStIHwg5pqC5LiN5ZCR5a6i5oi35bGV56S677yM5oiQ54af56iz5a6a5ZCO5YaN6K6+6K6h6KeE5YiZ5bm25ZCv55SoIHwg5b2T5YmN5oSP5ZCR77ya5ZCO57ut5b6F5YqeIHwKfCDlrqLmiLfvvJrms6jlhozvvI/lrZDotKblj7cgfCDms6jlhozlhbPpl63lubbmj5DnpLrvvJvlrZDotKblj7fmmoLkuI3lvIDvvIzmnKrmnaXmj5DkuqTpobvkuLvotKblj7flrqHmoLggfCDlvZPliY3mhI/lkJHvvJrpooTnlZkgfAp8IOWQjuWPsO+8muW3peS9nOWPsCB8IOW+heehruiupOOAgeW+hemHh+i0reOAgemFjemAgeW8guW4uOOAgee8uui/m+mhueelqO+8j+acquS4iuS8oOmUgOmhueelqOOAgeW+heaguOWvueaIkOacrOOAgeWIsOacn+afpeS7tyB8IOaXouacieinhOWIkuaMieW9k+WJjeaEj+WQkeiwg+aVtCB8Cnwg5ZCO5Y+w77ya5Z+656GA6LWE5paZIHwg5YWs5Y+45a6i5oi344CB5Li76LSm5Y+344CB5L6b5bqU5ZWG44CB5ZWG5ZOB44CB5aSa5p2l5rqQ5L6b6LSn44CB5Y6G5Y+y5Lu344CB6YeH6LSt6ZO+5o6lIHwg5qC45b+D6IyD5Zu0IHwKfCDlkI7lj7DvvJrpnIDmsYLvvI/miqXku7fvvI/orqLljZUgfCDpnIDmsYLljLnphY3jgIHooaXlhYXllYblk4HmoaPmoYjjgIHkuJPkuJrmiqXku7fjgIHplIDllK7orqLljZXjgIHph4fotK3ljZXjgIHlkIjlkIzlhbPogZTpooTnlZkgfCDlvZPliY3mhI/lkJHvvIvml6LmnInopoHmsYIgfAp8IOWQjuWPsO+8muWxpee6pu+8j+WPkeelqCB8IOWIhuiii+WIhuWMhemFjemAgeOAgeeJqea1geOAgeiHqumFjemAgeOAgeWuouaIt+aUtui0p+ehruiupOOAgemHh+i0reS4jumUgOWUruWPkeelqOS4iuS8oOe7keWumiB8IOaguOW/g+iMg+WbtCB8Cnwg5ZCO5Y+w77ya56Wo5o2u5LiO57uP6JCl5qC4566XIHwg5Y+R56Wo6LWE5paZ44CB5ZWG5ZOB5oiQ5pys44CB6L+Q5p2C6LS55Y+K6LS555So6LWE5paZ44CB5Yip5ram5b6F5qC4566X54q25oCB44CB5oyJ5Lia5Yqh5pel5pyf57uf6K6h5LiO5a+85Ye6IHwg5qC4566X5Y+j5b6E5b6F5a6a77yM5pWw5o2u5L+d55WZIHwKfCDlkI7lj7DvvJrns7vnu58gfCDotKblj7fmnYPpmZDjgIFBL0Lmj5DphpLjgIHpmYTku7bjgIHmk43kvZzml6Xlv5fjgIHorr7nva7jgIHlr7zlh7rjgIHlpIfku73mgaLlpI0gfCDml6LmnInop4TliJIgfAoKKirmnKzniYjkuI3orr7ni6znq4vmlLbmrL7ljZXjgIHku5jmrL7ljZXjgIHotYTph5HmtYHmsLTjgIHmlLbku5jmrL7moLjplIDmiJbnvZHpk7blr7notKbpobXpnaLjgIIqKiDmmK/lkKblnKjorqLljZXkuIrkv53nlZnmiYvlt6XigJzlt7Lnu5PmuIXigJ3moIforrDku43lvoVSMDHvvIzkuI3mj5DliY3miorlroPlvZPkvZzlt7Lnoa7lrprlip/og73jgIIKCiMjIOWFreOAgeWuouaIt+mHh+i0remXqOaIt+WujOaVtOmcgOaxggoKIyMjIDYuMSDlhazlj7jotKblj7fjgIHms6jlhozlhbPpl63kuI7otYTmlpnnvJbovpEKCioq5b2T5YmN5oSP5ZCR77yaKiog5a6i5oi35a+56LGh5Li65YWs5Y+477yP5Y2V5L2N77yM5YmN5pyf5LiA5Liq5YWs5Y+45a+55bqU5LiA5Liq5Li76LSm5Y+377yM55Sx566h55CG5ZGY55Sf5oiQ44CC6Ieq5Yqp5rOo5YaM5L+d55WZ5o6l5Y+j77yM5pqC5LiN5byA5pS+77yb5rOo5YaM6aG16Z2i5pi+56S65riF5qWa5o+Q56S677yM5L6L5aaC4oCc6Ieq5Yqp5rOo5YaM5pqC5pyq5byA5pS+77yM6K+36IGU57O7566h55CG5ZGY5byA6YCa6LSm5Y+34oCd44CC5o+Q56S65paH5qGI5Li66K6+6K6h5bu66K6u77yM5YWz6Zet54q25oCB5ZCM5pe25L2c55So5LqO5o+Q5Lqk5YWl5Y+j77yM5LiN6IO95Y+q5piv6ZqQ6JeP5oyJ6ZKu44CCCgrlrqLmiLflj6/lnKjotKblj7flkI7lj7Dkv67mlLnlhYHorrjnvJbovpHnmoTotYTmlpnjgILlu7rorq7lhYjlvIDmlL7ogZTns7vkurrjgIHogZTns7vmlrnlvI/jgIHmlLbotKflnLDlnYDjgIHlr4bnoIHnrYnkuKrkurrkvb/nlKjotYTmlpnvvJvlhbfkvZPlrZfmrrXmuIXljZXop4FEMDLjgIFEMDPjgILnlKjmiLflkI3mi5/mr4/lubTlj6/mlLnkuIDmrKHvvIzigJzoh6rnhLblubTkuIDmrKHigJ3ov5jmmK/igJzot53kuIrmrKHkv67mlLnmu6HkuIDlubTigJ3lsJrlvoXmmI7noa7jgIIKCuWFrOWPuO+8j+WNleS9jeeahOazleWumuWQjeensOS7peWPiueUqOS6juW8gOelqOOAgeWQiOWQjOeahOWQjeensOS4jeiDveeUseWuouaIt+iHquihjOS/ruaUueOAgui1hOaWmeW9lemUmeS4jeiDveawuOS5heaXoOino++8muW7uuiurueUseWuouaIt+eUs+ivt+OAgeeuoeeQhuWRmOaguOWvueWQjue6oOato++8jOiusOW9leS/ruaUueWJjeWQjuWAvOOAgeS+neaNruOAgeaTjeS9nOS6uuWSjOaXtumXtO+8m+WOhuWPsuWQiOWQjOOAgeiuouWNleWPiuW3suW8gOelqOS/oeaBr+S/neaMgeWPr+i/vea6r++8jOS4jemaj+S4u+aho+ahiOmdmem7mOaUueWGmeOAggoK6LSm5Y+35YGc55So44CB5om+5Zue5a+G56CB5LiO5a6i5oi35pWw5o2u6ZqU56a757un57ut5L+d55WZ44CC5Li76LSm5Y+344CB5YWs5Y+45qGj5qGI44CB6IGU57O75Lq65bqU5pyJ5riF5qWa5a+55bqU5YWz57O777yM5a6i5oi35LiN5b6X5p+l55yL5YW25LuW5YWs5Y+46K6i5Y2V44CB5oiQ5pys44CB6ZmE5Lu25ZKM5Lu35qC86LWE5paZ44CCCgojIyMgNi4yIOWFrOWPuOWtkOi0puWPt++8muacquadpemihOeVmQoK5pys5pyf5LiN5byA5ZCv5YWs5Y+45aSa6LSm5oi377yb5L+d55WZ5pyq5p2l5LiA5Liq5Li76LSm5Y+3566h55CG5aSa5Liq5a2Q6LSm5Y+355qE5YWz57O744CC5oyJ5b2T5YmN5oSP5ZCR77yM5a2Q6LSm5Y+35Y+R6LW355qE5Lia5Yqh6ZyA6KaB5Li76LSm5Y+35a6h5qC477yM5bm255Sx5Li76LSm5Y+35q2j5byP5o+Q5Lqk77yb5LiN6IO96K6p5a2Q6LSm5Y+357uV6L+H5a6h5qC455u05o6l5a+55aSW5b2i5oiQ6K6i5Y2V44CCCgoqKuiuvuiuoeW7uuiuru+8mioqIOWcqOWQjue7reiuouWNleOAgemcgOaxguWPiuaKpeS7t+WPjemmiOeahOaYvuecvOS9jee9ruagh+azqOKAnOeUseafkOWtkOi0puWPt+WPkei1t++8jOS4u+i0puWPt+WuoeaguOaPkOS6pOKAne+8jOS/neeVmeWPkei1t+S6uuOAgeWuoeaguOS6uuOAgeaPkOS6pOS6uuWSjOaXtumXtOOAgueUqOaIt+aJgOivtOKAnOWtkOi0puWPt+eahOaJgOacieWGheWuueKAneWFt+S9k+a2teebluWTquS6m+aTjeS9nOS7jemcgOWQjue7ree7huWMlu+8jOS4jeaKiuWug+aJqeWxleS4uuacrOacn+WkjeadguWuoeaJueezu+e7n+OAguWQjue7reiuvuiuoeW7uuiuru+8muW3suWuoeaguOeahOWGheWuueWmguaenOWGjeasoeS/ruaUue+8jOW6lOmHjeaWsOaPkOS6pOS4u+i0puWPt+WuoeaguO+8jOS4jeiDveayv+eUqOaXp+aJueWHhuebtOaOpeaPkOS6pOWPmOabtOWGheWuueOAggoKIyMjIDYuMyDllYblk4HmtY/op4jjgIHotYTmlpnkuI7ku7fmoLwKCuS/neeVmeWVhuWTgeWbvueJh+OAgeagh+mimOOAgeaWh+Wtl+aPj+i/sOOAgeWIhuexu+OAgeWTgeeJjOOAgeWei+WPt+OAgeinhOagvOOAgeWNleS9jeWMheijheOAgeezu+e7n+WVhuWTgee8lueggeOAgeW9k+WJjeWPr+ingeS7t+agvOOAgei1t+iuoumHj+OAgeS+m+i0p+eKtuaAgeOAgeaQnOe0ouetm+mAieWPiuWKoOWFpei0reeJqei9puOAguWTgeeJjOWSjOinhOagvOetm+mAieaMieWVhuWTgeaVsOmHj+mAkOatpeWQr+eUqO+8m+acquaOpeW6k+WtmOaXtuS4jeaYvuekuuaXoOS+neaNrueahOWunuaXtuW6k+WtmOaJv+ivuuOAggoKKirku7fmoLzmmK/mnKzova7mmI7noa7kv53nlZnnmoTlvoXlrprpobnjgIIqKiDlm7rlrprku7fjgIHlrqLmiLfku7fjgIHljY/orq7ku7fjgIHor6Lku7fjgIHkuI3lkIzlrqLmiLflj6/op4HojIPlm7TjgIHmnInmlYjmnJ/lkozmlLnku7fnoa7orqTnrYnlsJrmnKrpgInlrprjgILmnKzniYjkv53nlZnov5nkupvorr7orqHkvY3nva7vvIzkuI3lrqPnp7Dlt7Lph4fnlKjmn5DkuKrpu5jorqTku7fmoLzkvJjlhYjnuqfjgILlj6/ku6XlnKjljp/lnovkuK3lsZXnpLrigJzlvoXmiqXku7fvvI/lvoXnoa7orqTigJ3vvIzkuI3og73miormnKrnoa7lrprku7fmoLzlvZPmiJAw5YWD44CCCgrlkI7lj7Dph4fotK3ku7fjgIHmnaXmupDpk77mjqXlkozlhoXpg6jlpIfms6jkuI7lr7nlrqLlhoXlrrnliIbnprvjgILllYblk4HliJfooajjgIHor6bmg4XjgIHmiqXku7fjgIHotK3nianovablkozlr7zlh7rlupTmiafooYzlkIzkuIDlj6/op4Hop4TliJnvvJvlhbfkvZPlhazlvIDojIPlm7TlnKjku7fmoLzkuI7miqXku7fpl67popjkuK3ov5vkuIDmraXnoa7orqTjgIIKCiMjIyA2LjQg5o+Q5Lqk6YeH6LSt6ZyA5rGC5LiO5aSW6YOo6ZO+5o6l5Luj6YeHCgoqKuW9k+WJjeaEj+WQke+8mioqIOWVhuWTgeebruW9leWJjeacn+i+g+Wwke+8jOWuouaIt+WPr+aPkOS6pOaWh+Wtl+OAgeWbvueJh+OAgemTvuaOpeOAgeinhOagvOWSjOaVsOmHj++8m+aWh+Wtl+WSjOmTvuaOpeWIhuW8gOWtl+aute+8jOWbvueJh+WPr+eLrOeri+S4iuS8oOOAguaUtuS7tuS6uuOAgeWcsOWdgOWcqOaPkOS6pOWVhuWTgemcgOaxguaXtuS4jeaYr+W/heWhq++8jOato+W8j+S4i+WNleaXtuWGjeaMiei0reeJqeiii+Whq+WGmeOAggoK5paH5a2X5qGG6ZmE6L+R57uZ5Ye65bu66K6u77yM5L6L5aaC77ya4oCc5Y+v5o+P6L+w5ZWG5ZOB55So6YCU44CB5ZOB54mM5Z6L5Y+344CB5p2Q6LSo44CB5pyf5pyb5Lqk5LuY5pe26Ze05oiW5pu/5Luj6KaB5rGC77yb6KeE5qC844CB5pWw6YeP5ZKM5ZWG5ZOB6ZO+5o6l6K+35aGr5YaZ5Yiw5a+55bqU5qCP5L2N44CC5pS26LSn5L+h5oGv5Y+v5Zyo5LiL5Y2V5pe25aGr5YaZ44CC4oCd6Iul5a6i5oi35LuN5Zyo5paH5a2X6YeM5YaZ5Zyw5Z2A77yM5bqU5L+d55WZ5Y6f5paH5L6b566h55CG5ZGY5p+l55yL77yM5LiN6Ieq5Yqo5oqK5a6D5b2T5oiQ5bey56Gu6K6k5pS26LSn5Zyw5Z2A44CCCgrnrqHnkIblkZjmn6XnnIvpnIDmsYLjgIHmvoTmuIXop4TmoLzjgIHljLnphY3lt7LmnInllYblk4HvvIzmiJbooaXlhYXllYblk4HmoaPmoYjkuI7ph4fotK3mnaXmupDvvIzlho3miqXku7fmiJbkvpvlrqLmiLfliqDlhaXotK3nianovabjgILkuLrlrqLmiLfmjInpk77mjqXku6Pph4flkI7vvIzllYblk4Hlj6/ku6Xnu4/nrqHnkIblkZjlrqHmoLjkuIrmnrbliLDns7vnu5/vvIzkvr/kuo7kuIvmrKHku47ljoblj7LorqLljZXlho3mrKHkuIvljZXjgILmmK/ku4Xor6XlrqLmiLflj6/op4HvvIzov5jmmK/ov5vlhaXlhazlhbHnm67lvZXvvIzku43lvoVSMDfvvJvlrqLmiLfmj5DkuqTlpJbpg6jpk77mjqXkuI3nrYnkuo7oh6rliqjmibnlh4blhajnq5nkuIrmnrbjgIIKCuWklumDqOS6rOS4nO+8j+a3mOWunemTvuaOpeWxnuS6jumHh+i0readpea6kO+8m+WvueWuouS4k+S4muaKpeS7t+S8mOWFiOS9v+eUqOezu+e7n+WGheWVhuWTgemhtemdoumTvuaOpeOAguiHquWKqOaKk+WPluS7t+agvOOAgeWbvueJh+aIlui1hOaWmeWxnuS6juWAmemAieWinuW8uu+8jOmhu+WcqOadg+mZkOWSjOaOpeWPo+WPr+ihjOaAp+aYjuehruWQjuWGjeWGs+Wumu+8jOS4jeWBh+WumuW5s+WPsEFQSeWPr+eUqOOAggoKIyMjIDYuNSDotK3nianovabjgIHlpJrotK3nianooovkuI7lnLDlnYDnsL8KCuS/neeVmeWinuWIoOWVhuWTgeOAgeaUueaVsOmHj+OAgeWkh+azqOOAgeiii+WtkOaWsOWinuWkjeWItuWIoOmZpOOAgei3qOiii+enu+WKqOWVhuWTgeOAgeWcsOWdgOewv+mAieaLqeWSjOaPkOS6pOWJjeagoemqjOOAgioq5b2T5YmN5oSP5ZCR5piv5LiA6KKL5a+55bqU5LiA5Liq5pS25Lu257uE77yb5LiA6KKL5Y+q5pyJ5LiA5Liq5pS25Lu25Lq65Y+K5Zyw5Z2A44CCKiog5ZCM5LiA6K6i5Y2V5YaF5ZCE6KKL5Y+v5YyF5ZCr5LiN5ZCM5ZWG5ZOB44CB5LiN5ZCM5pWw6YeP77yM6YCB5Yiw5LiN5ZCM5Zyw54K577yM5L2G5b2S5bGe5LqO5ZCM5LiA5Liq5YWs5Y+457uT566X5Li75L2T44CCCgrkuIDmrKHmj5DkuqTnmoTmiYDmnInooovlrZDlsZ7kuo7lkIzkuIDorqLljZXjgILmr4/ooovkv53lrZjlkI3np7DmiJbnlKjpgJTjgIHllYblk4HjgIHmlbDph4/jgIHmlLbku7bkurrjgIHnlLXor53jgIHlnLDlnYDlj4rlpIfms6jvvJvljbPkvb/kuKTkuKrooovlrZDlnLDlnYDnm7jlkIzvvIzkuZ/kuI3oh6rliqjlkIjlubbjgILooovlhoXkuIDpg6jliIbllYblk4HliIblvIDlj5HotKfml7blj6/ku6XmnInlpJrkuKrljIXoo7nvvIzooovlrZDkuI7ljIXoo7nkuI3mmK/lkIzkuIDmpoLlv7XjgIIKCuWcsOWdgOewv+S/neeVmeaWsOWinuOAgeS/ruaUueOAgeWIoOmZpOOAgem7mOiupOWcsOWdgOWSjOagh+etvuOAguiuouWNleS/neWtmOW9k+aXtuWcsOWdgOW/q+eFp++8m+abtOaUueWcsOWdgOewv+S4jeS8muaUueWOhuWPsuiuouWNleOAgui0reeJqei9pui3qOiuvuWkh+S/neWtmOWxnuS6juiuvuiuoeW7uuiuru+8m+WkmuS4quWRveWQjei0reeJqei9puWxnuS6juWQjue7reWinuW8uu+8jOS4jeaYr+Wkmui0reeJqeiii+eahOWJjeaPkOOAggoKIyMjIDYuNiDljoblj7LmlbTljZXlho3mrKHkuIvljZXkuI7mmoLnvJPluLjotK0KCioq5pW05Y2V5aSN6LSt57un57ut5L+d55WZ5LiA5pyf77ya5Y6G5Y+y6K6i5Y2VIOKGkiDlho3mrKHkuIvljZUg4oaSIOi0reeJqei9piDihpIg5pS55pWw6YeP77yP5Yig5ZWG5ZOB77yP5qC45a+55YiG57uE5LiO5Zyw5Z2AIOKGkiDmj5DkuqTmlrDorqLljZXjgIIqKiDkuI3nm7TmjqXnlJ/miJDkuI3lj6/nvJbovpHnmoTmlrDljZXjgIIKCuW7uuiuruWbnuWhq+WVhuWTgeOAgeaVsOmHj+WSjOaUtui0p+WIhue7hO+8jOW5tuajgOafpeS4i+aetuOAgeWPr+ingeiMg+WbtOOAgeS+m+i0p+WSjOacrOasoeS7t+agvOOAguaXp+aIkOS6pOS7t+WPr+S+m+WvueeFp++8jOacgOe7iOWPluS7t+inhOWImeW+heWumu+8m+S4jeiDveWkjeWItuaXp+iuouWNleeahOmHh+i0reOAgeWPkeelqOOAgee7k+a4heOAgeetvuaUtuaIluWUruWQjueKtuaAgeOAggoKKiroh6rliqjluLjotK3muIXljZXmlLnkuLrlkI7nu63lvoXlip7vvIzlvoXns7vnu5/miJDnhp/nqLPlrprlho3lsZXnpLrnu5nlrqLmiLfjgIIqKiDkuI3miorlroPkvZzkuLrkuIDmnJ/pqozmlLbpl6jmp5vvvIzkuZ/kuI3pnIDopoHnjrDlnKjnu6fnu63ov73pl67otK3kubDmrKHmlbDlkoznu5/orqHnqpflj6PjgILljoblj7LpnIDmsYLkuK3nmoTmnIDov5HotK3kubDml7bpl7TjgIHljoblj7Lku7fjgIHlvZPliY3ku7fjgIHmlLbol4/nva7pobblkozpmpDol4/nrYnkv53nlZnkuLrku6XlkI7orr7orqHlj4LogIPvvIzigJwy5qyh77yPMzY15aSp4oCd5LuN5LiN5piv5a6a56i/6KeE5YiZ44CCCgojIyMgNi43IOaIkeeahOiuouWNleOAgeeJqea1geS4juaUtui0p+ehruiupAoK6K6i5Y2V6K+m5oOF5oyJ6LSt54mp6KKL5pi+56S65ZWG5ZOB44CB5pWw6YeP44CB5Zyw5Z2A5LiO6YWN6YCB6K6w5b2V77yM5q+P5Liq5YyF6KO55bGV56S65b+r6YCS5YWs5Y+444CB5Y2V5Y+344CB6L2o6L+544CB5pu05paw5pe26Ze05ZKM5byC5bi444CC5LiA5Liq6KKL5a2Q5aSa5YyF6KO55pe25oyJ5a6e6ZmF5Lqk5LuY5pWw6YeP5rGH5oC777yM6aaW5Liq5YyF6KO5562+5pS25LiN562J5LqO5pW06KKL5oiW5pW05Y2V5a6M5oiQ44CCCgroh6rpgIHmj5Dkvpvlv6vmjbfpgInpobnvvIzlu7rorq7lkb3lkI3kuLoqKuKAnOWVhuWutuiHqumFjemAgeKAnSoq77yM5bm25piO56Gu4oCc5peg6ZyA5b+r6YCS5Y2V5Y+34oCd44CC5Y+v6K6w5b2V6YWN6YCB5Lq644CB6aKE6K6h5oiW5a6e6ZmF6YCB6L6+5pe26Ze044CB6IGU57O75pa55rOV5LiO5Lqk5LuY5Yet5o2u77yb5LiN6IO95Lyq6YCg5b+r6YCS6L2o6L+544CCCgoqKuW9k+WJjeaEj+WQke+8muWuouaIt+WFqOmDqOehruiupOaUtuWIsOi0p+eJqeS4lOaXoOmXrumimO+8jOiuouWNleWxpee6puWujOaIkOOAgioqIOacquS4iuS8oOmUgOmhueWPkeelqOOAgeWwmuacquWPluW+l+S+m+W6lOWVhuWPkeelqOaIluWuouaIt+Wwmuacque6v+S4i+e7k+a4he+8jOmDveS4jemYu+aWreWxpee6puWujOaIkOOAguW/q+mAkuaYvuekuuetvuaUtuWPquaYr+i/kOi+k+S/oeaBr++8jOS4jeiHquWKqOabv+S7o+WuouaIt+WvueWFqOmDqOWVhuWTgeeahOehruiupO+8m+eUseWuouaIt+eCueWHu+OAgeeuoeeQhuWRmOS7o+ehruiupOi/mOaYr+WFtuS7luaWueW8j+eVmeivge+8jOingVIwNeOAggoKIyMjIDYuOCDlj5HnpajjgIHmiqXku7fjgIHpgJrnn6XlkozllK7lkI4KCuWuouaIt+WPr+S7peafpeeci+acrOWFrOWPuOiuouWNleWPiuW3suS4iuS8oOeahOacieaViOmUgOmhueWPkeelqO+8m+aYvuekuuKAnOWwmuacquS4iuS8oOKAneavlOWwhuepuueZveivr+W9k+aIkOaXoOWPkeelqOmcgOaxguabtOa4healmuOAguaKpeS7t+mcgOimgeS4k+S4muOAgeWlveeci+eahOmhtemdouWxleekuu+8jOWFt+S9k+Wtl+auteingTcuNO+8m+mAmui/h+S9leenjeermeWGheaIluWklumDqOaWueW8j+mAmuefpeWuouaIt++8jOS7jeS4uuS6pOS7mOe7huiKguOAggoK6K6i5Y2V56Gu6K6k44CB5Y+R6LSn44CB5oql5Lu344CB5Y+R56Wo5LiK5Lyg562J56uZ5YaF6YCa55+l5Li65bu66K6u44CC5ZSu5ZCO5L+d55WZ5YWz6IGU5Y6f5ZWG5ZOB44CB5pWw6YeP44CB5pS26LSn57uE44CB5Y6f5Zug44CB5Zu+54mH5Y+K5aSE55CG6L+b5bqm55qE6IO95Yqb77yb6YCA6LSn44CB5o2i6LSn44CB6KGl5Y+R5b2x5ZON5bGl57qm5ZKM5oiQ5pys6LWE5paZ77yM5raJ5Y+K5a6e6ZmF6YCA5qy+5LuN5Zyo57q/5LiL5aSE55CG77yM5pys57O757uf5LiN5Zug5q2k5aKe5Yqg6YCA5qy+5pSv5LuY5pON5L2c44CCCgojIyDkuIPjgIHlhoXpg6jnu4/okKXlkI7lj7DlrozmlbTpnIDmsYIKCiMjIyA3LjEg5bel5L2c5Y+w5LiO5Lia5Yqh5b6F5YqeCgrpm4bkuK3mmL7npLrorqLljZXjgIHph4fotK3jgIHplIDllK7ph5Hpop3jgIHph4fotK3miJDmnKzjgIHlt7LlhbflpIfkvp3mja7nmoTotLnnlKjkuI7liKnmtqbmjIfmoIfvvIzku6Xlj4rlvoXnoa7orqTjgIHlvoXph4fotK3jgIHlvoXlj5HotKfjgIHphY3pgIHlvILluLjjgIHnvLrkvpvlupTllYblj5HnpajjgIHmnKrkuIrkvKDplIDpobnlj5HnpajjgIHmiJDmnKzlvoXmoLjlr7nlkozku7fmoLzmo4Dmn6XjgILnu4/okKXmiqXooajliJ3lp4vojIPlm7TmjInlvZPliY3mhI/lkJHlu7rorq7orr7kuLrmnKzmnIgx5pel6Iez5b2T5aSp77yM5Y+v5YiH5o2i5ZGo44CB5pyI5oiW6Ieq5a6a5LmJ6IyD5Zu044CC5Lia5Yqh5b6F5Yqe6Zif5YiX5YiZ6buY6K6k5rGH5oC76Leo5pyI5pyq5aSE55CG5LqL6aG577yM5YyF5ous5pyq5LiK5Lyg6ZSA6aG556Wo44CB57y65L6b5bqU5ZWG56Wo44CB5b6F5qC4566X5ZKM5Yiw5pyf5p+l5Lu377yM5LiN6IO95Zug5Li66L+b5YWl5paw5pyI5Lu95bCx6ZqQ6JeP5LiK5pyI5pyq5a6M5oiQ55qE5LqL6aG544CCCgrlgJ/pibTlj4LogIPlkI7lj7DnmoTmjIfmoIfljaHkuI7lvoXlip7lhaXlj6PvvIzkvYbmnKzniYjkuI3lu7rnq4vmlLbmrL7vvI/ku5jmrL7vvI/njrDph5Hlh4Dpop3nnIvmnb/vvIzkuZ/kuI3miorlsJrmnKrmnInmlbDmja7kvp3mja7nmoTmrKDmrL7nu5/orqHkvKroo4XmiJDoh6rliqjorqHnrpfnu5PmnpzjgILmnKrmnaXoi6Xph4fnlKjorqLljZXnu5PmuIXmoIforrDvvIzlj6rmjInmnIDnu4jlkIzmhI/nmoTojIPlm7TlsZXnpLrnirbmgIHvvIzkuI3mianlvKDmiJDotYTph5HmtYHmsLTjgIJbUzAxXQoKIyMjIDcuMiDllYblk4HjgIHkvpvlupTllYbkvpvotKfotYTmlpnkuI7mnKrmnaXlhaXpqbsKCuS/neeVmeWVhuWTgeWIm+W7uue8lui+keOAgeWbvueJh+OAgeWIhuexu+OAgeWTgeeJjOOAgeWei+WPt+OAgeinhOagvOOAgeWNleS9jeWMheijheOAgee8lueggeOAgeS4iuaetuS4i+aetuOAgei1t+iuoumHj+OAgeWPr+ingeiMg+WbtOWPiuebtOWPke+8j+e7j+aJi+agh+iusOOAgue7n+S4gOWVhuWTgeS4juS+m+i0p+iusOW9leWIhuW8gO+8jOS4gOS7tuWVhuWTgeWPr+WFs+iBlOWkmuS+m+W6lOWVhuOAgemHh+i0readpea6kOmTvuaOpeOAgeaKpeS7t+aXpeacn+OAgeW9k+WJjemHh+i0reS7t+OAgeWOhuWPsui/m+S7t+WSjOmHh+i0readoeS7tuOAggoKKirlvZPliY3mhI/lkJHvvJrliY3mnJ/ph4fotK3ku7fnlLHnrqHnkIblkZjmiYvlt6XloavlhpnjgIIqKiDlkI7nu63lj6/og73nlLHlhaXpqbvkvpvlupTllYbloavmiqXvvIzmiJbku43nlLHnrqHnkIblkZjku6PlvZXvvJvlubbpnZ7miYDmnInkvpvlupTllYbpg73kvJrlhaXpqbvjgILmnKzniYjpooTnlZnkvpvlupTllYbmj5DkuqTotYTmlpnkuI7lkIzmraXnmoTmjqXlj6PvvIzkuI3pooTlhYjlvIDlj5HlrozmlbTkvpvlupTllYbpl6jmiLfjgIIKCuW7uuiuruS/neeVmei1hOaWmeadpea6kOOAgeaPkOS6pOS6uuOAgeabtOaWsOaXtumXtOOAgeW+heaguOWvueeKtuaAgeWSjOS/ruaUueWOhuWPsu+8m+acquadpeS+m+W6lOWVhuaPkOS6pOS/oeaBr+WFiOaIkOS4uuW+heWuoeaguOaIluWAmemAiei1hOaWme+8jOS4jeiDveaXoOeXleimhuebluW3suehruiupOiuouWNleOAguWvvOWFpeaUr+aMgemihOiniOWSjOmUmeivr+ihjOWPjemmiO+8jOWvvOWHuuWPiuaJk+WNsOaMieadg+mZkOaJp+ihjOOAguWfuuehgOavlOS7t+WQjOaXtuiAg+iZkeeojuOAgeWNleS9jeWMheijheOAgei/kOadgui0ueOAgeS+m+i0p+WPiuaKpeS7t+aXtumXtOOAgltTMTFdW1cy4oCUVzRdCgojIyMgNy4zIOWFrOWPuOWuouaIt+OAgeS+m+W6lOWVhuWSjOi9u+mHj+i3n+i/mwoK5a6i5oi35qGj5qGI5Lul5YWs5Y+477yP5Y2V5L2N5Li65Li75L2T77yM6K6w5b2V5YWs5Y+45ZCN56ew44CB6IGU57O75Lq644CB6IGU57O75pa55byP44CB5Li76LSm5Y+344CB56iO5Y+344CB5byA56Wo5LiO5ZCI5ZCM6LWE5paZ44CB5pS26LSn5Zyw5Z2A44CB5Y6G5Y+y6K6i5Y2V5ZKM6LSh54yu5YiG5p6Q44CC6LSm5pyf5Y+K5bi455So5byA56Wo5pel5L2c5Li65Lia5Yqh57qm5a6a5L+h5oGv5L+d55WZ77yM5Y+v5aGr5YaZ5pyJ5ZCI5ZCM5oiW5peg5ZCI5ZCM55qE57qm5a6a77yb6LSm5pyf6LW354K55ZKM5Zu65a6a5byA56Wo5a6J5o6S6KeBUjAz77yM5LiN5Zug5Li65L+d55WZ6LSm5pyf5bCx6buY6K6k5bu66K6+5bqU5pS25qC46ZSA5oiW5by65Yi25L+h55So6aKd5bqm57O757uf44CCCgrkvpvlupTllYbopobnm5bmnKzlnLDjgIHlpJblnLDlj4rlubPlj7DnrYnmnaXmupDvvIzkv53nlZnlkI3np7DjgIHnsbvlnovjgIHogZTns7vkurrjgIHlvIDnpajotYTmlpnjgIHllYblk4HjgIHljoblj7Lph4fotK3lkozku7fmoLzjgIHlpJbpg6jorqLljZXlj7flj4rlv4XopoHlpIfms6jjgILph4fotK3miJDmnKzlkozlvoXlj5blvpflj5Hnpajlj6/nrqHnkIbvvIzkuI3orr7nva7ni6znq4vku5jmrL7mtYHmsLTjgIIKCuW7uuiuruS/neeVmeagh+etvuOAgei0n+i0o+S6uuOAgeacgOWQjui3n+i/m+OAgeS4i+asoeW+heWKnuWPiuaQnOe0ouetm+mAieOAgeWvvOWFpeWvvOWHuuaJk+WNsOOAguWkjeadgue6v+e0ouOAgeWFrOa1t+axoOOAgeWVhuacuua8j+aWl+WSjOWkluWLpOacjeWKoeWdh+WQjue7reaMiemcgOWQr+eUqOOAgltTMDJdW1MwM11bUzA5XQoKIyMjIDcuNCDkuJPkuJrmiqXku7fkuI7lkIjlkIzpooTnlZkKCioq5q2j5byP5oql5Lu35piv5pys6L2u5b2T5YmN5oSP5ZCR44CCKiog5ZCO5Y+w5Y+v5pW055CG5ZWG5ZOB77yM55Sf5oiQ6Z2i5ZCR5a6i5oi355qE5LiT5Lia5bGV56S66aG16Z2i77yM6Iez5bCR5YyF5ZCr77ya5ZWG5ZOB5qCH6aKY44CB5paH5a2X6K+05piO44CB5Li75Zu+44CB57O757uf5YaF5ZWG5ZOB6ZO+5o6l44CB5pWw6YeP44CB5Y2V5Lu35ZKM6YeR6aKd44CC5aSW6YOo6YeH6LSt6ZO+5o6l5LiN55u05o6l5L2c5Li65oql5Lu35ZWG5ZOB5YWs5byA6ZO+5o6l44CCCgrmiqXku7forr7orqHlu7rorq7ljIXlkKvmiqXku7fnvJblj7fjgIHmiqXku7flr7nosaHjgIHml6XmnJ/jgIHku7fmoLzniYjmnKzjgIHmnInmlYjmnJ/jgIHllYblk4HkuLvlm77jgIHmoIfpopjjgIHor7TmmI7jgIHns7vnu5/llYblk4Hpk77mjqXjgIHmlbDph4/jgIHljZXkvY3jgIHljZXku7fjgIHlsI/orqHjgIHmgLvku7fjgIHotLnnlKjor7TmmI7lj4rogZTns7vkurrvvIzmj5DkvpvpgILlkIjnlLXohJHmiYvmnLrpmIXor7vku6Xlj4rmiZPljbDvvI9QREblr7zlh7rnmoTniYjlvI/jgILmjqjojZDlhYjkvb/nlKjnq5nlhoXmiqXku7fkuK3lv4PvvIvnq5nlhoXpgJrnn6XmjqjpgIHnu5nlrqLmiLfvvIzlvq7kv6HvvI/pgq7ku7bnrYnlpJbpg6jpgJrnn6Xku6XlkI7pgInphY3jgILorr/pl67mnYPpmZDop4FSMDfvvIzku7fmoLzkuI7plIHku7fop4FEMDHvvIzmjqXlj5fmiqXku7fjgIHovazorqLljZXlkozmjqjpgIHmlrnlvI/op4FEMDTvvJvkuI3lhYjmiorlu7rorq7lj5jmiJDnlKjmiLfmib/or7rjgIIKCuaZrumAmuaYjuehruS7t+agvOeahOWkjei0reWPr+i1sOeugOWMlui3r+W+hO+8jOS4jeW8uuWItuKAnOWVhuacuuKGkuato+W8j+aKpeS7t+KGkuWQiOWQjOKGkuWGjeasoeehruiupOKAneOAguivouS7t+OAgeS7t+agvOaIlui0ueeUqOacieWPmOWKqOaXtu+8jOW6lOaciea4healmueahOWPmOabtOS4juWuouaIt+iupOWPr+iusOW9le+8jOWFt+S9k+inhOWImeacquWumuOAggoKKirlkIjlkIzlvZPliY3lj6ropoHmsYLnlZnmjqXlj6PjgIIqKiDkv53nlZnorqLljZXvvI/lrqLmiLflhbPogZTlkIjlkIznmoTmianlsZXkvY3nva7vvJvlrozmlbTlkIjlkIznvJbovpHjgIHnrb7nvbLjgIHliLDmnJ/mj5DphpLlkozkuIDlkIjlkIzlpJrorqLljZXnrqHnkIbmmK/mnKrmnaXpgInpobnjgILlm6DmnKrmnaXlj6/og73lh7rllK7ns7vnu5/ogIznlZnmianlsZXog73lipvvvIzkuI3opoHmsYLlvZPliY3nhp/lrqLkuJrliqHmr4/ljZXlv4XpobvmnInlkIjlkIzjgIJbUzA0XVtTMDVdCgojIyMgNy41IOmUgOWUruiuouWNleS4juWkmuiii+Wxpee6pgoK6K6i5Y2V5Y+v55Sx5a6i5oi35o+Q5Lqk5oiW5ZCO5Y+w5Luj5b2V77yM5L+d5a2Y5YWs5Y+45a6i5oi344CB5p2l5rqQ44CB5ZWG5ZOB5pWw6YeP44CB5ZCE6KKL5pS25Lu25L+h5oGv44CB5bey57qm5a6a5Lu35qC844CB5a6i5oi35aSH5rOo5ZKM5YaF6YOo5aSH5rOo44CC5ZCO5Y+w5qC45a+55L6b6LSn77yM5oyJ5b2T5YmN5Lia5Yqh5a6J5o6S6YeH6LSt5ZKM6YWN6YCB77yM5aSE55CG5ouS57ud44CB5Y+W5raI44CB5pWw6YeP5Y+Y5pu044CB57y66LSn5pu/5Luj5Y+K5byC5bi444CCCgrkuIDorqLljZXlpJrooovjgIHlkIzlhazlj7jnu5PnrpfvvJvorqLljZXph5Hpop3lkozorqLljZXmlbDlnKjkuLvorqLljZXlsYLorqHkuIDmrKHvvIzlkITooovkuI7ljIXoo7nku4XliIbop6PlsaXnuqbjgILoi6XmnKrmnaXmlK/mjIHkuI3lkIznu5PnrpfkuLvkvZPvvIzpobvlj6bkvZzmlrnmoYjvvIzlvZPliY3kuI3lnKjlkIzljZXlhoXmt7fmlL7kuI3lkIzlhazlj7jotKbliqHjgIIKCuWPmOabtOS7t+agvOOAgeaVsOmHj+aIluWcsOWdgOaXtuS/neWtmOW3ruW8guWSjOWOn+WboO+8jOabtOaWsOWPl+W9seWTjeeahOmHh+i0reOAgeaKpeS7t+WPiuWxpee6pui1hOaWme+8jOS4jeiDvemdmem7mOaUueWGmeaXouacieiusOW9leOAguaWsOS7t+agvOaooeW8j+acquWumuWJje+8jOS4jeWGmeatu+S4gOWll+W8uuWItuehruiupOa1geeoi+OAguacquadpeWtkOi0puWPt+S4muWKoemhu+aYvuekuuadpea6kOWSjOS4u+i0puWPt+WuoeaguOmTvu+8jOacrOacn+S4jeW8gOaUvuWtkOi0puWPt+aPkOS6pOOAggoKIyMjIDcuNiDph4fotK3miafooYzkuI7miJDmnKzlvZLlsZ4KCuS/neeVmeaJi+W3pemHh+i0reWNleWSjOS7jumUgOWUrumcgOaxgueUn+aIkOmHh+i0reWuieaOku+8jOaMieS+m+W6lOWVhuOAgeWVhuWTgeWPiuaUtui0p+e7hOaLhuWIhu+8m+iusOW9leinhOagvOOAgeaVsOmHj+OAgeWNleS7t+OAgea4oOmBk+OAgeWklumDqOW5s+WPsOiuouWNleWPt+OAgemHh+i0reaXpeacn+OAgemihOiuoeWSjOWunumZheWIsOi0p+OAgemHh+i0rei/kOi0ueadgui0ueOAgeW8guW4uOS4juWPlua2iOOAggoK5pWw6YeP44CB5oiQ5pys5ZKM5L6b5bqU5ZWG5Y+R56Wo6IO96L+95rqv6Iez6ZSA5ZSu5ZWG5ZOB6KGM5Y+K5pS26LSn57uE44CC5LiA6ZSA5ZSu6K6i5Y2V5Y+v5ZCR5aSa5a625L6b5bqU5ZWG6YeH6LSt77yb5pyq5p2l5ZCI5bm26YeH6LSt5aSa56yU6ZSA5ZSu6ZyA5rGC5pe25LuN6ZyA5L+d55WZ5pWw6YeP5ZKM6YeR6aKd5b2S5bGe77yM5LiN6IO95oqK5ZCM5LiA5Lu96YeH6LSt5oiQ5pys6YeN5aSN566X57uZ5aSa5Liq6K6i5Y2V44CCCgrmlK/mjIHkvpvlupTllYbnm7Tlj5HvvIzku6Xlj4rnrqHnkIblkZjmlLbliLDotKflkI7mlbTmibnmiJbliIbnu4Tlj5Hnu5nlrqLmiLfjgILlupPlrZjmmoLnvJPml7bvvIzlj6/orrDlvZXlrp7pmYXph4fotK3jgIHmlLbotKflkozphY3pgIHvvIzkuI3lvLrliLblupPlrZjlhaXlupPjgILlkKvnqI7vvI/kuI3lkKvnqI7miJDmnKzjgIHnqI7pop3kuI7liIbmkYrmlrnlvI/kv53nlZnmuIXmpZrvvIzph4fotK3ku7flj5jmm7Tlj6/ov73muq/jgIJbUzEwXQoKIyMjIDcuNyDlv6vpgJLnianmtYHkuI7llYblrrboh6rphY3pgIEKCiMjIyMgNy43LjEg6L+Q5Y2V5b2V5YWl5LiO5p+l6K+iCgrmjInorqLljZXjgIHotK3nianooovlj4rlrp7pmYXlj5HotKfllYblk4HliJvlu7rphY3pgIHorrDlvZXvvIzloavlv6vpgJLljZXlj7fvvIzkvJjlhYjmj5Dkvpvlv6vpgJLlhazlj7jor4bliKvlgJnpgInvvJvml6Dms5Xor4bliKvmiJbmnInlpJrkuKrlgJnpgInml7bnlLHnrqHnkIblkZjmiYvpgInjgILljZXlj7for4bliKvmmK/ovoXliqnvvIzkuI3og73orqTkuLrmiYDmnInljZXlj7fpg73og73lh4bnoa7oh6rliqjor4bliKvjgIIKCuWuouaIt+WSjOWQjuWPsOWdh+iDveafpeivouWQjOS4gOWMheijueeahOi9qOi/ueOAgeetvuaUtuOAgeW8guW4uOWPiuacgOWQjuabtOaWsOaXtumXtOOAguiHquWKqOivhuWIq+Wksei0peOAgeaXoOi9qOi/ueOAgeaOpeWPo+mUmeivr+OAgeiwg+eUqOWPl+mZkOetieaDheWGteW6lOaYjuehruaPkOekuu+8m+WOhuWPsuW3suiOt+WPlui9qOi/ueWPr+aMieaOpeWFpeiDveWKm+WSjOaOiOadg+S/neWtmO+8jOmBv+WFjeavj+asoeWIh+aNoumhtemdoumDveaXoOadoeS7tuivt+axguesrOS4ieaWueOAggoKIyMjIyA3LjcuMiDoh6rphY3pgIHlv6vmjbflhaXlj6MKCuWcqOKAnOW/q+mAku+8j+eJqea1geKAneaXgeWinuWKoCoq4oCc5ZWG5a626Ieq6YWN6YCB4oCdKirlv6vmjbfpgInpobnvvIzml4Hms6jigJznlLHllYblrrboh6rooYzpgIHovr7vvIzml6Dlv6vpgJLljZXlj7figJ3jgILlkK/nlKjlkI7kuI3opoHmsYLlv6vpgJLlhazlj7jlkozljZXlj7fvvIzlsZXnpLrphY3pgIHogZTns7vkurrjgIHml7bpl7TjgIHnirbmgIHjgIHlpIfms6jlj4rlj6/pgInkuqTku5jlh63mja7vvJvnrb7mlLbvvI/lrqLmiLfnoa7orqTmjInlkIzkuIDorqLljZXlsaXnuqbljp/liJnlpITnkIbjgILlpJrooovlj6/ph4fnlKjkuI3lkIzphY3pgIHmlrnlvI/vvIzmiYDmnInooovlrZDpg73noa7orqTlrozmiJDlkI7miY3msYfmgLvmlbTljZXlrozmiJDjgIIKCiMjIyMgNy43LjMg5b+r6YCSMTAw5a6Y5pa55qC46aqM5LiO5o6l5YWl5bu66K6uCgrku6XkuIvkuLoyMDI2LTExLTEz5a+55a6Y5pa56aG16Z2i5ZKM5paH5qGj55qE5qC45a+577yMKirmsqHmnInkvb/nlKjmnKzns7vnu5/otKblj7fov5vooYxBUEnlrp7mtYvvvIzkuZ/msqHmnInlrozmiJDmjqXlhaUqKuOAguWumOe9keeahOWFjei0ueiwg+ivleOAgeato+W8j+Wll+mkkOOAgeiwg+eUqOmZkOWItuWSjOaXp+aOpeWPo+W6lOWIhuWIq+eQhuino+OAggoKfCDmoLjpqozkuovpobkgfCDlrpjmlrnotYTmlpnmiYDog73mlK/mjIHnmoTnu5PorrogfCDlr7nmnKzns7vnu5/nmoTlvbHlk40gfAp8LS0tfC0tLXwtLS18Cnwg5rOo5YaM5rWL6K+V6aKd5bqmIHwg546w6KGM5a6e5pe25p+l6K+i5Lqn5ZOB6aG15LuL57uN5rOo5YaM5Y+v6I63MTAw5Y2V5rWL6K+V77yb55u45YWz5paH5qGj6K+05piO5pyq5YWF5YC85Y+v6LCD6K+V77yM5rWL6K+V6aKd5bqm5LuF5L6b6IGU6LCD77yM5a6e6ZmF6LWg6YCB6YeP5Lul6LSm5Y+35ZCO5Y+w5Li65YeGIHwg5LiN6IO95YaZ5oiQ5q+P5aSpMTAw5qyh5oiW6ZW/5pyf5YWN6LS56aKd5bqm77yb5LiK57q/5YmN5qC45a+56LSm5oi35a6e6ZmF5p2D6ZmQ5LiO5q2j5byP6LS555SoIFtLMV1bSzJdW0szXSB8Cnwg5ZCM6L+Q5Y2V6LCD55So6ZmQ5Yi2IHwg5p+l6K+i5oqA5pyv5paH5qGj6KaB5rGC5ZCM5LiA6L+Q5Y2V5p+l6K+i6Ze06ZqU6Iez5bCRMzDliIbpkp/vvIwyNOWwj+aXtuS4jei2hei/hzQ45qyh77yM6LaF6ZmQ5Y+v6IO96ZSB5Y2VIHwg5YmN5ZCO5Y+w44CB6Ieq5Yqo5Lu75Yqh5ZKM6YeN6K+V5b+F6aG75YWx5Lqr5ZCM5LiA6L+Q5Y2V55qE6LCD55So6ZmQ5Yi277yM5LiN6IO95YiG5Yir6ICX55SoNDjmrKEgW0s0XSB8Cnwg5a6e5pe25p+l6K+i5LiO5oyB57ut5pu05pawIHwg5a6Y5pa55a6e5pe25p+l6K+i5Lqn5ZOB6K+05piO6Z2i5ZCR55So5oi35Li75Yqo54K55Ye777yb5oyB57ut5ZCO5Y+w6Lef6Liq5bu66K6u6YeH55So6K6i6ZiF5o6o6YCBIHwg5LiN5oqK5q+P5bCP5pe25om56YeP6L2u6K+i5YWo6YOo6L+Q5Y2V6K6+5Li66buY6K6k77yb6ZyA6KaB6Ieq5Yqo5pu05paw5pe25LyY5YWI6K+E5Lyw6K6i6ZiFIFtLNV0gfAp8IOW/q+mAkuWFrOWPuOivhuWIqyB8IOivhuWIq+aWh+aho+imgeaxguWFt+Wkh+ebuOW6lOato+W8j+Wll+mkkOadg+mZkO+8jOWPr+iDvei/lOWbnuWAmemAieaIluivhuWIq+Wksei0pSB8IOS4jeWBh+WumjEwMOWNlea1i+ivlemZhOW4puivhuWIq++8m+WJjeWPsOe7meWAmemAieOAgeWQjuWPsOWPr+aJi+mAie+8jOW5tuagoemqjOacgOe7iOW/q+mAkuWFrOWPuCBbSzZdIHwKfCDorqHotLnljrvph40gfCDlrpjmlrnnu5Pnrpfor7TmmI7lr7nlkIzmib/ov5DllYbjgIHlkIzov5DljZXlnKg0MOWkqeiMg+WbtOWGheeahOWunuaXtuafpeivou+8j+iuoumYheacieWOu+mHjeiuoei0ueinhOWImSB8IOWOu+mHjeiuoei0ueS4jeWPlua2iOafpeivoumZkOmike+8jOS5n+S4jeihqOekuuaOpeWPo+WFjei0ue+8m+aMieWunumZheS6p+WTgeWSjOi0puaIt+mFjee9ruaguOWvuSBbSzddIHwKfCDml6fkupHlubPlj7DkuI7ml6fot7PovazmjqXlj6MgfCDlrpjmlrnotYTmlpnor7TmmI7ml6fkupHlubPlj7Dlt7LkuIvmnrbvvJvml6flhY3otLlINe+8j+e9kemhtei3s+i9rOaOpeWPo+W3suW9kuaho++8jOS4jeaYr+aMgee7ree7tOaKpOeahOe7k+aehOWMlui9qOi/ueaOpeWPoyB8IOS4jeW8leeUqOaXpzDlhYPlpZfppJDkvZzkuLrlvZPliY3mib/or7rvvIzkuI3miormiZPlvIDmn6Xor6LnvZHpobXlvZPmiJDlt7Lojrflj5blj6/mjIHkuYXkv53lrZjnmoTnianmtYHovajov7kgW0s4XVtLOV0gfAoK5pys6L2u5pyq5LuO5YWs5byA6LWE5paZ5p+l5Yiw5Y+v57uf5LiA6YCC55So5LqO5omA5pyJ6LSm5oi355qEMTAw5Y2V6K+V55So5pyJ5pWI5pyf5oiW5YWo5bGAUVBT77yM5LiN57yW6YCg55u45bqU5pWw5a2X44CC5a6e6ZmF6LWg6YCB6YeP44CB5p2D6ZmQ44CB5q2j5byP5aWX6aSQ5ZKM6K6h6LS55LuN6ZyA5Zyo6YCJ5Z6L5pe25qC45a+56LSm5oi344CCCgoqKuacrOezu+e7n+aOpeWFpeW7uuiuru+8jOWwmuacquWumueov++8mioqIOm7mOiupOS9v+eUqOe6pjYw5YiG6ZKf55qE5YWx5Lqr57uT5p6c57yT5a2Y5L2c5Li66LW354K577yM55So5oi35Li75Yqo5Yi35paw5Lmf6YG15a6I5a6Y5pa55Y2V6L+Q5Y2V6ZmQ5Yi277yb55So5ZCM5LiA6L+Q5Y2V6K+35rGC6ZSB6Ziy5q2i5YmN5ZCO5Y+w5ZCM5pe25Y+R5Ye66YeN5aSN6K+35rGC77yM5aSx6LSl6YeN6K+V6YeH55So5bu25ZCO5LiO6YCA6YG/77yM5bm25o+Q56S66aKd5bqm5oiW5p2D6ZmQ5LiN6Laz44CCNjDliIbpkp/mmK/mnKzns7vnu5/lu7rorq7vvIzkuI3mmK/lrpjmlrnlvLrliLblkajmnJ/vvJvljbPkvb/mlLnnn63kuZ/kuI3og73nqoHnoLTkuIrov7DlrpjmlrnpmZDliLbjgIIKCuiLpemcgOimgeaMgee7reabtOaWsO+8jOS8mOWFiOS9v+eUqOato+W8j+aUr+aMgeeahOiuoumYheaOqOmAge+8m+aUtuWIsOeKtuaAgeWQjuabtOaWsOWQjOS4gOS7vei9qOi/ueS+m+WJjeWQjuWPsOafpeeci+OAgui/kOWNleetvuaUtuWQjuWBnOatouaXoOW/heimgeeahOihpeafpe+8jOS9hioq5b+r6YCS562+5pS25LiN562J5LqO5a6i5oi356Gu6K6k5YWo6YOo6LSn54mp5peg6Zeu6aKYKirjgILmjqXlj6PkuI3lj6/nlKjml7bkv53nlZnml6LmnInnu5PmnpzjgIHmnIDlkI7mm7TmlrDml7bpl7TlkozmiYvlt6XnuqDmraPlhaXlj6PvvJvllYblrrboh6rphY3pgIHnu6fnu63otbDni6znq4vorrDlvZXjgILor5XnlKjlkI7mmK/lkKbph4fnlKjmraPlvI/lpZfppJDlj4rpnIDopoHlpJrlj4rml7bnmoTmm7TmlrDvvIzop4FSMDnjgIIKCiMjIyA3Ljgg5Y+R56Wo5LiK5Lyg44CB6K+G5Yir44CB5Lq65bel5qC45a+55LiO5Lia5Yqh57uR5a6aCgrku6XkuIvmjInnm67liY3mma7pgJrph4fotK3plIDllK7mtYHnqIvmlbTnkIbvvJvnuq/mnI3liqHotLnku6Pph4fkuK3llYblk4HmrL7kuI7kvpvlupTllYblj5HnpajmiqzlpLTlvZLlsZ7ku43op4FSMDLvvIzkuI3og73mnKrnu4/noa7orqTlpZfnlKjmma7pgJrph4fotK3nmoTov5vplIDnpajmtYHnqIvjgIIKCioq5b2T5YmN5Lia5Yqh6aG65bqP77yaKiog5a6i5oi35LiL5Y2V77yM566h55CG5ZGY6YeH6LSt5bm26YWN6YCB77yM5a6i5oi356Gu6K6k6LSn54mp5peg6Zeu6aKY5ZCO6K6i5Y2V5bGl57qm5a6M5oiQ77yb6ZqP5ZCO5ZCR5ZCE5L6b5bqU5ZWG5Y+W5b6X6YeH6LSt5Y+R56Wo77yM5bm25Zyo57qm5a6a5pe25q615ZCR5a6i5oi35byA56Wo44CC6YeH6LSt44CB5pS26LSn44CB5byA56Wo5Y+v6Leo5pyI77yM5LiN6IO95oqK5Y+R56Wo5bCa5pyq5LiK5Lyg6KeG5Li66K6i5Y2V5rKh5pyJ5a6M5oiQ44CCCgp8IOaWueWQkSB8IOacrOeJiOWkhOeQhiB8CnwtLS18LS0tfAp8IOmUgOmhue+8mue7meWuouaIt+eahOWPkeelqCB8IOaMieW9k+WJjeaEj+WQkeS4gOmUgOWUruiuouWNleS4gOW8oOW9k+WJjeacieaViOWPkeelqO+8m+S4jeWboOS4uuWkmui0reeJqeiii+aLhuaIkOWkmuW8oOaZrumAmumUgOWUruWPkeelqO+8jOS5n+S4jeaMieacrOacn+aWueahiOWQiOW5tuWkmuiuouWNleW8gOS4gOW8oOaZrumAmuelqCB8Cnwg6L+b6aG577ya5L6b5bqU5ZWG6YeH6LSt5Y+R56WoIHwg5ZCM5LiA6ZSA5ZSu6K6i5Y2V5Y+v6IO95raJ5Y+K5aSa5L6b5bqU5ZWG44CB5aSa5byg6L+b6aG55Y+R56Wo77yM5YiG5Yir5YWz6IGU6YeH6LSt5Lia5Yqh5bm26L+95rqv5Yiw6ZSA5ZSu6K6i5Y2V77yb5LiN6IO95aWX55So6ZSA6aG54oCc5LiA5Y2V5LiA56Wo4oCd6ZmQ5Yi2IHwKfCDmm7TmraPkuI7ljoblj7IgfCDlj5HnpajkvZzlup/jgIHmm7TmjaLmiJbosIPmlbTkv53nlZnljp/pmYTku7bjgIHnirbmgIHlkozlhbPns7vvvJvkuIDlvKDlvZPliY3mnInmlYjplIDpobnnpajkuI7ljoblj7Lnpajmja7otYTmlpnljLrliKvmmL7npLrvvIzkvovlpJblpITnkIblvoVSMDggfAp8IOi3qOmHh+i0reWFs+iBlCB8IOS+m+W6lOWVhuS4gOW8oOWPkeelqOaYr+WQpuimhuebluWkmumHh+i0reS4muWKoeOAgeWmguS9leWIhumFjeWvueW6lOmHkemineS7jeW+heWumu+8jOS4jeaKiuWug+inhuS4uuiHquWKqOiOt+WHhueahOWFqOmDqOWkmuWvueWkmuinhOWImSB8CgrkuIrkvKBQREbmiJblm77niYflkI7vvIwqKk9DUuaYr+adoeS7tuWinuW8uioq77ya5o+Q5Y+W5Y+R56Wo5Y+356CB44CB5byA56Wo5pel5pyf44CB6LSt6ZSA5pa544CB6YeR6aKd44CB56iO6aKd562J5Y+v55So5L+h5oGv77yM566h55CG5ZGY5qC45a+55ZCO5L+d5a2Y77yb6K+G5Yir5aSx6LSl44CB6K+G5Yir5LiN5YWo5oiW5pqC5pyq5o6l5YWlT0NS5pe277yM5YWB6K645omL5aGr44CC6K+G5Yir5Ye655qE6K6i5Y2V5YWz6IGU5LuF5L2c5YCZ6YCJ77yM6ZyA6KaB5Lq65bel56Gu6K6k77yM5LiN5Yet6YeR6aKd55u45ZCM6Ieq5Yqo57uR5a6a44CCCgrnrqHnkIblkZjkuZ/lj6/ku47lhbfkvZPorqLljZXov5vlhaXkuIrkvKDvvIzku6XmmI7noa7or6XpmYTku7blvZLlsZ7vvJvph43lpI3pmYTku7bjgIHnpajlj7fmiJbph5Hpop3lvILluLjlu7rorq7mj5DnpLrjgILov5vpobnnvLrnpajjgIHplIDpobnlsJrmnKrkuIrkvKDjgIHlt7LlhbPogZTjgIHlt7LkvZzlup/nrYnnirbmgIHlj6/mo4DntKLjgILns7vnu5/nrqHnkIblj5HnpajotYTmlpnkuI7lhbPogZTvvIwqKuS4jeiHquWKqOW8gOWFt+eojuWKoeWPkeelqO+8jOS4jeWvueaOpeeojuWKoeeUs+aKpSoq44CCCgojIyMgNy45IOWPlua2iOi1hOmHkeaooeWdl+WQjueahOe7j+iQpeiusOW9leS4juWIqea2pui+ueeVjAoKKirlvZPliY3mhI/lkJHvvJrlrqLmiLflnKjnur/kuIvlhazlr7nlhaznu5PnrpfvvJvlr7nkvpvlupTllYbmiJblubPlj7DnmoTlrp7pmYXph4fotK3ku5jmrL7lnKjns7vnu5/lpJblrozmiJDjgILmnKzns7vnu5/kuI3mj5DkvpvmlLbmrL7jgIHku5jmrL7miJbni6znq4votYTph5HmtYHmsLTlip/og73jgIIqKiBWMi4w5Lit5bu66K6u55qE5pS25LuY5qy+5Y2V44CB6aKE5pS26aKE5LuY44CB6LWE6YeR5YiG6YWN5qC46ZSA44CB54us56uL5bqU5pS25bqU5LuY5Y+w6LSm5LiO572R6ZO25a+56LSm77yM5LiN5YaN5L2c5Li65pys54mI5a6e5pa96IyD5Zu077yM5Lmf5LiN5pS55ZCN5Li64oCc57uT566X5Y+w6LSm4oCd5ZCO6YeN5paw5Yqg5YWl44CCCgrkv53nlZnlj6/mlK/mjIHkuJrliqHliIbmnpDnmoTmlbDmja7vvJrlr7nlrqLmiJDkuqTph5Hpop3jgIHllYblk4Hph4fotK3miJDmnKzjgIHnqI7pop3lj4rlkKvnqI7lj6PlvoTjgIHph4fotK3kuI7lj5HotKfov5DmnYLotLnjgIHnm7TmjqXotLnnlKjlkozpmYTku7bjgILku6PlnqvvvI/miqXplIDmgKfotKjlj6/ku6XkvZzkuLrlvoXorqjorrrnmoTotLnnlKjliIbnsbvvvIzkvYbkuI3pu5jorqTlu7rorr7miqXplIDmlK/ku5jjgIHku6Plnqvlm57mlLbmiJbotYTph5Hnu5PnrpfmtYHnqIvjgIIKCueUqOaIt+ebruWJjeeUqOKAnOaUtuasvuWHj+S7mOasvuKAneeQhuino+S9o+mHke+8j+aUtuebiu+8jOWPpuacieaMieWuouaIt+aPkOS+m+mTvuaOpeS7o+mHh+OAgeWPquaUtuacjeWKoei0ueeahOaDheW9ouOAgui/memHjOmcgOimgeaMieWQjOS4gOiuouWNleW9kumbhuWvueW6lOmHkemine+8jOS4jeiDveebtOaOpeeUqOKAnOacrOaciOaUtuasvuWQiOiuoeWHj+acrOaciOmHh+i0reS7mOasvuWQiOiuoeKAneS7o+ihqOacrOaciOiuouWNleWIqea2pu+8jOWboOS4uumHh+i0reOAgeS6pOS7mOWSjOe7k+i0puWPr+iDvei3qOaciOOAgioq5rKh5pyJ5a6e6ZmF6LWE6YeR6K6w5b2V5pe277yM57O757uf5LiN6IO96Ieq5Yqo5aOw56ew566X5Ye65LqG5a6e6ZmF546w6YeR5beu6aKd44CCKiog5ZWG5ZOB5Lmw5Y2W5beu5Lu344CB54us56uL5pyN5Yqh6LS544CB6K6i5Y2V5oiQ5pys5beu6aKd5ZKM5pyA57uI57uT566X5Yip5ram6ZyA6KaB5YiG5byA6K6o6K6677yb6K6i5Y2V5piv5ZCm5omL5bel5qCH6K6w57uT5riF44CB5piv5ZCm5LuF5omL5bel6K6w5b2V6K+l6K6i5Y2V55qE57uT566X5oC76aKd5LiO5a6e6ZmF5oiQ5pys5oiW55u05o6l5b2V5YWl5qC45a6a5pS255uK44CB5Yip5ram5oyJ5L2V5pel5pyf5b2S5bGe77yM5YiG5Yir5b6FUjAx44CBUjAy44CBUjA044CC5LiK6L+w5pa55byP5piv5Y+v6YCJ5oup55qE5qC4566X6K6+6K6h77yM5pys54mI5rKh5pyJ5oqK5YW25Lit5Lu75LiA6aG55b2T5oiQ5bey57uP5om55YeG55qE5Yqf6IO944CCCgoqKuS8mOWFiOiuqOiuuueahOi9u+mHj+aWueahiO+8muaMieiuouWNleW9kumbhue7j+iQpemHkemine+8jOS4jeW7uueri+i1hOmHkea1geawtOOAgioqIOaZrumAmumHh+i0remUgOWUruWPr+WIqeeUqOW3suS/neWtmOeahOiuouWNleaIkOS6pOmineOAgeWunumZhemHh+i0reaIkOacrOWPiuebtOaOpei0ueeUqO+8jOWxleekuuKAnOmihOS8sOiuouWNleaUtuebiuKAne+8m+i1hOaWmeWujOaVtOWQjueUseeuoeeQhuWRmOaguOWvue+8jOS/neWtmOS4gOS7veaguOeul+e7k+aenOOAguiLpeacgOe7iOe6puWumumHkemineS4juWOn+iuouWNleS4jeWQjO+8jOS/neeVmeiwg+aVtOWOn+WboOOAgui/meagt+iDveWkn+WIhuaekOavj+eslOS4muWKoe+8jOiAjOS4jemcgOimgeeZu+iusOmTtuihjOi0puaIt+OAgeavj+asoei9rOi0puOAgei1hOmHkeWIhumFjeaIluiHquWKqOaguOmUgOOAguaYr+WQpumHh+eUqOi/meS4gOaWueahiOeUsVIwMuWGs+Wumu+8m+eJueauiuacjeWKoeS4muWKoeS5n+WPr+mAieaLqeebtOaOpeW9leWFpeaguOWumuacjeWKoeaUtuebiu+8jOS9huWQjOS4gOeslOaUtuebiuS4jeiDveWQjOaXtuiHquWKqOiuoeeul+WPiOaJi+W3pee0r+WKoOOAggoKfCDkuJrliqHmg4XlvaIgfCDlu7rorq7lpoLkvZXooajovr4gfCDpnIDopoHnu6fnu63noa7orqTnmoTkuovlrp4gfAp8LS0tfC0tLXwtLS18Cnwg5pmu6YCa6YeH6LSt6ZSA5ZSuIHwg5a+55a6i6K6i5Y2V6YeR6aKd5LiO6K+l5Y2V5a6e6ZmF6YeH6LSt5oiQ5pys44CB55u05o6l6LS555So6YWN5a+577yM5b2i5oiQ57uP6JCl5pS255uK5Lyw566XIHwg6YeR6aKd55qE5ZCr56iO5Y+j5b6E44CB6LS555So5piv5ZCm5bey57uP6K6h5YWl5oiQ5pys44CB5L2V5pe256Gu6K6k5qC4566XIHwKfCDnu4/okKXogIXlnqvku5jllYblk4HmrL7nmoTmnI3liqHku6Pph4cgfCDllYblk4Hph4fotK3ph5Hpop3jgIHlrqLmiLflupTmib/mi4XnmoTllYblk4HmrL7lkozni6znq4vmnI3liqHotLnliIblvIDooajovr7vvJvlvZLov5jnmoTllYblk4HlnqvmrL7kuI3ph43lpI3lop7liqDmlLbnm4ogfCDlrqLmiLfmnIDnu4jmib/mi4XnmoTph5Hpop3jgIHmnI3liqHotLnmlLblj5bmlrnlvI/jgIHkvpvlupTllYbkuI7lrqLmiLfnpajmja7lr7nosaEgfAp8IOWuouaIt+ebtOaOpeaJv+aLheWVhuWTgeasvueahOacjeWKoeS7o+mHhyB8IOWVhuWTgeS7jeS/neeVmeaho+ahiOOAgeaVsOmHj+WSjOWPguiAg+i0p+WAvOS7peS+v+Wkjei0re+8m+e7j+iQpeiAheeahOaUtuebiuWPquWbtOe7lee6puWumuacjeWKoei0ueWPiuWFtuaJv+aLheeahOi0ueeUqOaguOeulyB8IOaYr+WQpuehruWunuWtmOWcqOi/meenjeS4muWKoe+8jOiwgeS7mOasvuOAgeiwgeWPluW+l+WVhuWTgeWPkeelqOOAgeWvueWuouaKpeS7t+WmguS9leWxleekuiB8CgrkvovlpoLvvIzlnKjlt7Lnu5/kuIDph5Hpop3lj6PlvoTkuJTmmoLkuI3ogIPomZHlhbbku5bosIPmlbTnmoTmvJTnpLrkuK3vvIzlkIzkuIDorqLljZXlr7nlrqLph5Hpop0xLDIwMOWFg+OAgeWunumZhemHh+i0reaIkOacrDEsMDAw5YWD44CB5pyq5YyF5ZCr5Zyo6YeH6LSt5oiQ5pys5Lit55qE6YWN6YCB6LS5MjDlhYPvvIzliJnorqLljZXnu4/okKXmlLbnm4rkvLDnrpfkuLoxODDlhYPjgILov5nkuKrkvovlrZDor7TmmI7lkIzljZXlvZLpm4bvvIzkuI3ku6Pooajns7vnu5/lt7Lnn6XpgZPmrL7pobnliLDotKbvvIzkuZ/kuI3mmK/lt7Lnoa7lrprnmoTnqI7liqHmiJbmnIDnu4jliKnmtqbop4TliJnjgIIKCioqUjAx55qE5o6o6I2Q5piv5L+d55WZ5p6B566A57uT5riF5qCH6K6w77yM5L2G55Sx55So5oi35Yaz5a6a5piv5ZCm6YeH57qz77yaKiog5LuF6K6i5Y2V54q25oCB44CB5Lq65bel56Gu6K6k5pel5pyf5Y+K5Y+v6YCJ5aSH5rOo77yM55So5p2l6KGo56S657uP6JCl6ICF5bey57uP5Zyo57q/5LiL5qC45a+55a6M5oiQ44CC5a6D5LiN6IO95LuO5pS26LSn5oiW5byA56Wo6Ieq5Yqo5o6o5pat77yM5LiN6IO96KKr5bGV56S65Li66ZO26KGM5Yiw6LSm6aqM6K+B77yM5Lmf5LiN55Sf5oiQ5pS25LuY5qy+5piO57uG44CCCgrorr7orqHlu7rorq7ljLrliIbigJzpooTkvLDvvI/lvoXmoLjnrpfvvI/lt7LmoLjnrpfigJ3nmoTliKnmtqbnirbmgIHvvIzmiJDmnKzkuI3pvZDml7bkuI3mjInpm7bnlJ/miJDpq5jliKnmtqbvvJvmiJDkuqTku7fjgIHph4fotK3miJDmnKzjgIHotLnnlKjmm7TmraPkv53nlZnosIPmlbTorrDlvZXjgILnqI7pop3jgIHmnI3liqHotLnjgIHku6PlnqvjgIHov5TliKnlkozllK7lkI7lvbHlk43lpoLkvZXorqHnrpfvvIzopoHlnKjlhbfkvZPmlLbnm4rmqKHlvI/noa7orqTlkI7noa7lrprlhazlvI/vvIzpgb/lhY3ph43lpI3nrpflhaXmiJbmiaPpmaTjgIIKCuacrOeJiOS4jei+k+WHuuWunumZheaUtuasvumineOAgeWunumZheS7mOasvumineOAgeeOsOmHkeWHgOmineOAgeiHquWKqOi0pum+hOaIlueOsOmHkeWIqea2puaKpeihqO+8jOS5n+S4jeW7uuiuvuato+W8j+S8muiuoeaAu+i0puOAguS/neeVmeiuouWNleWSjOWPkeelqOi1hOaWmeWvvOWHuu+8jOS+m+e6v+S4i+e7k+eul+S4juaguOWvueS9v+eUqO+8m+i/meenjei1hOaWmea4heWNleS4jeW6lOS8quijheaIkOW3suaguOWvuei1hOmHkeeahOi0ouWKoeWvuei0puWNleOAggoKIyMjIDcuMTAgQS9C5Lu35qC85qOA5p+l44CB5by65o+Q6YaS5LiO6Ieq5Yqo5oqT5Lu35YCZ6YCJCgoqKuaXouacieimgeaxgu+8mioqIOacieKAnOW3suajgOafpeKAneWKqOS9nOOAgUEvQuS4pOS4quWPr+iHquWumuS5ieWRqOacn+OAgeaPkOmGkuWIl+ihqOS4juaXpeW/l+OAgioq5b2T5YmN5oSP5ZCR77yaQeaLn+m7mOiupDMw5aSp77yMQuaLn+m7mOiupDflpKnvvJvmo4Dmn6XlkI7mnKrmlLnku7fov5vlhaVC77yM5pS55LqG5Lu35qC85YiZ6YeN5paw6L+b5YWlQeOAgioqIOm7mOiupOWAvOWPquaYr+W9k+WJjeaEj+WQke+8jOeUqOaIt+WPr+e7p+e7reiwg+aVtOOAggoK6aaW5qyh6LW3566X5a2Y5Zyo6ZyA6KaB5q2j6Z2i56Gu6K6k55qE5beu5byC77ya5pen6ZyA5rGC5LuO4oCc5LiK5qyh5pS55Lu34oCd6LW3566XQe+8m+acrOi9ruS4vuS+i+S7juKAnOWuouaIt+S7iuWkqemHh+i0reOAgeW3suacieS7t+agvGHigJ3otbfnrpdB44CC5LiN6IO95oqK5Lik6ICF5oKE5oKE5ZCI5bm25Li65ZCM5LiA6KeE5YiZ77yM6KeBUjA244CCCgp8IOaDheWGtSB8IOW9k+WJjeeQhuinoyB8IOWwmuW+heaYjuehriB8CnwtLS18LS0tfC0tLXwKfCDlrqLmiLfph4fotK3lkI7mnInkuIDkuKrku7fmoLwgfCDlj6/og73nlLHmraTmrKHph4fotK3op6blj5FB6K6h5pe2IHwg5oyJ5o+Q5Lqk44CB56Gu6K6k44CB5a6e6ZmF6YeH6LSt6L+Y5piv5YW25LuW5pe26Ze077yb5YaN5qyh6YeH6LSt5Lya5LiN5Lya6YeN572uIHwKfCBB5Yiw5pyfIHwg5by65o+Q6YaS5qOA5p+l77yb5a+56YOo5YiG6ZO+5o6l5Y+v5bCd6K+V6I635b6X5paw5Lu35qC85YCZ6YCJIHwg5Yiw5pyf5a+56LGh5piv5a6i5oi35oiQ5Lqk5Lu344CB5ZWG5ZOB5ZSu5Lu36L+Y5piv5p+Q5p2l5rqQ6YeH6LSt5Lu377yb5oqT5Lu36IO95Yqb5piv5ZCm5Y+v55SoIHwKfCDkurrlt6Xmo4Dmn6Xlubbkv53mjIHljp/ku7cgfCDku47mnKzmrKHmo4Dmn6Xotbfov5vlhaVC5ZGo5pyfIHwgQuWIsOacn+WGjeacquaUueS7t+aYr+WQpue7p+e7rULvvIzmnKzniYjlu7rorq7mmK/nu6fnu61C5L2G5bCa5pyq5pyA57uI56Gu6K6kIHwKfCDkurrlt6XmlLnku7cgfCDku47mnKzmrKHmlLnku7fotbfph43mlrDov5vlhaVB5ZGo5pyfIHwg5pS55ZOq5Liq5Lu35qC85omN566X5pys5a+56LGh5pS55Lu377yb55u45YWz5YW25LuW5a6i5oi35Lu35qC85piv5ZCm5Y+X5b2x5ZONIHwKfCDlrprliLblkajmnJ8gfCDmlK/mjIHoh6rlrprkuYnmmK/lvZPliY3mhI/lkJEgfCDmjInllYblk4HjgIHlrqLmiLfjgIHlrqLmiLfDl+WVhuWTgeaIluS+m+W6lOWVhuadpea6kOWIhuWIq+mFjee9rueahOiMg+WbtOWSjOimhueblumhuuW6jyB8Cgrlu7rorq7mlbDmja7og73lrprkvY3lhazlj7jlrqLmiLfjgIHllYblk4HjgIHlhbfkvZPph4fotK3mnaXmupDlj4rku7fmoLznsbvlnovvvIzliIbliKvkv53lrZjkuIrmrKHph4fotK3jgIHmlLnku7fjgIHmo4Dmn6XjgIHmj5DphpLml7bpl7Tlkozmk43kvZzml6Xlv5fjgILlkI7lj7DigJzlvLrmj5DphpLigJ3lj6/ph4fnlKjphpLnm67lvoXlip7jgIHpgL7mnJ/moIforrDkuI7pnIDlpITnkIbnoa7orqTvvIzkuI3mk4Xoh6rnrYnlkIznn63kv6HovbDngrjjgIHlvLrliLbmlLnku7fmiJbpmLvmlq3orqLljZXjgILmibnph4/mo4Dmn6XjgIHnqI3lkI7mj5DphpLlj4rliIbnsbvkvpvlupTllYbnrZvpgInkv53nlZnkuLrlgJnpgInkuqTkupLvvIzkuI3kvKrpgKDlt7Lmo4Dmn6Xml7bpl7TjgIIKCuW7uuiurueahOaPkOmGkueKtuaAgeWmguS4i++8jOS7heihqOi+vuKAnOaUueS7t+WbnkHjgIHkv53mjIHljp/ku7fov5vlhaVC4oCd55qE5pa55ZCR77yb6aaW5qyh6LW3566X5LqL5Lu25LuN5b6FUjA256Gu6K6k77yM5LiN6KGo56S65q+P5qyh5aSN6LSt6YO95Lya6YeN572u5pe26ZKf44CCCgpgYGBtZXJtYWlkCmZsb3djaGFydCBURAogICAgU1si6aaW5qyh6LW3566X5LqL5Lu25b6F5a6a77yM5oiW5a6e6ZmF5pS55Lu3Il0gLS0+IEFbIuetieW+hUHvvJrmi58zMOWkqSJdCiAgICBBIC0tPiBQWyLliLDmnJ/vvIzlvoXkurrlt6XlpITnkIYiXQogICAgUCAtLT585pS55Lu35bm25L+d5a2YfCBBCiAgICBQIC0tPnznoa7orqTkv53mjIHljp/ku7d8IEJbIuetieW+hULvvJrmi5835aSpIl0KICAgIEIgLS0+IFAKICAgIFAgLS0+fOaKk+S7t+Wksei0peaIluacquWkhOeQhnwgSFsi5L+d5oyB5Yiw5pyf77yM5LiN6YeN572uIl0KICAgIEggLS0+IFAKYGBgCgroh6rliqjmipPku7flpLHotKXjgIHlkI7lj7DmnKrlpITnkIbmiJbku4XmiZPlvIDmn6XnnIvlnYfkuI3oh6rliqjph43nva7mj5DphpLvvJvlkIzku7flpI3otK3kuZ/kuI3lu7rorq7ml6DpmZDpobrlu7bliLDmnJ/ml6XvvIzmnIDnu4jop6blj5Hop4TliJnnlLFSMDbnoa7lrprjgIIKCuS6rOS4nO+8j+a3mOWuneiHquWKqOaKk+S7t+WPquS9nOWAmemAieadpea6kO+8jOacque7j+S6uuW3peaguOWvueS4jeebtOaOpeimhuebluWuouaIt+W3suehruiupOS7t+agvOOAgueOsOmYtuauteS6uuW3peW9leS7t+S4juajgOafpeWNs+WPr+i/kOihjO+8m+WQjue7reWFpempu+S+m+W6lOWVhuaKpeS7t+WQjOatpeS4juWklumDqOW5s+WPsOaKk+S7t+WIhuWIq+ivhOS8sO+8jOS4jeiDveWBh+WumuesrOS4ieaWueaOpeWPo+W8gOaUvuaIlueos+WumuOAggoKIyMjIDcuMTEg5pel5pyf5Y+j5b6E44CB6Leo5pyI57uf6K6h5LiO5p2h5Lu25rGH5oC7CgoqKuaMieW9k+WJjeaEj+WQke+8jOe7j+iQpeaKpeihqOWIneWni+afpeivouiMg+WbtOW7uuiuruS4uuacrOaciDHml6Xoh7PlvZPlpKnvvIzmlK/mjIHoh6rlrprkuYnotbfmraLml6XmnJ/vvIzlubbkv53nlZnlkajjgIHmnIjlv6vmjbfojIPlm7TjgIIqKiDkuI3lkIzkuJrliqHmjInlkIToh6rml6XmnJ/nu5/orqHvvIzmiqXooajmmI7noa7lvZPliY3pgInmi6nnmoTml6XmnJ/lrZfmrrXvvIzkuI3og73nlKjlvIDnpajml6XmnJ/mlLnlhpnkuIvljZXmiJbmlLbotKfmnIjku73jgILmnKrlvIDnpajjgIHnvLrkvpvlupTllYbnpajjgIHlvoXmoLjnrpfjgIHliLDmnJ/mn6Xku7fnrYnlvoXlip7pu5jorqTot6jmnIjmsYfmgLvmnKrlpITnkIbpobnvvIzml7bpl7TnrZvpgInmmK/lj6/pgInmnaHku7bvvIzkuI3pmo/miqXooajmnIjku73oh6rliqjmlLbnqoTjgIIKCnwg5oyH5qCH77yP5YiX6KGoIHwg5pel5pyf5bu66K6uIHwg6L6555WMIHwKfC0tLXwtLS18LS0tfAp8IOS4i+WNlemHj+OAgeiuouWNlemHkeminSB8IOiuouWNleaPkOS6pOaIluehruiupOaXpeacn++8jOmAieaLqeWTquS4gOS4quW+heS4muWKoeacgOe7iOehruWumiB8IOWQjOS4u+iuouWNleiuoeS4gOasoe+8jOS4jeaMieiii+WSjOWMheijuemHjeWkjeiuoeaVsCB8Cnwg6YeH6LSt6YeR6aKd44CB6YeH6LSt5oiQ5pysIHwg5a6e6ZmF6YeH6LSt5Lia5Yqh5pel5pyfIHwg5LiO5L6b5bqU5ZWG5Y+R56Wo5pel5pyf5YiG5byAIHwKfCDphY3pgIHkuI7lrozmiJAgfCDlj5HotKfml6XmnJ/jgIHlrqLmiLflhajpg6jnoa7orqTmlLbotKfml6XmnJ8gfCDorqLljZXlrozmiJDkuI3nrYnlvoXlj5Hnpajlkoznur/kuIvnu5PmuIUgfAp8IOi/m+mUgOWPkeelqCB8IOWQhOWPkeelqOWunumZheW8gOelqOaXpeacn++8m+S4iuS8oOaXpeacn+WPpuWtmCB8IOS4iuS8oOaZmuS6juW8gOelqOaXtuS4jeaUueWPmOelqOaNruWOn+aXpeacnyB8Cnwg5Yip5ram5YiG5p6QIHwg5oyJ5bey56Gu6K6k55qE5Yip5ram5Y+j5b6E5Y+K5b2S5bGe5pel5pyfIHwg5bCa5pyq5Yaz5a6a5oyJ5bGl57qm44CB5qC4566X5oiW57uT5riF5pel5pyf77yb5LiN6IO95pOF6Ieq6YCJ5oupIHwKCuS/neeVmeaMieiuouWNlemHkemineOAgeWIqea2pumYiOWAvOOAgeWuouaIt+OAgeS+m+W6lOWVhu+8j+W5s+WPsOOAgeWVhuWTgeOAgeiuouWNleeKtuaAgeOAgemFjemAgeeKtuaAgeWPiuWPkeelqOeKtuaAgeetm+mAie+8m+e7k+aenOWIl+ihqOS4juaVsOmHj+OAgemHkemineOAgeWIqea2puaxh+aAu+S9v+eUqOWQjOS4gOadoeS7tuOAguaIkOacrOacqum9kOaIluWIqea2puacquehruWumueahOiuouWNleWNleeLrOagh+ivhu+8jOS4jea3t+WFpeKAnOW3suaguOeul+WIqea2pui2hei/h+afkOmHkemineKAneeahOe7k+aenOOAggoK5a6i5oi357u05bqm5L+d55WZ6K6i5Y2V6YeP44CB6ZSA5ZSu6aKd44CB5oiQ5pys5LiO5Yip5ram6LSh54yu77yb5L6b5bqU5ZWG77yP5bmz5Y+w5L+d55WZ6YeH6LSt6YeR6aKd44CB5Y2g5q+U5ZKM5Y6G5Y+y5Lu377yb5ZWG5ZOB5L+d55WZ6ZSA6YeP5LiO5q+b5Yip5YCZ6YCJ5Y+j5b6E44CC5aSN6LSt5YiG5p6Q5Y+v5Zyo5pWw5o2u5YWF6Laz5ZCO5ZCv55So77yM5LiN562J5LqO5o+Q5YmN5byA5pS+6Ieq5Yqo5bi46LSt5riF5Y2V44CC5bqT5a2Y5ZGo6L2s44CB5ZGG5rue5ZKM6K6/6Zeu6L2s5YyW546H5YiG5Yir5Zug5bqT5a2Y5oiW5Z+L54K55pyq5bu66K6+6ICM5pqC57yT44CCCgojIyMgNy4xMiDmnYPpmZDjgIHlrqHorqHjgIHpmYTku7bjgIHlr7zlh7rlkozlpIfku73mgaLlpI0KCuWuouaIt+S4jueuoeeQhuWRmOadg+mZkOmalOemu++8m+WGhemDqOmHh+i0reOAgemUgOWUruOAgeS8muiuoeWtkOi0puWPt+S4uuWPr+mAieaJqeWxle+8jOS4juacquadpeWFrOWPuOWuouaIt+eahOWtkOi0puWPt+acuuWItuWMuuWIq+OAguWVhuWTgeaIkOacrOOAgeWIqea2puOAgemHh+i0readpea6kOOAgeWuouaIt+S7t+agvOWSjOaVj+aEn+mZhOS7tuWIhuWIq+aOiOadg++8jOafpeeci+OAgeS/ruaUueOAgeWvvOWHuuWSjOebtOaOpeS4i+i9vemDvemBteWuiOadg+mZkO+8jOS4jeS7hemdoOiPnOWNlemakOiXj+OAggoK5L+d55WZ5Lu35qC844CB5oiQ5pys44CB6K6i5Y2V44CB5Y+R56Wo57uR5a6a44CB5a6i5oi35rOV5a6a6LWE5paZ44CB55So5oi35ZCN5ZKM54q25oCB5pu05q2j55qE5pON5L2c5pel5b+X77yM5YyF5ous5pON5L2c6ICF44CB5pe26Ze044CB5Y6f5Zug5Y+K5YmN5ZCO5YC844CC5Y6G5Y+y5Y2V5o2u5L+d55WZ5b2T5pe25ZWG5ZOB44CB5Lu35qC85LiO5pS26LSn6LWE5paZ77yM5ZCO6KGl5oiQ5pys5ZKM5Y+R56Wo55So5YWz6IGU5ZKM6LCD5pW06K6w5b2V6L+96Liq77yM5LiN6Z2Z6buY6YeN5YaZ5Y6f5LqL5a6e44CCW1MxM11bUzE0XVtTMTddCgrmlK/mjIHllYblk4HjgIHlrqLmiLfjgIHkvpvlupTllYbjgIHorqLljZXjgIHph4fotK3jgIHlj5HnpajjgIHmiJDmnKzlj4rmiqXooahFeGNlbO+8j0NTVuWvvOWHuu+8m+aKpeS7t+OAgeiuouWNlei1hOaWmeWSjOe7j+iQpea4heWNleWPr+aJk+WNsOOAgumZhOS7tuS/neWtmOWVhuWTgeWbvuOAgemcgOaxguWbvuOAgemHh+i0reWHreaNruOAgeWPkeelqOOAgeetvuaUtuWPiuWUruWQjui1hOaWme+8jOWQiOWQjOmZhOS7tuWQjue7reaJqeWxleOAguezu+e7n+iuvue9ruWMheaLrOe8luWPt+OAgeWNleS9jeWMheijheOAgeW/q+mAkuOAgeiHqumFjemAgeOAgemAmuefpeS4jkEvQuinhOWIme+8m+iHquWumuS5ieS4muWKoeWtl+auteWQjue7reWPr+mAieOAggoK6Ieq5Yqo77yP5omL5Yqo5aSH5Lu96K6w5b2V5pe26Ze044CB5paH5Lu25aSn5bCP44CB57uT5p6c5ZKM5L+d55WZ562W55Wl77yM6K6+6K6h5oGi5aSN5ZKM5oGi5aSN6aqM6K+B77yb5YW35L2T6aKR546H44CB5Lu95pWw5ZKM5L+d5a2Y5L2N572u5L6d6YOo572y56Gu5a6a77yM5LiN54Wn5pCs5oiq5Zu+MjTlsI/ml7blkowz5Lu944CC5a+85Ye65Lia5Yqh6KGo5qC85LiN6IO95pu/5Luj5a6M5pW05Y+v5oGi5aSN5aSH5Lu944CCW1MxNl0KCiMjIOWFq+OAgeWFs+mUruS4muWKoea1geeoi+S4juS4gOiHtOaAp+inhOWImQoKIyMjIDguMSDmma7pgJrph4fotK3lkozpk77mjqXku6Pph4cKCjEuIOWFrOWPuOS4u+i0puWPt+mAieaLqeezu+e7n+WVhuWTge+8jOaIluaPkOS6pOaWh+Wtl+OAgeWbvueJh+OAgeeLrOeri+mTvuaOpeOAgeinhOagvOaVsOmHj+eahOmHh+i0remcgOaxguOAggoyLiDnrqHnkIblkZjmvoTmuIXpnIDmsYLvvIzljLnphY3miJbooaXlhYXllYblk4HmoaPmoYjvvIzmjInpnIDopoHnu5nlh7rkuJPkuJrmiqXku7fvvJvku7fmoLzop4TliJnmnKrnoa7lrprliY3kv53nlZnkurrlt6Xnoa7orqTjgIIKMy4g5a6i5oi35Zyo6LSt54mp6L2m5L+u5pS55ZWG5ZOB5pWw6YeP77yM5bm25oyJ5LiN5ZCM5pS25Lu25Lq65ZKM5Zyw5Z2A5pW055CG6LSt54mp6KKL77yb5LiA5qyh5o+Q5Lqk5b2i5oiQ5LiA5Liq6K6i5Y2V44CCCjQuIOeuoeeQhuWRmOWuieaOkumHh+i0re+8jOWPr+WQkeWkmuWutuS+m+W6lOWVhumHh+i0re+8jOW5tuiusOW9leWunumZheS7t+agvOOAgeaVsOmHj+WSjOaIkOacrOW9kuWxnuOAggo1LiDku6Xlv6vpgJLnianmtYHmiJbllYblrrboh6rphY3pgIHmjInooovlrozmiJDphY3pgIHvvIzlj4zmlrnmn6XnnIvpgILnlKjnmoTnianmtYHlkozkuqTku5jkv6Hmga/jgIIKNi4g5a6i5oi356Gu6K6k5omA5pyJ6LSn54mp5peg6Zeu6aKY77yM6K6i5Y2V5bGl57qm5a6M5oiQ77yb5ZCO57ut5LuN5Y+v6KGl5YWF6L+b6ZSA5Y+R56Wo77yM5a6i5oi35oyJ57qm5a6a6LSm5pyf5Zyo57q/5LiL5LiA5qyh57uT5riF44CCCjcuIOS+neaNruWunumZheS4muWKoeWSjOacgOe7iOmAieWumuWPo+W+hOaVtOeQhuaIkOacrOOAgei0ueeUqOOAgeelqOaNruS4juWIqea2pu+8m+ezu+e7n+S4jeaJp+ihjOi9rOi0puaIlui1hOmHkeaguOmUgOOAggoK5a6i5oi36ZO+5o6l5Luj6YeH5LuF5pS25pyN5Yqh6LS555qE5Lia5Yqh6ZyA6KaB5Y2V54us5qKz55CG5ZWG5ZOB5qy+6LCB5YWI5pSv5LuY44CB5L6b5bqU5ZWG5ZWG5ZOB5Y+R56Wo5oqs5aS05byA57uZ6LCB44CB5Lu35qC85LiO5pyN5Yqh5pS25YWl5aaC5L2V6KGo56S677yb5LiN6IO95oqK5pmu6YCa6YeH6LSt5Lit4oCc5L6b5bqU5ZWG5byA57uZ57uP6JCl6ICF44CB57uP6JCl6ICF57uZ5a6i5oi35byA5LiA56Wo4oCd55qE5rWB56iL5pyq57uP56Gu6K6k5aWX5Yiw57qv5pyN5Yqh6LS55Y2V44CC5a6h5qC45ZCO55qE5ZWG5ZOB5Y+v5Lul6L+b5YWl6YCC5b2T6IyD5Zu055qE57O757uf55uu5b2V77yM5L6b5Y6G5Y+y5pW05Y2V5YaN5qyh5LiL5Y2V44CC5ZCI5ZCM5LiN5oiQ5Li65q+P5qyh5aSN6LSt55qE5YmN572u5p2h5Lu244CCCgojIyMgOC4yIOWkmui0reeJqeiii+OAgemHh+i0reS4juWMheijuQoK5LiA6K6i5Y2V5a+55bqU5LiA5Liq5YWs5Y+457uT566X5Li75L2T77yb5LiA6KKL5a+55bqU5LiA5Liq5pS25Lu257uE77yb5LiA6KKL5Y+v5Lul5YiG5oiQ5aSa5Liq5YyF6KO544CC6YeH6LSt5Y+v5oyJ5L6b5bqU5ZWG5ZKM5pS26LSn57uE5ouG5YiG77yM6ZSA5ZSu5pWw6YeP44CB6YeH6LSt5pWw6YeP44CB5Y+R6LSn5pWw6YeP5ZKM5pS26LSn56Gu6K6k5pWw6YeP5L+d55WZ5a+55bqU5YWz57O744CC5ZCM5Zyw5Z2A6KKL5a2Q5L+d55WZ5ZCN56ew5ZKM55So6YCU77yM5LiN6Ieq5Yqo5ZCI5bm244CCCgrorqLljZXph5Hpop3kuI7orqLljZXmlbDlnKjkuLvljZXlsYLlj6rnrpfkuIDmrKHvvJvmiJDmnKzlkozotLnnlKjmjInlj6/ov73muq/op4TliJnliIbphY3oh7PllYblk4HmiJbooovlrZDlho3msYfmgLvjgILljIXoo7nnlKjkuo7lsaXnuqbvvIzkuI3og73mjInljIXoo7nph43lpI3orqHmlLblhaXjgILmma7pgJrph4fotK3lvZPliY3mjInkuIDorqLljZXkuIDlvKDmnInmlYjplIDpobnlj5HnpajjgIHkuIDnrJTnur/kuIvnu5PmuIXnkIbop6PvvIzkuI3mianlsZXkuLrlkIzljZXlpJrlhazlj7jnu5PnrpfvvJvnuq/mnI3liqHotLnku6Pph4fnmoTnpajmja7lr7nosaHlj6bop4FSMDLjgILmr4/ljZXkuIDmrKHnur/kuIvnu5PmuIXmj4/ov7DkuJrliqHkuaDmg6/vvIzkuI3opoHmsYLns7vnu5/ljLnphY3pk7booYzovazotKbmtYHmsLTjgIIKCiMjIyA4LjMg5bGl57qm44CB5Y+R56Wo5LiO5Y+v6YCJ57uT5riF5qCH6K6wCgp8IOe7tOW6piB8IOacrOeJiOihqOi+viB8IOWFs+ezuyB8CnwtLS18LS0tfC0tLXwKfCDorqLljZXnoa7orqQgfCDlvoXnoa7orqTjgIHlpITnkIbkuK3jgIHlt7Lnoa7orqTmiJblt7Llj5bmtojnrYnvvIzmnIDnu4jlkI3np7DlvoXorr7orqEgfCDku7fmoLzvvI/mlbDph4/lj5jmm7Tkv53nlZnorrDlvZUgfAp8IOWxpee6piB8IOW+hemHh+i0reOAgemHh+i0reS4reOAgemDqOWIhuWPkei0p++8j+aUtui0p+OAgeWuouaIt+WFqOmDqOehruiupOWujOaIkCB8IOWFqOmDqOaUtui0p+ehruiupOWGs+WumuWxpee6puWujOaIkCB8Cnwg6L+b6aG556Wo5o2uIHwg5b6F5Y+W5b6X44CB5bey5LiK5Lyg5b6F5qC45a+544CB5bey57uR5a6a44CB6ZyA5pu05q2j562JIHwg5Y+v5pma5LqO6YeH6LSt5ZKM5pS26LSn77yM5oyJ5ZCE5L6b5bqU5ZWG566h55CGIHwKfCDplIDpobnnpajmja4gfCDlsJrmnKrkuIrkvKDjgIHlvoXmoLjlr7njgIHlvZPliY3mnInmlYjnpajjgIHkvZzlup/vvI/mm7TmjaLljoblj7IgfCDkuI3pmLvmlq3lt7Lnu4/lrozmiJDnmoTlsaXnuqYgfAp8IOiuouWNlee7k+a4heagh+iusCB8ICoq5pyq5Yaz5a6a5piv5ZCm6K6+572uKirvvIzoi6XlkIzmhI/kuZ/lj6rmjInmnIDnu4jpmZDlrprojIPlm7Torr7orqEgfCDkuI3orr7mlLbku5jmrL7mmI7nu4bvvIzkuI3orqnigJzmnKrnu5PmuIXigJ3pmLvmlq3lsaXnuqblrozmiJAgfAp8IOWUruWQjiB8IOeUs+ivt+OAgeWkhOeQhuS4reOAgeW3suWkhOeQhu+8jOWFs+iBlOWOn+WVhuWTgeS4juaVsOmHjyB8IOW3suWujOaIkOiuouWNleS7jeWPr+acieWUruWQjuiusOW9le+8jOaYr+WQpumHjeaWsOW8gOWQr+Wxpee6puW+heWumiB8CgojIyMgOC40IOi3qOaciOWunuS+iwoK55So5oi35o+P6L+w55qE5Zy65pmv5oyJ5Lia5Yqh5LqL5a6e5L+d55WZ77yaMjXml6XkuIvljZXjgIEyNuaXpeW8gOWni+mHh+i0reOAgTI55pel5YWo6YOo6YCB6L6+5bm255Sx5a6i5oi356Gu6K6k77yM5YiZ6K+l5pyIMjnml6XlsZ7kuo7lsaXnuqblrozmiJDml6XmnJ/vvJvkvpvlupTllYblnKjmrKHmnIjlvIDnpajjgIHnlKjmiLfmrKHmnIjnu5nlrqLmiLflvIDnpajvvIznm7jlhbPlj5HnpajorqHlhaXlkIToh6rlrp7pmYXlvIDnpajml6XmnJ/lr7nlupTmnJ/pl7TjgILlrp7pmYXkuIrkvKDml7bpl7Tlj6bnlZnvvIzkuI3lsIbmrKHmnIjnpajmja7lgJLngYzkuLrkuIrmnIjlt7Lnu4/lvIDnpajjgIJbVTNdCgrlrqLmiLflnKjotKbmnJ/lhoXnur/kuIvkuIDmrKHnu5PmuIXvvIzotKbmnJ/nqbbnq5/ku47mlLbotKfjgIHlvIDnpajjgIHotKbljZXml6Xov5jmmK/mnIjnu5PoioLngrnotbfnrpfvvIzku6Xlj4rmmK/lkKbmiornu5PmuIXml6XmnJ/orrDliLDorqLljZXjgIHliKnmtqblpoLkvZXmjInmnIjlvZLlsZ7vvIzku43lvoVSMDHjgIFSMDPjgIFSMDTjgILpu5jorqTigJzmnKzmnIgx5pel6Iez5b2T5aSp4oCd5Y+q5Yaz5a6a5oql6KGo55qE5Yid5aeL5p+l6K+i5Yy66Ze077yM5LiN5Yaz5a6a5omA5pyJ5Lia5Yqh57uf5LiA5L2/55So5ZCM5LiA5Liq5pel5pyf44CCCgrmrKHmnIjlpITnkIblj5Hnpajml7bvvIzigJzlvoXlvIDnpajvvI/nvLrov5vpobnnpajigJ3pmJ/liJfku43lupTliJflh7rkuIrmnIgyOeaXpeWujOaIkOS9huWwmuacquihpeelqOeahOiuouWNle+8m+S4jeiDveWboOm7mOiupOaKpeihqOaXpeacn+WIh+aNouiAjOa8j+WNleOAguaMieaciOeUn+aIkOeahOi0puWNleWmgumcgOS/neeVme+8jOS7heaYr+aMieiuouWNleaxh+aAu+WxleekuuS4muWKoei1hOaWme+8jOW5tuS4jeaKiuWkmuiuouWNleWQiOW5tuW8gOaIkOS4gOW8oOWPkeelqO+8jOS5n+S4jeS7o+ihqOW7uueri+aUtuS7mOasvuaguOmUgOWPsOi0puOAggoKIyMjIDguNSDljoblj7Lku7fmoLzjgIHmipPku7fkuI7moLjnrpcKCuiuouWNleW3suaOpeWPl+eahOWVhuWTgeOAgeaVsOmHj+OAgeWcsOWdgOWSjOS7t+agvOS/oeaBr+S/neeVmeeJiOacrO+8m+WGjeasoeS4i+WNleaYr+aWsOS6pOaYk++8jOacgOe7iOaMieW+heWumueahOeOsOihjOS7t+agvOinhOWImeWkhOeQhuOAgkEvQuajgOafpeWSjOiHquWKqOaKk+S7t+WAmemAieS4jemdmem7mOaUueWGmeW3suaOpeWPl+eahOaKpeS7t+OAgeWOhuWPsuiuouWNleaIluWPkeelqOOAggoK6YeH6LSt5oiQ5pys5ZKM6L+Q5p2C6LS55Y+v5Lul5ZCO6KGl77yM5L2G57y65aSx5LiN5b2T5L2c6Zu277yb5L+u5pS55a6e6ZmF5oiQ5pys5bqU5L+d5a2Y5L6d5o2u5ZKM5b2x5ZON44CC6K6i5Y2V5oiQ5Lqk6aKd44CB5Y+R56Wo6aKd44CB5oiQ5pys5beu6aKd5ZKM546w6YeR5pS25pSv5ZCr5LmJ5LiN5ZCM77yM5LiN6IO955So4oCc5bey5byA56Wo4oCd5oiW4oCc5bey5a6M5oiQ4oCd6Ieq5Yqo6K+B5piO5a6e6ZmF5pS25qy+77yM5Lmf5LiN6IO955So5Y+R56Wo6YeR6aKd55u05o6l5o6o566X546w6YeR5Yip5ram44CCCgojIyDkuZ3jgIHlj4LogIPns7vnu5/kuI7lvZPliY3mhI/lkJHnmoTlhrLnqoHlr7nnhacKCuKAnOecn+ato+WGsueqgeKAneaMh+eFp+aQrOS8mui/neiDjOW9k+WJjeimgeaxguaIluaEj+WQke+8m+KAnOmcgOmAgumFjeKAneaMh+WPguiAg+iDveWKm+mcgOimgeiwg+aVtO+8m+KAnOWPguiAg+acquWxleekuuKAneS7heivtOaYjuacrOi9ruivgeaNruacquimhueblu+8jOS4jeS7o+ihqOernuWTgee8uuWwkeivpeiDveWKm++8m+KAnOWJjeWQjuWPo+W+hOW+heWumuKAneagh+iusOeUqOaIt+S4jeWQjOmYtuauteihqOi/sOWwmumcgOWQiOW5tueahOWcsOaWueOAggoKfCDluo/lj7cgfCDmgKfotKggfCDlj4LogIPmiJbml6fmlrnmoYggfCDlvZPliY3pnIDmsYLvvI/mhI/lkJEgfCDmnKzniYjlpITnkIYgfCDlvoXlrprngrkgfAp8LS0tfC0tLXwtLS18LS0tfC0tLXwtLS18CnwgMDEgfCDnnJ/mraPlhrLnqoEgfCDngavlip7nvZHlrpjmlrnljoblj7LotYTmlpnljIXlkKvmlK/ku5jmj5DnjrDvvJtWMi4w5bu66K6u5pS25LuY5qy+5LiO5qC46ZSAIHwg5LiN6K6+5pS25LuY5qy+44CB54us56uL6LWE6YeR5rWB5rC077yM5LiN5o6l5pSv5LuY572R6ZO2IHwg5L+d55WZ5Lia5Yqh6K6i5Y2V44CB5oiQ5pys5ZKM56Wo5o2u77yM56e76Zmk6LWE6YeR5qih5Z2X77yb5LiN5o2i5ZCN6YeN5bu6IHwgUjAx44CBUjAy44CBUjA0IHwKfCAwMiB8IOmcgOmAgumFjSB8IOWuouaIt+aYk+mAmumHh+i0reivtOaYjuehruiupOWFpeW6k+WinuWKoOW6k+WtmO+8jOacquWxleekuuaYr+WQpuS4uumHh+i0re+8j+WPkei0p+W8uuWItuWJjee9riB8IOWujOaVtOW6k+WtmOaague8k++8jOaUr+aMgeebtOWPke+8j+e7j+aJiyB8IOmHh+i0reOAgeaUtui0p+WSjOmFjemAgeeLrOeri+iusOW9le+8jOW6k+WtmOacquadpeaOpeWFpSB8IOaXoOmcgOmHjemXruW6k+WtmOaague8kyB8CnwgMDMgfCDpnIDpgILphY0gfCDliIborr7llYbmnLrjgIHmiqXku7fjgIHlkIjlkIzjgIHnrb7ljZXlhaXlj6PvvIzmnKror4HmmI7lv4Xpobvkvp3mrKHmiafooYwgfCDmraPlvI/miqXku7fpnIDopoHvvIzlkIjlkIzku4XpooTnlZnvvIzmma7pgJrlpI3otK3nroDljJYgfCDorr7orqHkuJPkuJrmiqXku7fpobXvvJvkuI3lvLrliLbllYbmnLrkuI7lkIjlkIwgfCBEMDHjgIFSMDcgfAp8IDA0IHwg6ZyA6YCC6YWNIHwg54Gr5Yqe572R5LiN5ZCM5YWs5byA6aG16Z2i55qE5Y+v6KeB5Lu35qC8546w6LGh5LiN5LiA6Ie077yM5Y6G5Y+y6LWE5paZ5pyJ5a6i5oi35Lu3IHwg5pys6L2u5Lu35qC85qih5byP57un57ut5b6F5a6aIHwg5YWo5YWl5Y+j57uf5LiA5o6I5p2D77yb5pqC5LiN5YaZ5q275LyY5YWI57qnIHwgRDAxIHwKfCAwNSB8IOecn+ato+WGsueqgSB8IOWPguiAg+i9r+S7tuaUtui0ueS8muWRmOOAgeWNoeWvhua/gOa0uyB8IOW3suimgeaxguW/veeVpeaUtui0ueS9k+ezu++8m+acquadpeacieWHuuWUruezu+e7n+aDs+azlSB8IOS/neeVmeS6p+WTgeaJqeWxleaAnei3r++8jOS4jeiHquihjOW8leWFpeaUtui0ueaOiOadg+aooeWdlyB8IOaXoOmcgOWboOWHuuWUruaEj+WQkeWKoOWFpSB8CnwgMDYgfCDpnIDpgILphY0gfCDnvZHnq5nmnInlupPlrZjlhYXotrPnrZvpgIkgfCDml6DlrozmlbTlupPlrZjjgIHlpJrlpJbpg6jph4fotK0gfCDlsZXnpLrnnJ/lrp7kvpvotKfnoa7orqTmg4XlhrXvvIzkuI3mib/or7rlrp7ml7blj6/llK7mlbAgfCDku7fmoLzkuI7kvpvotKflkYjnjrDlkI7lrpogfAp8IDA3IHwg5Y+C6ICD5pyq5bGV56S6IHwg5Y+C6ICD5ZWG5Z+O57uT566X5LiO5aSa5Zyw5Z2A5pyq5qC46aqMIHwg5LiA5Y2V5aSa6KKL44CB5LiA6KKL5LiA5pS25Lu257uE44CB5ZCM5YWs5Y+457uT566XIHwg5oyJ5Y6f6ZyA5rGC54us56uL5L+d55WZ77yM6K6i5Y2V5pS25YWl5LiO5pWw6YeP5LiN5oyJ6KKL6YeN5aSNIHwgUjA15aSE55CG5pS26LSn56Gu6K6kIHwKfCAwOCB8IOmcgOmAgumFjSB8IOetvuWNleWPsOi0puS4jueJqea1geetvuaUtuWPr+iDveiiq+ebtOaOpeW9k+aIkOWujOaIkCB8IOWuouaIt+WFqOmDqOehruiupOi0p+eJqeaXoOmXrumimOaJjeWxpee6puWujOaIkCB8IOaMieWunumZheWVhuWTgeaVsOmHj+axh+aAu++8jOW5tuWMuuWIhuWuouaIt+ehruiupOS4juW/q+mAkuetvuaUtiB8IFIwNSB8CnwgMDkgfCDnnJ/mraPlhrLnqoEgfCBWMi4w5ZCr5Liq5Lq65a6i5oi344CB5byA5pS+5rOo5YaM44CB5aSa6LSm5Y+35YCZ6YCJIHwg5b2T5YmN5YWs5Y+45a6i5oi344CB5ZCO5Y+w5Y+R5Y+344CB5rOo5YaM5YWz6Zet44CB5a2Q6LSm5Y+35pyq5p2lIHwg6LCD5pW05a6i5oi356uv5ZKM6LSm5Y+36aG16Z2i77yM5L+d55WZ5YWz6Zet5o+Q56S65LiO5pyq5p2l5o6l5Y+jIHwgRDAy44CBRDAz57uG5YyW6LWE5paZ5p2D6ZmQIHwKfCAxMCB8IOWJjeWQjuWPo+W+hOW+heWumiB8IOeUqOaIt+eUqOaUtuasvuWHj+S7mOasvueQhuino+S9o+mHke+8m+ezu+e7n+WPlua2iOi1hOmHkeiusOW9lSB8IOS7jeW4jOacm+e7n+iuoeS4jeWQjOS4muWKoeeahOaUtuebiuWSjOWIqea2piB8IOivtOaYjuaVsOaNruS+neaNrue8uuWPo++8jOS4jeiHquWKqOeUn+aIkOeOsOmHkeWIqea2piB8IFIwMeOAgVIwMuOAgVIwNCB8CnwgMTEgfCDnnJ/mraPlhrLnqoEgfCBWMi4w5bu66K6u6ZSA5ZSu5YiG5om55byA56Wo44CB5aSa56Wo5aSa5Y2VIHwg5b2T5YmN5LiA6ZSA5ZSu6K6i5Y2V5LiA5byg5pyJ5pWI6ZSA6aG556WoIHwg5LiN5ouG5pmu6YCa6ZSA6aG556Wo77yb5Y6G5Y+y5pu05q2j6LWE5paZ5Y+m55WZ77yb5aSa5L6b5bqU5ZWG6L+b6aG554us56uL566h55CGIHwgUjA4IHwKfCAxMiB8IOmcgOmAgumFjSB8IOW3peWNleWQq+W4iOWCheOAgeaKouWNleOAgeetvuWIsCB8IOW9k+WJjeS7o+mHh+S4juiHqumFjemAgSB8IOeUqOiuouWNlemFjemAgeOAgeWUruWQjuW8guW4uO+8m+WujOaVtOWkluWLpOW3peWNleWQjue7rSB8IOS4jeWinuWKoOS4gOacn+WkluWLpOezu+e7nyB8CnwgMTMgfCDpnIDpgILphY0gfCDmnKzlnLDljJblrZjlgqjlj4pOQVPvvI/mnI3liqHlmajnm67lvZXor7TmmI4gfCDlhazlj7jlrqLmiLfpnIDopoHov5znqIvorr/pl64gfCDnvZHpobXorr/pl67jgIHpmYTku7bjgIHlpIfku73mgaLlpI3nu5/kuIDogIPomZEgfCBSMTDpg6jnvbIgfAp8IDE0IHwg5Y+C6ICD5pyq5bGV56S6IHwg5oiq5Zu+5pegQS9C6KeE5YiZ77yb6YCa55+l6K+05piO5L6d6LWW5pe25pWI566h5a62IHwgQS9C5piv5qC45b+D5o+Q6YaSIHwg6Ieq5pyJ5b6F5Yqe5LiO5pel5b+X77yM5LiN5L6d6LWW5pyq6YCJ5a6a55qE5aSW6YOo5o+Q6YaS6L2v5Lu2IHwgUjA2IHwKfCAxNSB8IOmcgOmAgumFjSB8IOeBq+WKnue9keWTgeexu+OAgeS/g+mUgOOAgeWTgeeJjOS4juW5s+WPsOinhOaooei+g+WkpyB8IOebruW9lee8k+aFouS4sOWvjOOAgeW4uOi0reW+heaIkOeGnyB8IOS8mOWFiOmcgOaxguaPkOS6pOOAgeWVhuWTgee7tOaKpOOAgeaKpeS7t+WSjOaVtOWNleWkjei0re+8jOW4uOi0reWQjue7rSB8IOS4jeWGjei/vemXruW9k+WJjeW4uOi0remYiOWAvCB8CnwgMTYgfCDliY3lkI7lj6PlvoTlvoXlrpogfCDml6dB5LuO5pS55Lu36LW3566X77yb5pys6L2u5LuO5a6i5oi36YeH6LSt5bey5pyJ5Lu35qC85Li+5L6LIHwg5oufQTMw77yPQjfvvIzmnKrmlLnku7fov5tC44CB5pS55Lu35ZueQSB8IOW5tuWIl+WRiOeOsO+8jOS4jeaChOaChOWQiOW5tuiuoeaXtuinhOWImSB8IFIwNiB8CnwgMTcgfCDlj4LogIPmnKrlsZXnpLogfCDlhoXpg6jkuJrliqHlkZjop5LoibLkuI3nrYnkuo7ku6Pph4fkvaPph5Hlip/og70gfCDnlKjmiLfnu4/okKXmlLbnm4rlkozpk77mjqXku6Pph4fmnI3liqHotLkgfCDkvaPph5HkuI3nrYnlkIzlkZjlt6Xmj5DmiJDvvIzkuI3lpZfkuIDlpZflm7rlrprlhazlvI8gfCBSMDLjgIFSMDQgfAp8IDE4IHwg6ZyA6YCC6YWNIHwg5Y+C6ICD6KeG6KeJ6aOO5qC85ZCE5byCIHwg5p+U5ZKM57qi6Imy44CB546w5Luj5qCH562+5Y+K5oKs5YGc5o+Q56S6IHwg5rK/55So56ys5Y2B56ug5pa55ZCR77yM6Imy5YC85LuN5Li65bu66K6uIHwg5Y+q5b6F5qC356i/5a6a56i/IHwKfCAxOSB8IOWJjeWQjuWPo+W+hOW+heWumiB8IFYyLjDluLjotK3kuIDmnJ/jgIFPQ1LlkI7nu63jgIHkvpvlupTllYbpl6jmiLfmnKrmj5Dlh7ogfCDluLjotK3lu7blkI7vvIzkuIrkvKDor4bliKvlj6/lop7lvLrvvIzkvpvlupTllYbloavmiqXmnKrmnaXpooTnlZkgfCDlkIzmraXmlLnpobXpnaLlnLDlm77jgIHliIbmnJ/lkozpqozmlLbvvIzkv53nlZnmiYvlt6XlhZzlupUgfCDkuI3or6/lhpnkuLrlt7LmjqXlhaUgfAp8IDIwIHwg6ZyA6YCC6YWNIHwg5YWN6LS544CB6K+V55So44CB5p+l6K+i5LiO6K6i6ZiF562J5o6l5Y+j5ZCN5a655piT5re355SoIHwg6ZyA6KaB5a6e6ZmF5p+l5Yiw6aKR546H6ZmQ5Yi25bm25o6n5Yi26LCD55SoIHwg5Lul5a6Y5pa5546w6KGM5p2l5rqQ5YiG5Yir5qC46aqM77yM5LiN5YGH6K6+6ZW/5pyf5YWN6LS55oiW5om56YeP6L2u6K+i5Y+v55SoIHwgUjA56aKE566X5LiO5qih5byPIHwKCiMjIOWNgeOAgeinhuinieS4juS6pOS6kuiuvuiuoeinhOiMgwoKIyMjIDEwLjEg5pei5pyJ5pa55ZCR5LiO5bu66K6u6Imy5p2/CgoqKuaXouacieimgeaxgu+8muS4u+iwg+mHh+eUqOavlOeBq+WKnue9keeojea1heOAgeaflOWSjOeahOe6ouiJsu+8jOS4jeS9v+eUqOato+e6ouaIluWkp+e6ou+8m+eVjOmdoueOsOS7o+OAgeeugOa0ge+8jOW/hemhu+WFt+Wkh+agh+etvumhteOAgeaCrOWBnOmrmOS6ruWSjOaWh+Wtl+aPkOekuuOAgioqCgrku6XkuIvku4XkuLrorr7orqHlu7rorq7vvIzpobvpgJrov4flrp7pmYXpobXpnaLmoLfnqL/noa7lrprvvJvkuI3ku6Pooajlt7Llj5blvpfngavlip7nvZHnsr7noa7oibLlgLzmiJblt7LlrozmiJDoibLlt67mtYvph4/jgIIKCnwg55So6YCUIHwg5bu66K6u6aKc6ImyIHwg5L2/55So5pa55byPIHwKfC0tLXwtLS18LS0tfAp8IOWTgeeJjOS4u+iJsiB8IGAjRDk2ODcyYCB8IOWTgeeJjOagh+iusOOAgeWwkemHj+ijhemlsOW8uuiwg+OAgemAieS4reaMh+ekuu+8m+S4jeebtOaOpeeUqOS6juaJv+i9veWwj+WPt+eZveWtlyB8Cnwg5Li76KaB5oyJ6ZKuIHwgYCNDNDQ3NTdgIHwg5L+d5a2Y44CB5o+Q5Lqk44CB56Gu6K6k562J5Li75pON5L2c77yM6YeH55So5q+U5ZOB54mM6Imy56iN5rex55qE57qi6Imy5L+d6K+B5paH5a2X5riF5pmwIHwKfCDkuLvmjInpkq7mgqzlgZwgfCBgI0I2NDA0RWAgfCDnqI3liqDmt7Hlj43ppojvvIzkv53mjIHmn5TlkozmlbTkvZPop4LmhJ8gfAp8IOa1hemAieS4reiDjOaZryB8IGAjRkZGMUYyYCB8IOW9k+WJjeagh+etvuOAgemAieS4reWMuuWfn+OAgei9u+aPkOekuiB8Cnwg6aG16Z2i5LiO5Y2h54mHIHwg5Lit5oCn5rWF54Gw5bqV44CB55m96Imy5Y2h54mH44CB57uG6L655qGGIHwg55So55WZ55m95ZKM5YiG5Yy657uE57uH5L+h5oGv77yM5YeP5bCR5ruh5bGP6Imy5Z2XIHwKfCDmraPmlocgfCDmt7HngbDmloflrZfvvIzmrKHopoHkv6Hmga/nlKjovoPmtYXkuK3mgKfngbAgfCDph5Hpop3jgIHnirbmgIHjgIHovoXliqnor7TmmI7lvaLmiJDmmI7noa7lsYLnuqcgfAoK6YG/5YWN5aSn5Z2X5ruh57qi44CB5b2p6Jm55aSa6Imy5qCH562+5Y+K6L+H6YeN6Zi05b2x44CC5ZOB54mM57qi5LiO5Yig6Zmk562J5Y2x6Zmp5Yqo5L2c6YeH55So5LiN5ZCM55qE5paH5qGI44CB5Zu+5qCH5ZKM56Gu6K6k5o+Q56S677yb6aKc6Imy5LiN6IO95piv5Yik5pat54q25oCB55qE5ZSv5LiA57q/57Si44CC57K+56Gu6Imy5YC844CB5a2X5L2T5ZKM57uE5Lu25bqT5LuN5b6F6K6+6K6h5a6a56i/77yM5LiN5YaN5qyh6KaB5rGC55So5oi356Gu6K6k5bey57uP5piO56Gu55qE57qi6Imy5pa55ZCR44CCCgojIyMgMTAuMiDmoIfnrb7pobUKCi0gKirlr7zoiKrlpJrmoIfnrb7pobXvvJoqKiDlkI7lj7Dlj6/lkIzml7bmiZPlvIDlrqLmiLfjgIHorqLljZXjgIHph4fotK3jgIHlj5HnpajnrYnlt6XkvZzpobXvvIzmlrnkvr/mnaXlm57moLjlr7nvvJvmoIfnrb7mlK/mjIHliIfmjaLjgIHlhbPpl63lj4rmmI7noa7nmoTlvZPliY3mgIHjgIIKLSAqKueKtuaAgeetm+mAieagh+etvu+8mioqIOWIl+ihqOWGheKAnOWFqOmDqOOAgeW+heehruiupOOAgeW+heWPkei0p+KAneetieeUqOS6juetm+mAieW9k+WJjeWIl+ihqO+8jOS4jeiDveS4juaJk+W8gOW3peS9nOmhteeahOagh+etvua3t+a3huOAggotIOWIh+aNouaIlui/lOWbnuW3suaJk+W8gOmhteaXtu+8jOWwvemHj+S/neeVmeetm+mAieOAgeWIhumhteOAgeihqOagvOa7muWKqOS9jee9ruWSjOW3suWxleW8gOivpuaDhe+8m+S/neeVmeiMg+WbtOWxnuS6juWFt+S9k+S6pOS6kuiuvuiuoeOAggotIOWFs+mXreWQq+acquS/neWtmOe8lui+keeahOmhtemdouaXtuaPkOekuuS/neWtmOaIluaUvuW8g++8jOmBv+WFjeaVsOaNruS4ouWkse+8m+mVv+agh+mimOWPr+aIquaWreW5tuaPkOekuuWujOaVtOWQjeensOOAggotIOaJi+acuuerr+mHh+eUqOWPr+a7muWKqOagh+etvuaIlumAguW9k+eugOWMlu+8jOS/neaMgeW9k+WJjemhteWSjOi/lOWbnui3r+W+hOa4healmu+8jOS4jeeFp+aQrOahjOmdouWuveihqOOAggoKIyMjIDEwLjMg6byg5qCH5oKs5YGc6auY5Lqu5LiO5paH5a2X5o+Q56S6CgrooajmoLzooYzjgIHmjInpkq7jgIHpk77mjqXlkozlj6/mk43kvZzljaHniYflnKjmgqzlgZzml7bovbvlvq7mlLnlj5jog4zmma/jgIHovrnmoYbmiJbmloflrZfoibLvvJvlj43ppojnqLPlrprvvIzkuI3np7vliqjlhoXlrrnjgIHkuI3mlLnlj5jluIPlsYDvvIzkuI3orqnnuq/lsZXnpLrljLrln5/or6/mmL7kuLrlj6/ngrnlh7vjgIIKCuaIquaWreeahOWuouaIt+WQjeOAgeWVhuWTgeinhOagvOOAgeWcsOWdgOOAgeWkh+azqOWSjOWNleaNruWPt+WPr+aCrOWBnOafpeeci+WujOaVtOaWh+Wtl++8m+mHkemineOAgeWIqea2puOAgeeKtuaAgeetieWPr+ino+mHiuiuoeeul+aIluS4muWKoeWQq+S5ieOAguaPkOekuuW6lOaciemAguW9k+W7tui/n+OAgeWPr+WFs+mXreS4lOS4jemBruaMoeato+WcqOaTjeS9nOeahOmHjeimgeWGheWuueOAggoK6YeN6KaB5pON5L2c5ZKM5YWz6ZSu5Lia5Yqh6K+05piO5LiN5b6X5Y+q5a2Y5Zyo5LqO5oKs5rWu5o+Q56S65Lit77ya6ZSu55uY6IGa54Sm5bqU6IO96I635b6X562J5Lu35L+h5oGv77yM5omL5py65Y+v54K55oyJ5p+l55yL77yM5b+F6KaB6K+05piO5ZCM5pe25pS+5Zyo6KGo5Y2V5oiW6K+m5oOF6YeM44CC5Y+q5pi+56S65Zu+5qCH55qE5oyJ6ZKu6ZyA5o+Q5L6b5Y+v55CG6Kej5ZCN56ew44CCCgojIyMgMTAuNCDnjrDku6PlkI7lj7DluIPlsYAKCumHh+eUqOa4heaZsOWvvOiIquOAgeW3peS9nOmhteagh+etvuOAgemhtemdouagh+mimOS4juS4u+aTjeS9nOOAgeetm+mAieWMuuOAgeaVsOaNruWMuuWSjOW/heimgeaxh+aAu+eahOeos+WumuWxgue6p+OAguihqOagvOWvhuW6pue0p+WHkeS9huWPr+ivu++8jOaUr+aMgeWbuuWumuihqOWktO+8j+W/heimgeaTjeS9nOWIl+OAgeWIl+aYvuekuuiuvue9ruOAgeWIhumhteOAgeW3sumAieadoeS7tuWPiua4heepuuetm+mAieOAguihqOagvOmHkemineWvuem9kO+8jOWNleS9jeS4gOiHtO+8jOmAieS4reihjOS4juaCrOWBnOihjOWPr+WMuuWIhuOAggoK6K+m5oOF5Y+v5L2/55So5oq95bGJ5oiW6K+m5oOF6aG177yM5rGH6ZuG5Z+65pys6LWE5paZ44CB5YWz6IGU5Y2V5o2u44CB6ZmE5Lu25ZKM5pON5L2c5pe26Ze057q/44CC57yW6L6R6KGo5Y2V5YiG57uE77yM5piO56Gu5b+F5aGr44CB5L+d5a2Y57uT5p6c5LiO5a2X5q616ZSZ6K+v44CC5omA5pyJ6aG16Z2i6K6+6K6h56m65pWw5o2u44CB5Yqg6L2944CB6ZSZ6K+v44CB5peg5p2D6ZmQ44CB6YOo5YiG5pWw5o2u5LiN5Y+v55So562J54q25oCB77yb5om56YeP5pON5L2c5pi+56S65b2x5ZON5p2h5pWw44CCCgojIyMgMTAuNSDlrqLmiLfnq6/kuI7lk43lupTlvI8KCuWuouaIt+err+S8mOWFiOWRiOeOsOaQnOe0ouOAgemHh+i0remcgOaxguOAgeS4k+S4muaKpeS7t+OAgemHh+i0rea4heWNleOAgeWkmui0reeJqeiii+WSjOiuouWNleeJqea1ge+8m+iHquWKqOW4uOi0rea4heWNleaMieW9k+WJjeaEj+WQkeW7tuWQju+8jOS4jeWcqOS4gOacn+WNoOaNruS4u+WvvOiIquOAguS/g+mUgOWbvuWSjOiQpemUgOWMuuWfn+WFi+WItu+8jOmBv+WFjeaMpOWNoOmHh+i0reaTjeS9nOOAgueUteiEkemAguWQiOaJuemHj+mAiei0reWSjOWkmuiii+aguOWvue+8jOaJi+acuumAguWQiOaJvui0p+OAgeaUueaVsOmHj+OAgeafpeiuouWNleWPiueJqea1geOAguWQjuWPsOaJi+acuuerr+S/neeVmeiuouWNleehruiupOOAgeW9leWNleWPt+OAgeafpeeci+W+heWKnuS4juamguiniOetiemrmOmikeaTjeS9nO+8jOWkjeadguaKpeihqOWPr+mHh+eUqOeugOWMluinhuWbvuOAggoKIyMjIDEwLjYg5pys6L2u5paw5aKe6aG16Z2i55qE5Lqk5LqS6KaB5rGCCgrms6jlhozlhbPpl63pobXmuIXmpZrop6Pph4rlvZPliY3pnIDogZTns7vnrqHnkIblkZjlvIDpgJrotKblj7fvvJvotKblj7fotYTmlpnljLrlsIbigJzlj6/nvJbovpHigJ3kuI7igJzpnIDnrqHnkIblkZjnuqDplJnigJ3nmoTlhazlj7jms5XlrprotYTmlpnliIblvIDjgILmnKrmnaXlrZDotKblj7fmnaXmupDlupTlnKjkuLvotKblj7flrqHmoLjljLrlj4rmraPlvI/kuJrliqHor6bmg4XkuK3phpLnm67moIfms6jjgIIKCumHh+i0remcgOaxguihqOaKiuaWh+Wtl+OAgeWbvueJh+OAgemTvuaOpeOAgeinhOagvOOAgeaVsOmHj+WIhue7hO+8jOaWh+Wtl+ahhumZhOi/keW4uOmpu+Whq+WGmeaPkOekuu+8jOaUtui0p+WcsOWdgOagh+S4uuS4i+WNlemYtuauteWhq+WGme+8jOmBv+WFjeWuouaIt+ivr+S7peS4uuavj+asoeWVhuWTgemcgOaxgumDveimgeWFiOehruiupOaUtuS7tuS6uuOAggoK5oql5Lu36aG16YeH55So5pW05rSB55qE5ZWG5ZOB5Zu+5paH44CB5pWw6YeP5Lu35qC85ZKM5ZCI6K6h5bGC57qn77yM5ZWG5ZOB54K55Ye75Yiw57O757uf5YaF6aG16Z2i77yb5LiN5oqK6YeH6LSt5p2l5rqQ5ZKM5YaF6YOo5oiQ5pys5re35YWl5a6i5oi35bGV56S644CC5oql5Lu35YWs5byA6ZO+5o6l5piv5ZCm5YWN55m75b2V6K6/6Zeu5LuN5b6F5a6a77yM4oCc5YWs5byA6ZO+5o6l4oCd55qE5paH5qGI5LiN6IO95o+Q5YmN5Luj6KGo5omA5pyJ5Lq66YO96IO955yL5Yiw5a6i5oi35LiT5bGe5oql5Lu344CCCgrorqLljZXor6bmg4XmiorigJzlsaXnuqblrozmiJDigJ3lkozigJzlj5HnpajlsJrmnKrkuIrkvKDigJ3lkIzml7bmuIXmpZrmmL7npLrvvJvmnKrnoa7lrprmmK/lkKblkK/nlKjnmoTnu5PmuIXmoIforrDkuI3mj5DliY3kvZzkuLrlrozmiJDov5vluqbpl6jmp5vjgILnianmtYHlpITmj5DkvpvigJzllYblrrboh6rphY3pgIHigJ3lv6vmjbfpgInpobnvvIzpgInkuK3lkI7pmpDol4/kuI3pgILnlKjnmoTlv6vpgJLljZXlj7flv4XloavopoHmsYLjgIIKCiMjIOWNgeS4gOOAgeW9k+WJjeWIhuacn+W7uuiuruS4juWPr+ivhOWuoemqjOaUtuWcuuaZrwoKIyMjIDExLjEg5LiA5pyf5LiO5ZCO57ut6IyD5Zu0Cgrku6XkuIvmmK/mjInlvZPliY3mhI/lkJHlvaLmiJDnmoTlrp7mlr3lu7rorq7vvIzkuI3mmK/mnIDnu4jmjpLmnJ/jgILnm7jovoNWMi4w77yMKirmlbTljZXlpI3otK3jgIHlpJrotK3nianooovjgIFBL0Lmj5DphpLkuI7lj4znq6/nianmtYHku43kuLrkuIDmnJ/moLjlv4PvvJvoh6rliqjluLjotK3muIXljZXmlLnkuLrlkI7nu63vvIzkuI3lho3kvZzkuLrkuIDmnJ/lrozmiJDmnaHku7bjgIIqKgoKfCDpmLbmrrUgfCDlu7rorq7ojIPlm7QgfAp8LS0tfC0tLXwKfCDkuIDmnJ9B77ya5Z+656GA5LiO6YeH6LSt5YWl5Y+jIHwg5YWs5Y+45Li76LSm5Y+344CB5ZCO5Y+w5Y+R5Y+344CB5rOo5YaM5YWz6Zet5o+Q56S644CB5Y+v57yW6L6R6LWE5paZ44CB5ZWG5ZOB5ZKM5L6b5bqU5ZWG44CB6YeH6LSt6ZyA5rGC44CB6LSt54mp6L2m5Y+K5aSa6KKL44CB5Zyw5Z2A44CB6ZSA5ZSu6K6i5Y2VIHwKfCDkuIDmnJ9C77ya5omn6KGM5LiO6LWE5paZIHwg5LiT5Lia5oql5Lu36aG144CB5a6e6ZmF6YeH6LSt5Y+K5oiQ5pys44CB5b+r6YCS77yP5ZWG5a626Ieq6YWN6YCB44CB5pS26LSn56Gu6K6k44CB6L+b6ZSA5Y+R56Wo5LiK5Lyg5LiO5Lq65bel57uR5a6a44CB6Leo5pyI57uf6K6hIHwKfCDkuIDmnJ9D77ya5pWI546H5LiO5Lqk5LuYIHwg5pW05Y2V5YaN5qyh5LiL5Y2V44CBQS9C5b6F5Yqe44CB562b6YCJ5rGH5oC75LiO5a+85Ye644CB5p2D6ZmQ5a6h6K6h44CB5aSH5Lu95oGi5aSN44CB5p+U5ZKM57qi6Imy546w5LujVUnkuI7miYvmnLrpgILphY0gfAp8IOS4gOacn+adoeS7tuWinuW8uiB8IOWPkeelqE9DUuWPiuWNleWPt+ivhuWIq++8jOWPr+eUqOaXtui+heWKqeS6uuW3pe+8m+WFt+S9k+eJqea1geiHquWKqOabtOaWsOaMieWumOaWueS6p+WTgeS4jumihOeul+mAieWei++8m+WIqea2puWxleekuua3seW6pumhu+WFiOaYjuehruS+neaNriB8Cnwg5pys6L2u5LiN6K6+572uIHwg5Zyo57q/5pSv5LuY44CB5pS25LuY5qy+5pON5L2c44CB54us56uL6LWE6YeR5rWB5rC044CB5qC46ZSA5Y+w6LSm44CB572R6ZO25a+56LSm44CB56iO5Yqh6Ieq5Yqo5byA56Wo77yb6K6i5Y2V57uT5riF5qCH6K6w5LuN5pyq5Yaz5a6aIHwKfCDmmI7noa7lu7blkI7vvI/pooTnlZkgfCDluLjotK3muIXljZXjgIHlvIDmlL7oh6rliqnms6jlhozjgIHlhazlj7jlrZDotKblj7fjgIHlkIjlkIzlrozmlbTmqKHlnZfjgIHkvpvlupTllYblhaXpqbvkuI7otYTmlpnlkIzmraXjgIHlrozmlbTlupPlrZggfAp8IOWQjue7reWPr+mAiSB8IOWkjeadgkNSTe+8j+WFrOa1t+OAgeWklua0vuW3peWNleOAgeiHquWKqOaKk+S7t++8j+ivhuWbvuOAgeiQpemUgOi/lOWIqeOAgeWinuW8uuavlOS7t+eci+adv+OAgeaJueasoeW6j+WIl+WPt++8j+S/neS/ruOAgeiHquWumuS5ieWtl+auteOAgVBXQe+8j+ahjOmdou+8j+emu+e6v+ehrOS7tiB8CgrlupPlrZjpooTnlZnkuI3opoHmsYLlhYjlgZromZrmi5/miaPlh4/vvJvkvpvlupTllYblkIzmraXpooTnlZnkuI3ku6Pooajlt7Lnu4/pqozor4Hku7vkvZXlubPlj7DlvIDmlL7mjqXlj6PvvJvmraPlvI/miqXku7flvZPliY3opoHorr7orqHvvIzlkIjlkIzlvZPliY3lj6rpooTnlZnvvIzkuI3miorkuozogIXkuIDlubblu7blkI7jgIIKCiMjIyAxMS4yIOW9k+WJjeWPr+S7peivhOWuoeeahOmqjOaUtuWcuuaZrwoKfCDlnLrmma8gfCDmnJ/mnJvnu5PmnpzkuI7op4TliJnnirbmgIEgfAp8LS0tfC0tLXwKfCDlhazlj7jotKblj7cgfCDlkI7lj7Dlj5Hlj7fvvIzkuIDlhazlj7jkuLvotKblj7forr/pl67mnKzlhazlj7jotYTmlpnvvJvms6jlhozlhbPpl63pobXmnInmj5DnpLrkuJTkuI3og73mj5DkuqTvvJvotYTmlpnnvJbovpHpmZDliLbmuIXmpZogfAp8IOWFrOWPuOS/oeaBr+e6oOmUmSB8IOWuouaIt+S4jeiDveiHquihjOaUueazleWumu+8j+W8gOelqOWQiOWQjOWQjeensO+8m+euoeeQhuWRmOe6oOato+eVmeeXle+8jOWOhuWPsuWNleaNruS4jeiiq+mdmem7mOaUueWGmSB8Cnwg6YeH6LSt6ZyA5rGCIHwg5Y+v5o+Q5Lqk5paH5a2X5Zu+6ZO+5o6l6KeE5qC85pWw6YeP77yM6ZO+5o6l54us56uL5a2X5q6177yM5Zyw5Z2A5LiN5b+F5aGr77yb6LWE5paZ5a6h5qC45ZCO5YaN6L+b5YWl6YCC5b2T5ZWG5ZOB55uu5b2VIHwKfCDkuJPkuJrmiqXku7cgfCDlsZXnpLrmoIfpopjjgIHmloflrZfjgIHkuLvlm77jgIHns7vnu5/llYblk4Hpk77mjqXjgIHmlbDph4/lj4rku7fmoLzvvJvlrqLmiLfmnYPpmZDkuI7mnInmlYjmnJ/mjInmnIDnu4jop4TliJnooaXpvZAgfAp8IOWkmui0reeJqeiiiyB8IOWQjOS4gOiuouWNleS4jeWQjOaUtuS7tue7hOOAgeWVhuWTgeWSjOaVsOmHj+WvueW6lOato+ehru+8m+WQjOWcsOWdgOiii+S4jeiHquWKqOWQiOW5tu+8m+mHkemineWSjOiuouWNleaVsOS4jemHjeWkjSB8Cnwg5pW05Y2V5aSN6LStIHwg6L+U5Zue6LSt54mp6L2m5Y+v5pS55pWw6YeP5Yig5ZWG5ZOB5Y+K5qC45a+55Zyw5Z2A77yM5LiN5bim5YWl5pen6YeH6LSt44CB5Y+R56Wo5ZKM5pS26LSn54q25oCBIHwKfCDlhajpg6jmlLbotKflrozmiJAgfCDlhajpg6jotKfnianmjInmnIDnu4jnoa7orqTmnLrliLbnoa7orqTlkI7lrozmiJDvvJvmnKrlvIDnpajjgIHmnKrnu5PmuIXkuI3pmLvmlq3vvJvlv6vpgJLpppbljIXnrb7mlLbkuI3or6/liKTmlbTljZUgfAp8IOWPkeelqCB8IOS4gOWNleS4gOW8oOW9k+WJjeacieaViOmUgOmhueelqO+8m+WkmuS+m+W6lOWVhui/m+elqOWIhuWIq+e7keWumu+8m09DUuWksei0peWPr+aJi+Whq++8jOWAmemAieS/oeaBr+WSjOe7keWumue7j+S6uuW3peaguOWvuSB8Cnwg6Leo5pyI57uf6K6hIHwg5LiL5Y2V44CB6YeH6LSt44CB5a6M5oiQ44CB5byA56Wo5L2/55So5ZCE6Ieq5pel5pyf77yb6buY6K6k5pys5pyIMeaXpeiHs+W9k+WkqeWPr+aUue+8m+S4iuS8oOaXtumXtOS4jeabv+S7o+W8gOelqOaXpeacnyB8Cnwg5Lu35qC85o+Q6YaSIHwgQTMw77yPQjfkvZzkuLrmi5/pu5jorqTlj6/mlLnvvIzmnKrmlLnku7fov5vlhaVC44CB5pS55Lu35ZueQe+8m+mmluasoei1t+eul+WSjOS9nOeUqOWvueixoeW+hVIwNuWQjuihpem9kOmqjOaUtiB8Cnwg5oiQ5pys5Yip5ramIHwg5oiQ5pys57y65aSx5qCH5b6F5qC4566X77yM5LiN5oyJ6Zu26Jma5aKe5Yip5ram77yb5peg6LWE6YeR5pWw5o2u5LiN5aOw56ew6K6h566X5a6e6ZmF5pS25LuY5oiW546w6YeR5Yip5ramIHwKfCDml6DotYTph5HmqKHlnZcgfCDkuI3lh7rnjrDmlLbku5jmrL7ljZXjgIHotYTph5HmtYHmsLTjgIHmoLjplIDmiJbnvZHpk7blr7notKbvvJvlj6/pgInorqLljZXnu5PmuIXmoIforrDmnKrnu4/noa7lrprkuI3mj5DliY3lrp7njrAgfAp8IOWPjOerr+eJqea1geS4juiHqumAgSB8IOafpeivoue7k+aenOacieaXtumXtOS4jumUmeivr+aPkOekuu+8m+aJi+mAieW/q+mAkuWFnOW6le+8m+WVhuWutuiHqumFjemAgeaXoOmcgOWNleWPt++8m+mikeeOh+aMieacgOe7iOWumOaWueaWueahiOaOp+WItiB8Cnwg6YCa55SoVUnkuI7mlbDmja4gfCDnjrDku6PmoIfnrb7jgIHovbvmgqzlgZzjgIHlrozmlbTmloflrZfmj5DnpLrjgIHmiYvmnLrlj6/nlKjvvJvmnYPpmZDjgIHlr7zlh7rjgIHlrqHorqHjgIHlpIfku73lkozmgaLlpI3lj6/pqozor4EgfAoK5bi46LSt44CB5a2Q6LSm5Y+344CB5L6b5bqU5ZWG5YWl6am744CB5ZCI5ZCM5a6M5pW05Yqf6IO95LiN5L2c5Li65b2T5YmN5LiA5pyf6aqM5pS26aG555uu77yM5b6F5ZCO57ut6YeN5paw5ZCv55So5pe25YaN5b2i5oiQ6K+m57uG6aqM5pS25p2h5Lu244CCCgojIyDljYHkuozjgIHml6fpl67popjnrZTlpI3ov73ouKrkuI7mlrDkuIDova7lvoXlrprpl67popgKCiMjIyAxMi4xIFYyLjDnmoRRMDHigJRRMTDnrZTlpI3ov73ouKoKCuS4i+ihqOiusOW9leeUqOaIt+W3sue7j+S9nOetlOeahOWGheWuue+8jOS4jeS7o+ihqOaKiuiuvuiuoeaEj+WQkeWNh+e6p+S4uuacgOe7iOaWueahiOOAguaXp1HnvJblj7fnlKjkuo7ov73ouKrvvIzmnKzova7pgZfnlZnpl67popjkvb/nlKhS57yW5Y+344CCCgp8IOaXp+e8luWPtyB8IOeUqOaIt+acrOi9ruWbnuetlOimgeeCuSB8IOacrOeJiOWkhOeQhiB8IOWwmuacquino+WGs+eahOmDqOWIhiB8CnwtLS18LS0tfC0tLXwtLS18CnwgUTAxIOaUtuebiuS4juWIqea2piB8IOe6v+S4i+WFrOWvueWFrO+8jOezu+e7n+S4jemcgOimgeaUtuS7mOasvu+8m+aciemHh+i0reWQjuaMiei0puacn+e7k+eul++8jOS5n+acieWuouaIt+e7memTvuaOpeWPquaUtuacjeWKoei0ue+8m+WIqea2puaWueW8j+WPr+iDveS4jeWQjO+8m+m7mOiupOacrOaciDHml6Xoh7PlvZPlpKnlj6/oh6rlrpogfCDnp7vpmaTni6znq4votYTph5HmqKHlnZfvvIzkv53nlZnmiJDmnKzlkozotYTmlpnvvJvliIbliKvlkYjnjrDmlLbnm4rmqKHlvI/kuI7mlbDmja7kvp3mja7nvLrlj6MgfCBSMDHjgIFSMDLjgIFSMDTvvJvkuI3og73oh6rliqjmiorigJzmlLbmrL7lh4/ku5jmrL7igJ3lj5jmiJDml6DotYTph5HmnaXmupDnmoTlt7Llrp7njrDliKnmtqYgfAp8IFEwMiDku7fmoLwgfCDkuJrliqHlsJrkuI3mmI7noa7vvIzku7fmoLzlvoXlrprvvIzlhYjorrDlvZUgfCDkuI3lhpnmrbvlrqLmiLfku7fvvI/ljY/orq7ku7fnrYnkvJjlhYjnuqfvvIzkv53nlZnlvoXmiqXku7flkoznm7jlhbPorr7orqHkvY3nva4gfCBEMDHvvIzlkI7nu63kuJrliqHmmI7noa7lho3lhrPlrpogfAp8IFEwMyDotKblj7cgfCDoh6rliqnms6jlhozpooTnlZnkvYblhbPpl63lubbmj5DnpLrvvJvlkI7lj7Dlj5Hlj7fvvJvlrqLmiLfmlLnlhYHorrjotYTmlpnvvJvnlKjmiLflkI3mr4/lubTkuIDmrKHvvJvlhazlj7jlkI3lm7rlrprvvJvlrZDotKblj7fmnKrmnaXkuLvotKblj7flrqHmoLjmj5DkuqTlubbmoIfmnaXmupAgfCDph43lhpnotKblj7flkozmnYPpmZDvvIzlvZPliY3lhazlj7jkuIDkuLvotKblj7fvvJvmnKrmnaXlrqHmoLjmnLrliLbmmI7noa7pooTnlZkgfCBEMDLjgIFEMDPnmoTlubTpmZDjgIHlj6/mlLnlrZfmrrXlkoznuqDplJnnu4boioIgfAp8IFEwNCDlj5Hnpajot6jmnIggfCDmlLbotKfnoa7orqTljbPorqLljZXlrozmiJDvvJvkvpvlupTllYblpJrvvIzlvIDnpajlkozph4fotK3lj5HotKflj6/ot6jmnIjvvJvkuIrkvKDlj5HnpajluIzmnJvoh6rliqjor4bliKvvvIzkuI3ooYzmiYvloavvvJvplIDllK7kuIDljZXkuIDnpaggfCDljLrliIblsaXnuqblrozmiJDlkoznpajmja7vvIzkuIrkvKDor4bliKvvvIvkurrlt6XmoLjlr7nvvIzplIDpobnkuIDlvKDmnInmlYjnpajvvIzov5vpobnlpJrmnaXmupAgfCBSMDjlhbPogZTlkozmm7TmraPkvovlpJbvvJvliKnmtqbml6XmnJ/op4FSMDTvvIzotKbmnJ/otbfngrnop4FSMDMgfAp8IFEwNSDph4fotK3ku7fkuI5BL0IgfCDliY3mnJ/oh6rlt7HloavvvIzkvpvlupTllYbmnKrmnaXlj6/mj5DkuqTmiJbku6PloavvvJvmi59BMzAvQjflj6/mjInlrqLmiLfllYblk4Hoh6rlrprvvJvph4fotK3mnInku7flkI5B5o+Q6YaS77yP5oqT5Lu377yM5pyq5pS55Lu3QuOAgeaUueS7t0EgfCDkvpvlupTllYbmjqXlj6PmnKrmnaXpooTnlZnvvJvlrozmlbTliJflh7rorqHml7bnirbmgIHlkozlr7nosaHvvJvmipPku7fkvZzlgJnpgIkgfCBSMDbpppbmrKHotbfnrpfjgIHph43lpI3ph4fotK3jgIHmo4Dmn6Xlr7nosaHkuI7opobnm5bpobrluo8gfAp8IFEwNiDlpJrooovkuI7lrozmiJAgfCDkuIDooovkuIDmlLbku7bnu4TvvIzlkIzorqLljZXlkITlnLDkuI3lkIzllYblk4HmlbDph4/vvJvlhajpg6jmlLbliLDnoa7orqTlrozmiJDvvJvlkI7ooaXlj5HnpajvvJvlkIzljZXlrqLmiLfkuIDmrKHnu5PmuIUgfCDkuIDljZXlpJrooovjgIHlkIzlhazlj7jkuLvkvZPvvIzmjInmlbDph4/msYfmgLvvvJvmnKrlvIDnpajmnKrnu5PmuIXkuI3pmLvmlq3lrozmiJAgfCBSMDXosIHnoa7orqTjgIHpg6jliIblvILluLjlj4rllK7lkI7vvJvnu5PmuIXmoIforrBSMDEgfAp8IFEwNyDluLjotK0gfCDns7vnu5/miJDnhp/nqLPlrprlkI7lho3lkJHlrqLmiLflsZXnpLogfCDosIPmlbTkuLrlkI7nu63lvoXlip7vvIznp7vlh7rkuIDmnJ/lr7zoiKrlkozpqozmlLYgfCDkuI3nu6fnu63ov73pl67lvZPliY3luLjotK3pmIjlgLwgfAp8IFEwOCDph4fotK3pnIDmsYIgfCDmloflrZflm77niYfpk77mjqXop4TmoLzmlbDph4/vvJvpk77mjqXljZXliJfvvJvlnLDlnYDlj6/kuI3luKbvvJvmloflrZfmoYbpmYTov5Hnu5nmj5DnpLogfCDnurPlhaXlrqLmiLfpnIDmsYLooajlj4rllYblk4Hnm67lvZXmuJDov5vmtYHnqIsgfCBSMDfkuIrmnrblj6/op4HojIPlm7TkuI7mjojmnYPovrnnlYwgfAp8IFEwOSDmiqXku7flkIjlkIwgfCDnjrDmnInlkIjlkIzlsJHvvIzogIPomZHlrozmlbTns7vnu5/lj4rlh7rllK7opoHnlZnmjqXlj6PvvJvmraPlvI/miqXku7fopoHmjqjpgIHlubbkuJPkuJrlsZXnpLrvvIzkvb/nlKjns7vnu5/llYblk4Hpk77mjqUgfCDmiqXku7fov5vlhaXlvZPliY3orr7orqHvvIzlkIjlkIzpooTnlZnvvJvkuI3liqDmlLbotLnkvJrlkZjljaHlr4YgfCBSMDfpk77mjqXlhazlvIDojIPlm7TvvJtEMDTpgJrnn6XkuI7mjqXlj5fmiqXku7fmlrnlvI8gfAp8IFExMCDnianmtYEgfCDloavljZXlj7fvvIzlsL3lj6/og73or4bliKvvvIzkuI3og73liJnmiYvpgInvvJvmn6XlrpjmlrnlhY3otLlBUEnpmZDliLblj4rpopHnjofvvJvopoHoh6rphY3pgIHlv6vmjbfpgInpobkgfCDljZXlj7for4bliKvlgJnpgInjgIHmiYvpgInlhZzlupXjgIHlrpjmlrnpgInlnovvvJvmjqjojZDigJzllYblrrboh6rphY3pgIHigJ0gfCBSMDnlrp7pmYXmjqXlj6PmqKHlvI/kuI7pooTnrpfvvIxSMTDlj4pEMDXmtonlj4rpg6jnvbLmlrnlkJHvvJvkuI3njJzlhY3otLnpop3luqYgfAoKIyMjIDEyLjIg5paw5LiA6L2u6ZyA6KaB6K6o6K6655qE6Zeu6aKY77yIUjAx4oCUUjEw77yJCgrkuIvliJfpl67popjogZrnhKbku43mnInlhrLnqoHmiJbnvLrlsJHkvp3mja7nmoTpg6jliIbvvIzlnYfmnKrmnIDnu4jlrprnqL/jgILoh6rliqjluLjotK3lt7Lnu4/lu7blkI7jgIHms6jlhozmmoLlhbPjgIHlkIjlkIzlj4rkvpvlupTllYblkIzmraXpooTnlZnnrYnkuI3ph43lpI3or6Lpl67vvJvku7fmoLzkuJrliqHop4TliJnnu6fnu63orrDkuLrlvoXlrprkuJPpopjvvIzkuI3lvLrov6vmnKzova7kuIDmrKHlrprlrozjgIIKCnwg57yW5Y+3IHwg6ZyA6KaB6L+b5LiA5q2l55CG5riF55qE6Zeu6aKYIHwg5bu66K6u77yP6K6o6K666LW354K577yM5Z2H5pyq5a6a56i/IHwKfC0tLXwtLS18LS0tfAp8IFIwMSB8IOaYr+WQpuaOpeWPl+S7heWcqOiuouWNleS4iuaJi+W3peagh+iusOKAnOacque7k+a4he+8j+W3sue7k+a4heKAneWPiue7k+a4heaXpeacn++8n+i/mOaYr+ezu+e7n+WujOWFqOS4jeiusOW9lee7k+a4he+8nyB8IOW7uuiuruS/neeVmeaegeeugOeKtuaAgeOAgeS6uuW3peehruiupOaXpeacn+WPiuWPr+mAieWkh+azqO+8jOaYr+WQpumHh+e6s+eUseeUqOaIt+WGs+Wumu+8m+S4jeWKoOi1hOmHkea1geawtOOAgeWIhuasoeaUtuS7mOaIluaguOmUgO+8jOS5n+S4jemYu+aWreWxpee6puWujOaIkCB8CnwgUjAyIHwg5pmu6YCa6YeH6LSt6ZSA5ZSu55qE5pS255uK5L6d5o2u55So5LuA5LmI6YeR6aKd77yf57qv5pyN5Yqh6LS55Luj6YeH55qE5ZWG5ZOB5qy+55Sx6LCB5YWI5LuY77yM5L6b5bqU5ZWG5ZWG5ZOB56Wo5oqs5aS05byA57uZ5L2g6L+Y5piv5a6i5oi377yf5ZCM5LiA6K6i5Y2V6IO95ZCm5re35ZCI5pmu6YCa6ZSA5ZSu5LiO5pyN5Yqh6LS55Luj6YeH77yfIHwg5bu66K6u5Yy65YiG6K6i5Y2V57G75Z6L44CB5b+F6KaB5pe257uG5YiG5ZWG5ZOB6KGM57G75Z6L77yb5YWI56Gu6K6k5LuY5qy+5ZKM56Wo5o2u5a+56LGh77yM5YaN6K6o6K665Lq65bel6K6i5Y2V57uT566X5oC76aKd5LiO5a6e6ZmF5oiQ5pys5oiW55u05o6l5b2V5qC45a6a5pS255uK44CC5re35ZCI57G75Z6L5LuN5b6F5a6a77yM5LiN5o2u5q2k5aKe5Yqg6LWE6YeR5Yqf6IO95oiW57uZ5Ye656Wo56iO57uT6K66IHwKfCBSMDMgfCDotKbmnJ/ku47mlLbotKfjgIHlvIDnpajjgIHotKbljZXml6XmnJ/ov5jmmK/mnIjnu5PoioLngrnotbfnrpfvvJ/mr4/mnIjlm7rlrprlvIDnpajml6XmmK/lkKbmjInlrqLmiLfkuI3lkIzvvJ8gfCDlsIbotKbmnJ/nuqblrprjgIHlm7rlrprlvIDnpajml6XkuI7lsaXnuqbml6XmnJ/liIblvIDvvJvoi6XmmL7npLrotKbljZXvvIzlj6rmjInorqLljZXmsYfmgLvvvIzkuI3lm6DmraTlkIjlubbmiJDkuIDlvKDplIDpobnlj5HnpaggfAp8IFIwNCB8IOS4jeWQjOexu+Wei+iuouWNleS9leaXtuehruiupOaUtuebiu+8jOaMieaUtui0p+OAgeW8gOelqOOAgeS6uuW3peaguOeul+i/mOaYr+e7k+a4heaXpeacn+W9kuWFpeaKpeihqO+8n+i3qOaciOW+heWKnuWmguS9leWkhOeQhu+8nyB8IOacrOaciDHml6Xoh7PlvZPlpKnku4XkuLrmiqXooajliJ3lp4vojIPlm7Tlu7rorq7vvJvmnKrlvIDnpajjgIHnvLrkvpvlupTllYbnpajjgIHlvoXmoLjnrpflj4rliLDmnJ/mn6Xku7fpu5jorqTot6jmnIjmsYfmgLvjgILliKnmtqbkuI3nm7TmjqXnlKjmn5DmnIjmlLbku5jlkIjorqHnm7jlh48gfAp8IFIwNSB8IOWuouaIt+WFqOmDqOehruiupOaXoOmXrumimO+8jOeUseS4u+i0puWPt+mAkOiii+ehruiupOOAgeaVtOWNleehruiupO+8jOi/mOaYr+euoeeQhuWRmOS7o+W9leWHreivge+8n+e8uui0p+OAgeegtOaNn+OAgeihpeWPkeaXtuWmguS9leWujOaIkO+8nyB8IOaMieWVhuWTgeaVsOmHj+aguOWvue+8jOW/q+mAkuetvuaUtuS4jeabv+S7o+WuouaIt+ehruiupO+8m+aciemXrumimOmDqOWIhuS/neeVmeWkhOeQhuiusOW9le+8jOWQjuWPsOS7o+ehruiupOmcgOacieS+neaNriB8CnwgUjA2IHwgQS9C5qOA5p+l5LuA5LmI5Lu35qC877yf6aaW5qyhQeS7jumHh+i0reOAgeiuouWNleehruiupOi/mOaYr+aUueS7t+i1t+eul++8n+WQjOS7t+Wkjei0reaYr+WQpumHjee9ru+8n+WuouaIt+OAgeWVhuWTgeOAgeWuouaIt8OX5ZWG5ZOB5Y+K5L6b5bqU5ZWG5p2l5rqQ55qE5ZGo5pyf6LCB5LyY5YWI77yfIHwgQTMw77yPQjfkuLrmi5/pu5jorqTvvJvmnKrmlLnku7dC44CB5pS55Lu3Qe+8m+W7uuiuruWQjOS7t+Wkjei0reS4jeaXoOmZkOmhuuW7tu+8jOaKk+S7t+Wksei0peaIluacquWkhOeQhuS4jemHjee9ru+8jOWklumDqOS7t+agvOWPquaYr+S6uuW3peaguOWvueWAmemAiSB8CnwgUjA3IHwg5a6i5oi35o+Q5Ye655qE5ZWG5ZOB5a6h5qC45ZCO5a+56LCB5Y+v6KeB77yf57O757uf5ZWG5ZOB6ZO+5o6l55qE5YWs5byA6IyD5Zu05LiO5a6i5oi35LiT5bGe5oql5Lu355qE6K6/6Zeu5p2D6ZmQ5aaC5L2V5YiG5byA77yfIHwg566h55CG5ZGY6YCJ5YWs5byA5oiW5a6i5oi35Y+v6KeB6IyD5Zu077yb5p2l5rqQ6ZO+5o6l5ZKM6ZyA5rGC5Y6f5paH5LiN6buY6K6k5YWs5byA44CC56uZ5YaF5ZWG5ZOB6ZO+5o6l5Y+v5YiG5Lqr5LiN5Luj6KGo5pW05Lu95LiT5bGe5oql5Lu35Yy/5ZCN5YWs5byAIHwKfCBSMDggfCDlj5HnpajmmK/lkKbkvJjlhYjku47orqLljZXkuIrkvKDvvIzlho3nlLFPQ1Lmj5Dlh7rotYTmlpnlkozljLnphY3lgJnpgInvvJ/kvpvlupTllYbkuIDnpajog73lkKbopobnm5blpJrph4fotK3vvJvplIDpobnmm7TmjaLlkozljoblj7LpmYTku7blpoLkvZXkv53lrZjvvJ8gfCBPQ1Llkoznu5Hlrprnu4/kurrlt6XmoLjlr7nvvIzlpLHotKXlj6/miYvloavvvJvmma7pgJrplIDllK7kuIDljZXkuIDlvKDlvZPliY3mnInmlYjnpajvvIzljoblj7Lmm7TmraPlj6bnlZnvvIzov5vpobnop4TliJnni6znq4vlhrPlrpogfAp8IFIwOSB8IDEwMOWNleiwg+ivlemineW6puWQjuaYr+WQpuaOpeWPl+ato+W8j+eJqea1geWll+mkkO+8n+mcgOimgeS4u+WKqOaMiemcgOafpeivou+8jOi/mOaYr+aMgee7reiuoumYheaOqOmAge+8nyB8IOS8mOWFiOWFseS6q+e8k+WtmOS4juWPl+mZkOS4u+WKqOWIt+aWsO+8m+aMgee7reabtOaWsOeUqOWumOaWueaUr+aMgeeahOiuoumYhe+8jOS/neeVmeaJi+mAieW/q+mAkuWSjOWVhuWutuiHqumFjemAgeOAguWFiOWumumcgOimgeWSjOmihOeul++8jOWGjeW8gOmAmuWunumZheadg+mZkCB8CnwgUjEwIHwg5pyq5p2l5Ye65ZSu57O757uf5Li76KaB5piv5q+P5Liq57uP6JCl6ICF54us56uL6YOo572y77yM6L+Y5piv5aSa5Liq57uP6JCl6ICF5YWx55So5LiA5Liq5bmz5Y+w77yfIHwg5YWI5bCG5q2k5L2c5Li65ZCO57ut5Lqn5ZOB5pa55ZCR77yb5b2T5YmN5LiN5pOF6Ieq5Yqg5YWl5aSa56ef5oi3U2FhU+OAgeaUtui0ueaUr+S7mOOAgeWNoeWvhuaOiOadg+OAgumDqOe9suOAgeWkh+S7veOAgee7tOaKpOiMg+WbtOmaj+WQjuaMieaJgOmAieaWueW8j+ehruWumiB8CgojIyMgMTIuMyDlkI7nu63nu4bliJnvvIhE57qn77yM5LiN6Zi75aGe5b2T5YmN6ZyA5rGC5qKz55CG77yJCgp8IOe8luWPtyB8IOe7p+e7reS/neeVmeeahOe7huWImSB8IOW9k+WJjeeKtuaAgSB8CnwtLS18LS0tfC0tLXwKfCBEMDEgfCDmoIflh4bku7fvvI/lrqLmiLfku7fvvI/ljY/orq7ku7fvvI/or6Lku7fnmoTojIPlm7TjgIHlj5bku7fkvJjlhYjnuqfjgIHmlLnku7fmjqXlj5fkuI7lpI3otK3lj5bku7cgfCDnlKjmiLfmmI7noa7mmoLml7blvoXlrprvvJvnjrDpmLbmrrXlj6rkv53nlZnorr7orqHkvY3nva7vvIzlkI7nu63ljZXni6zorqjorrogfAp8IEQwMiB8IOeUqOaIt+WQjeS4gOW5tOS4gOasoeaMieiHqueEtuW5tOi/mOaYr+a7muWKqDEy5Liq5pyI77yb5Yid5qyh5ZG95ZCN5piv5ZCm6K6h5LiA5qyh77yb566h55CG5ZGY54m55q6K57qg6ZSZIHwg5b2T5YmN5Y+q6K6w5b2V5LiA5bm05LiA5qyh5oSP5ZCR77yM5LiN6IO95pOF6Ieq5Yaz5a6a6K6h5qyh5pa55byPIHwKfCBEMDMgfCDlrqLmiLflj6/nvJbovpHlrZfmrrXmuIXljZXvvJvms5XlrprlkI3np7Dmm7TlkI3kuI7nuqDplJnvvJvmnKrmnaXlrZDotKblj7figJzmiYDmnInlhoXlrrnigJ3lhbfkvZPlrqHmoLjojIPlm7TjgIHkv67mlLnlkI7ph43mlrDlrqHmoLggfCDmjInkuLvotKblj7flrqHmoLjmj5DkuqTnmoTmlrnlkJHpooTnlZnvvIzlhbfkvZPmnYPpmZDlkI7nu63lrprkuYkgfAp8IEQwNCB8IOaKpeS7t+aOpeWPl+aWueW8j+OAgeacieaViOacn+m7mOiupOWAvOOAgeeJiOacrOWPmOabtOOAgeaJk+WNsFBERueJiOW8j+OAgeermeWGhemAmuefpeWPiuacquadpeWklumDqOmAmuefpSB8IOS4k+S4muaKpeS7t+S4uuW9k+WJjeaEj+WQke+8jOe7huiKguS4juS7t+agvOS4k+mimOS4gOW5tuWujOWWhCB8CnwgRDA1IHwg5pyN5Yqh5Zmo44CB5Z+f5ZCN44CB5aSH5Lu95L2N572u44CB5oGi5aSN55uu5qCH44CB57u05oqk6LSj5Lu75Y+K5piv5ZCm6ZyA6KaB5qGM6Z2i5bCB6KOFIHwg5Zyo5Lqn5ZOB6YOo572y5pa55ZCR5piO56Gu5ZCO57uG5YyW77yb572R6aG15b2i5oCB5ZKM5p+U5ZKM57qi6Imy5pa55ZCR5LiN6YeN6ZeuIHwKCgojIyDljYHkuInjgIHlkI7nu63lrozmlbTmm7TmlrDop4TliJkKCjEuIOWwj+iMg+WbtOmcgOaxguiwg+aVtOe7p+e7reS9v+eUqFYyLjLjgIFWMi4z562J5bCP54mI5pys77yb5Y+q5pyJ57uT5p6E5oiW6IyD5Zu05Y+R55Sf6ZyA6KaB6YeN5paw56uL6aG555qE5aSn5Y+Y5YyW5pe25YaN6ICD6JmR5aSn54mI5pys44CCCjIuIOavj+asoeWbnuetlOOAgeaWsOmcgOaxguaIluaWsOeahOaOpeWPo+ivgeaNrumDveabtOaWsOS4gOS7veWujOaVtOaWh+aho++8jOebtOaOpeWQjOatpeWIsOmhtemdouOAgeaooeWdl+OAgea1geeoi+OAgeWGsueqgeOAgeWIhuacn+WSjOmqjOaUtu+8jOS4jeWPquWcqOacq+Wwvui/veWKoOOAggozLiDorrDlvZXigJznlKjmiLflt7Lnu4/lm57nrZTigJ3lkozigJzop4TliJnlt7Lnu4/mnIDnu4jlrprnqL/igJ3nmoTljLrliKvvvJvmnKzova7lm57nrZTkv53mjIHlvZPliY3mhI/lkJHvvIzlj6rmnInlkI7nu63mmI7noa7orqTlj6/ml7bmiY3ljYfnuqfnirbmgIHjgIIKNC4g5L+d55WZ5penUTAx4oCUUTEw6L+96Liq77yM5pys6L2uUjAx4oCUUjEw5Y+K5ZCO57utROe6p+e7huWImeaMiee8luWPt+W7tue7re+8m+W3suino+WGs+eahOiusOW9lee7k+iuuu+8jOacquino+WGs+eahOe7p+e7reWIl+WHuu+8jOS4jeeUqOm7mOiupOW7uuiuruabv+S7o+etlOWkjeOAggo1LiDlt7Llu7blkI7nmoTlip/og73kv53nlZnog4zmma/lkozph43mlrDlkK/nlKjlhaXlj6PvvIzkvYbkuI3lnKjkuIDmnJ/pobXpnaLlkozpqozmlLbkuK3lgbflgbfmgaLlpI3vvJvnlKjmiLfmlLnlj5jojIPlm7Tml7blkIzmraXmuIXpmaTml6fmrrXokL3kuK3nmoTnn5vnm77opoHmsYLjgIIKNi4g5Y+C6ICD5oiq5Zu+44CB5YWs5byA6aG16Z2i6KeC5a+f44CB5Y6G5Y+y5a6Y5pa56LWE5paZ44CB5b2T5YmNQVBJ5a6Y5pa56K+05piO5YiG5Yir5qCH5piO5p2l5rqQ5ZKM5pel5pyf77yb5o6l5Y+j6LCD6K+V44CB5YWN6LS544CB6K+V55So44CB5ZWG55So5LiO5Y+v5oyB5LmF5YyW6IO95Yqb5LiN5b6X5re356ew44CCCgojIyDljYHlm5vjgIHmnaXmupDntKLlvJUKCiMjIyAxNC4xIOmcgOaxguS4jueJiOacrOS+neaNrgoKLSAqKltCMF0qKiBg6YeH6LSt5Lya6K6h57O757ufX+WKn+iDveaxh+aAu18yMDI2LTExLTEzLm1kYO+8muaXqeacn+mcgOaxguWfuue6v++8jOS/neeVmeWKn+iDvei1t+a6kOS4juWOn+iuqOiuuui+ueeVjO+8m+W3suiiq+acrOi9ruiwg+aVtOeahOmDqOWIhuS7peW9k+WJjeaEj+WQkeivtOaYjuS4uuWHhuOAggotICoqW0IxXSoqIGDph4fotK3kvJrorqHns7vnu5/lip/og73lu7rorq5fMjAyNi0xMS0xMy0xMC00Ni0xNS5tZGDvvJrljp/lp4vogYrlpKnorrDlvZXvvJvnlKjkuo7moLjlr7nnlKjmiLfmmI7noa7opoHmsYLkuI5BSeW7uuiurueahOWMuuWIq+OAggotICoqW0IyXSoqIGDph4fotK3kvJrorqHns7vnu59f5a6M5pW06ZyA5rGC5paH5qGjX3YyXzIwMjYtMTEtMTMubWRg77ya5bey5Lqk5LuYVjIuMOWujOaVtOeov+OAggotICoqW1UzXSoqIOeUqOaIt+mSiOWvuVYyLjDnmoRRMDHigJRRMTDpgJDpobnnrZTlpI3vvIgyMDI2LTExLTEz77yJ77ya5piO56Gu6K+05piO5Z2H5Li65b2T5YmN6K6+6K6h6ZyA5rGC55CG6Kej77yM5LiN5Luj6KGo5pyA57uI5pa55qGI77yb5pys54mI5pyA5paw5pW055CG5L6d5o2u44CCCi0gKipbVTJdKiog5LiK6L2u55So5oi3562U5aSN77ya5Li76Imy5q+U54Gr5Yqe572R56iN5rWF5p+U5ZKM77yM5LiN55So5q2j57qi77yP5aSn57qi77yb546w5LujVUnvvIzljIXlkKvmoIfnrb7pobXjgIHpvKDmoIfmgqzlgZzpq5jkuq7lj4rmloflrZfmgqzmta7mj5DnpLrjgIIKCiMjIyAxNC4yIOeUqOaIt+aPkOS+m+eahDE45byg5oiq5Zu+Cgp8IOe8luWPtyB8IOaWh+S7tuWQjSB8IOS4u+imgeW8leeUqOiMg+WbtCB8CnwtLS18LS0tfC0tLXwKfCBTMDEgfCBgMeOAgeW3peS9nOWPsC5qcGdgIHwg5oyH5qCH5Y2h44CB57uP6JCl5qaC6KeI44CB5b6F5YqeIHwKfCBTMDIgfCBgMi0x5a6i5oi3566h55CGLeWuouaIt+WIl+ihqC5qcGdgIHwg5a6i5oi35a2X5q6144CB562b6YCJ44CB5a+85YWl5a+85Ye65omT5Y2w5Y+K5L6n5qCP5YWl5Y+jIHwKfCBTMDMgfCBgMy0x44CB6ZSA5ZSu566h55CGLeWVhuacuueuoeeQhi5qcGdgIHwg5LqU6Zi25q615ryP5paX44CB5ZWG5py65YiG5p6QIHwKfCBTMDQgfCBgMy0y44CB6ZSA5ZSu566h55CGLeaKpeS7t+euoeeQhi5qcGdgIHwg5oql5Lu35YiX6KGoIHwKfCBTMDUgfCBgMy0z44CB6ZSA5ZSu566h55CGLeWQiOWQjOeuoeeQhi5qcGdgIHwg5ZCI5ZCM5Y+K5YWz6IGU6K6i5Y2VIHwKfCBTMDYgfCBgMy0044CB6ZSA5ZSu566h55CGLeiuouWNleeuoeeQhi5qcGdgIHwg562+5Y2V44CB6YeR6aKd44CB5bey5pS244CB5qyg5qy+IHwKfCBTMDcgfCBgNC0x44CB5bel5Y2V566h55CGLeW3peWNleWIl+ihqC5qcGdgIHwg5bel5Y2V5a2X5q6144CB5biI5YKF5ZKM6LS555SoIHwKfCBTMDggfCBgNOOAgTLjgIHlt6XljZXnrqHnkIYt5oiR55qE5bel5Y2VLmpwZ2AgfCDmiJHnmoTlt6XljZXjgIHlt6XljZXmsaDlj4rkuJrliqHor7TmmI4gfAp8IFMwOSB8IGA1LTHjgIHph4fotK3nrqHnkIYt5L6b5bqU5ZWG566h55CGLmpwZ2AgfCDkvpvlupTllYbotYTmlpnlj4rmibnph4/mk43kvZwgfAp8IFMxMCB8IGA1LTLjgIHph4fotK3nrqHnkIYt6YeH6LSt6K6i5Y2VLmpwZ2AgfCDph4fotK3jgIHku5jmrL7lj4rlhaXlupPor7TmmI4gfAp8IFMxMSB8IGA2LTHjgIHlupPlrZjnrqHnkIYt5ZWG5ZOB566h55CGLmpwZ2AgfCDllYblk4HotYTmlpnjgIHlupPlrZjlrZfmrrXlj4rkvqfmoI/lhaXlj6MgfAp8IFMxMiB8IGA344CB6LSi5Yqh566h55CGLmpwZ2AgfCDotKLliqHmtYHmsLTjgIHliIbmibnlvIDnpajkuI7pmYTku7bor7TmmI4gfAp8IFMxMyB8IGA4LTHjgIHmnYPpmZDnrqHnkIYt55So5oi3566h55CGLmpwZ2AgfCDlhoXpg6jotKblj7fnrqHnkIYgfAp8IFMxNCB8IGA4LTLjgIHmnYPpmZDnrqHnkIYt6KeS6Imy566h55CGLmpwZ2AgfCDop5LoibLlkI3np7DkuI7oj5zljZXmnYPpmZDor7TmmI4gfAp8IFMxNSB8IGA544CB57O757uf566h55CGLeS8muWRmOS4reW/g++8iOatpOezu+e7n+eahOaUtui0ueezu+e7n++8iS5qcGdgIHwg5LuF6K+G5Yir5o6S6Zmk6IyD5Zu077yb5pS26LS55Lya5ZGY44CB5Y2h5a+G44CB5r+A5rS75LiN57qz5YWlIHwKfCBTMTYgfCBgOS0344CB57O757uf566h55CGLeaVsOaNruWkh+S7vS5qcGdgIHwg5aSH5Lu96YWN572u44CB5omn6KGM5Y+K6K6w5b2VIHwKfCBTMTcgfCBgMTDjgIHlrqHorqHml6Xlv5cuanBnYCB8IOaXpeW/l+ajgOe0ouOAgeWvueixoeOAgee7k+aenOWPiuW3ruW8guWvueavlOivtOaYjiB8CnwgUzE4IHwgYDEx44CB5biu5Yqp5Lit5b+DLmpwZ2AgfCDmnKzlnLDljJblrZjlgqjlj4rpgJrnn6Xkvp3otZbnmoTkuqflk4Hor7TmmI4gfAoKIyMjIDE0LjMg54Gr5Yqe572R5LiO5a6Y5pa56LWE5paZCgrku6XkuItXMeKAlFc15Li6VjIuMOmYtuauteWcqDIwMjYtMTEtMTPov5vooYznmoTlhazlvIDmnKrnmbvlvZXpobXpnaLop4Llr5/vvIxWMi4x5rK/55So77ybVzbigJRXN+S4uuWumOaWueihpeWFhei1hOaWmeOAggoKLSAqKltXMV0qKiBb54Gr5Yqe572R6aaW6aG1XShodHRwczovL3d3dy5odW9mZmljZS5jb20vKe+8mumhtumDqOWvvOiIquOAgeaQnOe0ouOAgeWIhuexu+OAgeWTgeeJjOWVhuWTgeOAgeaVmeWtpuinhumikeWPiua1ruWKqOacjeWKoeWFpeWPo+OAggotICoqW1cyXSoqIFvliIbnsbvllYblk4HliJfooahdKGh0dHBzOi8vd3d3Lmh1b2ZmaWNlLmNvbS9saXN0Lmh0bWw/Y2F0Mj0yKe+8muexu+ebruOAgeWFi+mHjeOAgeinhOagvOOAgeWMheijheOAgeS7t+agvOS4jumFjemAgeetm+mAieetie+8m+acrOasoeaYvuekujDpobnnu5PmnpzjgIIKLSAqKltXM10qKiBb5ZOB54mM5Lit5b+DXShodHRwczovL3d3dy5odW9mZmljZS5jb20vc29sdXRpb24vc29sdXRpb24tYnJhbmR6b25lLmh0bWw/Y2F0X2lkPTEp77ya5ZOB54mM5pCc57Si5LiO6aaW5a2X5q+N55uu5b2V44CCCi0gKipbVzRdKiogW+WTgeeJjOWVhuWTgeWIl+ihqF0oaHR0cHM6Ly93d3cuaHVvZmZpY2UuY29tL3NvbHV0aW9uL3NvbHV0aW9uLWJyYW5kem9uZS1pdGVtbGlzdC5odG1sP2JyYW5kX2lkPTUyKe+8muebruW9leOAgeaOkuW6j+OAgeS7t+agvOWMuumXtOOAgeWVhuWTgee8lueggeS4juaUtuiXj++8m+acrOasoeacqueZu+W9leWPr+ingeS4quWIq+WVhuWTgeS7t+agvOOAggotICoqW1c1XSoqIFvnmbvlvZXpobVdKGh0dHBzOi8vd3d3Lmh1b2ZmaWNlLmNvbS9wYXNzcG9ydC1zaWduaW4uaHRtbCnvvJrotKblj7flr4bnoIHjgIHoh6rliqjnmbvlvZXjgIHmib7lm57lr4bnoIHlj4rms6jlhozlhaXlj6PvvJvpg6jliIbkuJrliqHlhaXlj6PopoHmsYLnmbvlvZXjgIIKLSAqKltXNl0qKiBb5a6J5YW06ZuG5Zui5a6Y572RXShodHRwczovL3d3dy5vbmhpbmcuY29tLmNuLynvvJrngavlip7nvZHlvZLlsZ7lj4rlrpjmlrnku4vnu43mnaXmupDjgIIKLSAqKltXN10qKiBb54Gr5Yqe572R57uP6ZSA5ZWG572R5bqX5pWw5a2X57uP5rWO5Y+R5bGV5py65Lya77yI5a6Y5pa5UERG77yJXShodHRwczovL3d3dy5vbmhpbmcuY29tLmNuL3B1YmxpYy9zb3VyY2UvZG9jdW1lbnQvNzElRTclODElQUIlRTUlOEElOUUlRTclQkQlOTElRTclQkIlOEYlRTklOTQlODAlRTUlOTUlODYlRTclQkQlOTElRTUlQkElOTclRTYlOTUlQjAlRTUlQUQlOTclRTclQkIlOEYlRTYlQjUlOEUlRTUlOEYlOTElRTUlQjElOTUlRTYlOUMlQkElRTQlQkMlOUEucGRmKe+8mjE06aG177yM5YWD5pWw5o2u5Yib5bu65pel5pyfMjAyMy0wOS0xMu+8m+S4u+imgeWPguiAg+eJqeeQhuesrDnpobXvvI/ljbDliLcwOOWPiueJqeeQhuesrDEz6aG177yP5Y2w5Yi3MTLvvIzkvZzkuLrljoblj7Llrpjmlrnlip/og73mj4/ov7Dkvb/nlKjjgIIKCiMjIyAxNC40IOW/q+mAkjEwMOWumOaWuei1hOaWmQoK5Lul5LiL5Li6MjAyNi0xMS0xM+WumOaWuemhtemdouaguOmqjO+8jOWdh+mdnuacrOezu+e7n0FQSeWunua1i++8m+S6p+WTgeaWh+aho+S4juWunumZhei0puaIt+adg+mZkOWPr+iDveacieW3ruW8gu+8jOWFt+S9k+aOpeWFpeS7peWJjeiAheWPiui0puaIt+WunumZheWPr+eUqOadg+mZkOWFseWQjOaguOWvueOAggoKLSAqKltLMV0qKiBb5a6e5pe25p+l6K+i5Lqn5ZOB6aG1XShodHRwczovL2FwaS5rdWFpZGkxMDAuY29tL3Byb2R1Y3QvcXVlcnkvKe+8muazqOWGjDEwMOWNlea1i+ivleeahOeOsOihjOivtOaYjuOAggotICoqW0syXSoqIFvmnKrlhYXlgLzmtYvor5Xor7TmmI5dKGh0dHBzOi8vYXBpLmt1YWlkaTEwMC5jb20vZG9jdW1lbnQvY2VzaGlkYW5sYWluZynvvJrmnKrlhYXlgLzosIPor5XojIPlm7TjgIIKLSAqKltLM10qKiBb5o6l5Y+j5rWL6K+V5Y2V6YeP6K+05piOXShodHRwczovL2FwaS5rdWFpZGkxMDAuY29tL2RvY3VtZW50L2ppZWtvdWNlc2hpZGFubGlhbmcp77ya5rWL6K+V6aKd5bqm55So5LqO6IGU6LCD77yM5a6e6ZmF6LWg6YCB6YeP5qC45a+55ZCO5Y+w44CCCi0gKipbSzRdKiogW+WunuaXtuafpeivouaKgOacr+aWh+aho10oaHR0cHM6Ly9hcGkua3VhaWRpMTAwLmNvbS9kb2N1bWVudC81ZjBmZmI1ZWJjOGRhODM3Y2JkOGFlZmMp77ya5ZCM6L+Q5Y2V6Iez5bCRMzDliIbpkp/pl7TpmpTjgIEyNOWwj+aXtuS4jei2hei/hzQ45qyh5Y+K6ZSB5Y2V6KeE5YiZ44CCCi0gKipbSzVdKiogW+WunuaXtuafpeivouS6p+WTgeivtOaYjl0oaHR0cHM6Ly9hcGkua3VhaWRpMTAwLmNvbS9kb2N1bWVudC9zaGlzaGljaGF4dW5jaGFucGluamllc2hhbynvvJrkuLvliqjmn6Xor6LnmoTpgILnlKjlnLrmma/vvIzku6Xlj4rmjIHnu63ot5/ouKrlupTph4fnlKjorqLpmIXmjqjpgIHnmoTor7TmmI7jgIIKLSAqKltLNl0qKiBb5b+r6YCS5YWs5Y+46K+G5Yir5paH5qGjXShodHRwczovL2FwaS5rdWFpZGkxMDAuY29tL2RvY3VtZW50LzVmMTEwNjU0Mjk3N2Q1MGE5NGUxMDI0MS5odG1sKe+8muato+W8j+Wll+mkkOadg+mZkOS4juivhuWIq+aOpeWPo+adoeS7tuOAggotICoqW0s3XSoqIFvnu5PnrpflkajmnJ/or7TmmI5dKGh0dHBzOi8vYXBpLmt1YWlkaTEwMC5jb20vZG9jdW1lbnQvamllc3Vhbnpob3VxaTAxKe+8muWQjOaJv+i/kOWVhuWQjOi/kOWNlTQw5aSp5YaF5a6e5pe25p+l6K+i77yP6K6i6ZiF55qE6K6h6LS55Y676YeN6K+05piO77yb5LiN5pu/5Luj6LCD55So6ZmQ5Yi244CCCi0gKipbSzhdKiogW+aXp+S6keW5s+WPsOi0reS5sOivtOaYjl0oaHR0cHM6Ly9hcGkua3VhaWRpMTAwLmNvbS9kb2N1bWVudC95dW5waW5ndGFpZ291bWFpKe+8muaXp+S6keW5s+WPsOS4i+aetu+8jOS4jeiDvee7p+e7reWll+eUqOWOhuWPsuWFjei0ueWll+mkkOOAggotICoqW0s5XSoqIFvml6fmiYvmnLrmn6Xor6Lot7PovazmjqXlj6NdKGh0dHBzOi8vd3d3Lmt1YWlkaTEwMC5jb20vb3BlbmFwaS9tb2JpbGVhcGkuc2h0bWwp5LiOW+aXp+mhtemdoui3s+i9rOaOpeWPo10oaHR0cHM6Ly93d3cua3VhaWRpMTAwLmNvbS9vcGVuYXBpL2FwaV9qdW1wLnNodG1sKe+8muW9kuaho+eahOmhtemdouafpeivouaWueahiO+8jOS4jeS9nOS4uuW9k+WJjee7k+aehOWMlueJqea1gUFQSemAieWei+S+neaNruOAggoK</script><script>
+(() => {
+  'use strict';
+  const $ = (selector, root=document) => root.querySelector(selector);
+  const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
+  const sidebar = $('#doc-sidebar');
+  const openButton = $('#open-toc');
+  const search = $('#toc-search');
+  let toastTimer;
+  let returnFocus;
+  function toast(message) {
+    const el = $('#toast'); el.textContent=message; el.classList.add('show');
+    clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove('show'),2200);
+  }
+  function setDrawer(open) {
+    document.body.classList.toggle('toc-open',open);
+    openButton.setAttribute('aria-expanded',String(open));
+    if(open){returnFocus=document.activeElement;$('#close-toc').focus();}
+    else if(returnFocus){returnFocus.focus();}
+  }
+  openButton.addEventListener('click',()=>setDrawer(true));
+  $('#close-toc').addEventListener('click',()=>setDrawer(false));
+  $('#drawer-backdrop').addEventListener('click',()=>setDrawer(false));
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape') setDrawer(false);
+    if(event.key==='Tab'&&document.body.classList.contains('toc-open')){
+      const items=$$('button,input,a[href]',sidebar).filter(el=>el.offsetParent!==null);
+      const first=items[0], last=items[items.length-1];
+      if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+      else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+    }
+  });
+  const links=$$('.toc-link');
+  links.forEach(link=>link.addEventListener('click',()=>{
+    if(window.matchMedia('(max-width:800px)').matches) setDrawer(false);
+  }));
+  search.addEventListener('input',()=>{
+    const q=search.value.trim().toLocaleLowerCase();
+    sidebar.classList.toggle('searching',Boolean(q));
+    let visible=0;
+    links.forEach(link=>{link.hidden=Boolean(q)&&!link.textContent.toLocaleLowerCase().includes(q);if(!link.hidden)visible++;});
+    $('#toc-none').style.display=visible?'none':'block';
+  });
+  const headings=$$('.document-body h2,.document-body h3');
+  let scrollPending=false;
+  function updateScroll() {
+    const scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    $('#read-progress').style.width=`${max>0?Math.min(100,scrollTop/max*100):0}%`;
+    $('#back-top').classList.toggle('visible',scrollTop>500);
+    let current=headings[0];
+    for(const heading of headings){if(heading.getBoundingClientRect().top<150)current=heading;else break;}
+    if(current){
+      const match=links.find(link=>link.hash==='#'+current.id);
+      const chapter=match?.dataset.chapter;
+      links.forEach(link=>{
+        const active=link===match;link.classList.toggle('active',active);
+        if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
+        if(link.classList.contains('level-3'))link.classList.toggle('expanded',link.dataset.chapter===chapter);
+      });
+    }
+    scrollPending=false;
+  }
+  window.addEventListener('scroll',()=>{if(!scrollPending){scrollPending=true;requestAnimationFrame(updateScroll);}}, {passive:true});
+  window.addEventListener('resize',updateScroll);
+  $('#back-top').addEventListener('click',()=>window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'}));
+  $('#print-document').addEventListener('click',()=>window.print());
+  $('#download-source').addEventListener('click',()=>{
+    const bytes=Uint8Array.from(atob($('#source-markdown').textContent.trim()), c=>c.charCodeAt(0));
+    const url=URL.createObjectURL(new Blob([bytes],{type:'text/markdown;charset=utf-8'}));
+    const a=document.createElement('a');a.href=url;a.download='采购会计系统_完整需求文档_v2.1_2026-11-13.md';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    toast('已准备 V2.1 原始 Markdown 文档');
+  });
+  async function copyText(text){
+    if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return;}
+    const area=document.createElement('textarea');area.value=text;area.style.cssText='position:fixed;opacity:0;left:-9999px;';document.body.append(area);area.select();
+    const success=document.execCommand('copy');area.remove();if(!success)throw new Error('copy-unavailable');
+  }
+  $$('.source-details').forEach(details=>{
+    const button=document.createElement('button');button.className='button copy-code';button.type='button';button.textContent='复制源码';
+    button.addEventListener('click',async()=>{try{await copyText($('code',details).textContent);toast('源码已复制');}catch{toast('当前浏览器不支持自动复制，可选中文字复制');}});
+    details.insertBefore(button,$('pre',details));
+  });
+  updateScroll();
+})();
+</script>
+</body></html>
