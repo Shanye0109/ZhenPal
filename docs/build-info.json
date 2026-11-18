@@ -1,0 +1,26 @@
+{
+  "version": "2.1.1",
+  "generatedAt": "2026-11-17T10:21:56.312Z",
+  "runtimeDependencies": 0,
+  "assets": {
+    "admin.4c2ae5396f4f.js": {
+      "bytes": 94242,
+      "modules": 41
+    },
+    "client.4e885766b739.js": {
+      "bytes": 63116,
+      "modules": 29
+    },
+    "names.cf19a2e21170.js": {
+      "bytes": 15935,
+      "modules": 8
+    },
+    "document.5b05deb3772e.js": {
+      "bytes": 4050,
+      "modules": 4
+    },
+    "app.50fc97037348.css": {
+      "bytes": 57883
+    }
+  }
+}

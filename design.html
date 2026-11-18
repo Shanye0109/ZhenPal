@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'"><meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light"><title>技术设计 · 臻朴采购系统</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/app.50fc97037348.css"><script src="assets/document.5b05deb3772e.js" defer></script></head><body class="document-page" data-density="comfortable" data-reduced-motion="false"><header class="doc-topbar"><a class="brand" href="index.html"><span class="brand-mark">臻</span><span class="brand-copy"><strong class="brand-name">臻朴采购系统</strong><small class="brand-sub">企业采购 · 有序协作</small></span></a><nav class="site-links" aria-label="项目页面"><a href="index.html">系统预览</a><a href="client.html">客户门户</a><a href="readme.html">需求文档</a><a href="names.html">名称备选</a></nav></header><div class="doc-shell"><aside class="doc-sidebar" id="document-sidebar"><h2>章节目录</h2><input class="toc-search" type="search" maxlength="100" id="toc-search" placeholder="搜索章节" aria-label="搜索文档章节"><nav aria-label="章节目录"><a class="toc-link" data-level="2" href="#doc-section-2">已确认范围</a><a class="toc-link" data-level="2" href="#doc-section-3">架构决策</a><a class="toc-link" data-level="2" href="#doc-section-4">模块接口（先定接口，再写实现）</a><a class="toc-link" data-level="2" href="#doc-section-5">视觉规范</a><a class="toc-link" data-level="2" href="#doc-section-6">渲染与生命周期</a><a class="toc-link" data-level="2" href="#doc-section-7">安全边界</a><a class="toc-link" data-level="2" href="#doc-section-8">目录职责与依赖方向</a><a class="toc-link" data-level="2" href="#doc-section-9">数据契约与状态归属</a><a class="toc-link" data-level="2" href="#doc-section-10">渲染、资源与生命周期细节</a><a class="toc-link" data-level="2" href="#doc-section-11">UI 交互约定</a><a class="toc-link" data-level="2" href="#doc-section-12">已实现的安全措施与实际限制</a><a class="toc-link" data-level="3" href="#doc-section-13">动态内容、链接和 CSP</a><a class="toc-link" data-level="3" href="#doc-section-14">本地存储与公开静态产物</a><a class="toc-link" data-level="3" href="#doc-section-15">导出边界</a><a class="toc-link" data-level="2" href="#doc-section-16">界面偏好备份和恢复协议</a><a class="toc-link" data-level="2" href="#doc-section-17">构建覆盖保护与恢复</a><a class="toc-link" data-level="2" href="#doc-section-18">后端接入设计：尚未实现</a><a class="toc-link" data-level="3" href="#doc-section-19">公司和账号权限</a><a class="toc-link" data-level="3" href="#doc-section-20">订单、票据和并发</a><a class="toc-link" data-level="3" href="#doc-section-21">文件和外部服务</a><a class="toc-link" data-level="3" href="#doc-section-22">真实备份与审计</a><a class="toc-link" data-level="2" href="#doc-section-23">测试与验收原则</a><a class="toc-link" data-level="2" href="#doc-section-24">后续维护约定</a><a class="toc-link" data-level="2" href="#doc-section-25">官方参考资料</a></nav><a class="btn btn-ghost" href="guide.html">上传与使用说明</a><a class="btn btn-ghost" href="design.html">技术设计</a><a class="btn btn-ghost" href="security.html">安全与恢复设计</a></aside><button class="sidebar-backdrop" id="doc-backdrop" type="button" aria-label="关闭目录" tabindex="-1"></button><main class="doc-main" id="document-main"><div class="doc-toolbar"><button class="btn" id="toc-toggle" type="button" aria-controls="document-sidebar" aria-expanded="false">章节目录</button><strong>技术设计</strong><div class="toolbar-spacer"></div><a class="btn" href="docs/DESIGN.md" download>下载 Markdown</a><button class="btn" data-print type="button">打印 / PDF</button></div><article class="document-content"><h1 id="doc-section-1">臻朴采购系统 V2.1.1 技术设计</h1>
+<p>设计日期：2026-11-17。此版为静态展示前端重构；原 V2.1 业务需求继续保留，未决规则保持未决。</p>
+<h2 id="doc-section-2">已确认范围</h2>
+<p>用户确认：保留旧版完整包；构建时自动备份旧产物；页面仅备份界面偏好；真实业务备份作设计预留。用户确认本次维护完整 README 用户手册和 DESIGN 技术设计。</p>
+<h2 id="doc-section-3">架构决策</h2>
+<p>采用原生 JavaScript ES Modules 编写可独立理解的源码，esbuild 打包为独立入口的普通浏览器脚本，运行时零第三方依赖。交付站点包可直接上传 GitHub Pages；本地查看推荐 HTTP 预览，文件协议的脚本与存储行为取决于浏览器策略。另交付完整源码包与测试。保留柔和暖红设计系统，升级布局、组件状态与移动端行为，不引入新业务规则。</p>
+<p>后台 index.html 与客户 client.html 使用不同入口、菜单和数据模块；这是前端数据最小化措施，不能替代服务端鉴权。所有静态示例可被访问，不放入真实公司信息、成本、票据或密钥。</p>
+<h2 id="doc-section-4">模块接口（先定接口，再写实现）</h2>
+<ul>
+<li>core/dom.mjs：el(tag, attrs, ...children) 返回节点；所有动态文本使用 textContent，禁止 innerHTML、事件属性和未经审查的 URL。</li>
+<li>core/store.mjs：createStore(initial, reducer) 返回 getState / dispatch / subscribe；唯一应用共享状态入口。</li>
+<li>core/router.mjs：仅接受导航清单中的 hash 路由；未知路由显示可恢复错误，不渲染 URL 里的任意 HTML。</li>
+<li>core/async-task.mjs：createLatestTask() 提供取消和序列号，旧请求不能覆盖新页面。</li>
+<li>domain/query.mjs：纯函数 queryRecords(rows, page, filter)，支持关键词、精确状态与分页；分页默认 10，最大 50。</li>
+<li>domain/preferences.mjs：允许的界面偏好为 density、sidebarCollapsed、reducedMotion；有 schemaVersion、大小上限和白名单校验，拒绝未知字段及原型污染字段。</li>
+<li>services/demo-repository.mjs：createDemoRepository(records) 提供 list(page, query, {signal})；返回 {rows,total,page,pageSize}，不得把 DOM 或共享状态传入数据层。</li>
+<li>services/preferences-storage.mjs：只存白名单界面偏好；存储不可用时退回内存并提示，不阻塞页面。</li>
+<li>services/downloads.mjs：浏览器下载与 CSV 公式防护；导出仅示例数据，不静默覆盖本机文件。</li>
+<li>ui：图标、按钮、表格、标签、模态框、提示、应用框架等可复用组件，使用回调传递行为。</li>
+<li>features：经营概览、表格页面、商品、购物袋、需求、报价、设置、偏好备份与预留页各自独立。</li>
+<li>entries：后台与客户端入口只装配依赖；名称页和文档页各用自己的入口。</li>
+</ul>
+<h2 id="doc-section-5">视觉规范</h2>
+<p>保留品牌色 #D96872；主要操作 #C44757；悬停 #B6404E；浅选中 #FFF1F2；主背景 #F5F6F8；正文 #202733。深色侧边栏 #192334，文字 #D5DDE7。24px 桌面留白、16px 手机留白，14px 常规文字、12px 辅助字、24px 页标题，表格优先可读性。白色表面与细边框为主，避免大块空白和过重阴影。统一图标 18–20px / 1.7px 描边；圆角 8–14px。通过 prefers-reduced-motion 和用户偏好关闭非必要动画。</p>
+<h2 id="doc-section-6">渲染与生命周期</h2>
+<p>只渲染当前路由。应用外壳长期保留；列表搜索只更新表体、计数与翻页，不重建输入框，避免焦点与输入法中间态丢失。查询去抖 160ms，组合输入结束再查询；新请求取消旧请求，序列号第二重拦截失效结果。每个页面拥有 AbortController，离开页面时移除监听并取消查询。所有列表明确 loading / ready / empty / error 状态。骨架高度固定，表格容器独立横向滚动；分页限制单次 DOM 行数。</p>
+<h2 id="doc-section-7">安全边界</h2>
+<p>本次实现：安全 DOM 构造、URL 白名单、严格 CSP（无 eval/unsafe-inline/connect）、外部链接 noopener/noreferrer、入口数据拆分、界面偏好 JSON 白名单及大小校验、导出字段白名单及 CSV 公式防护、构建备份和失败回滚。静态页面不实现真实登录、公司级权限、加密数据库、发票上传或业务备份；上述能力必须由后端实现，后续章节详细记录。</p>
+<h2 id="doc-section-8">目录职责与依赖方向</h2>
+<div class="table-scroll"><table><thead><tr><th>目录</th><th>负责什么</th><th>不允许混入的内容</th></tr></thead><tbody>
+<tr><td>src/entries</td><td>后台、客户、文档、名称四个入口；装配依赖</td><td>通用组件或整块业务规则</td></tr>
+<tr><td>src/core</td><td>DOM 安全边界、路由、状态、异步任务、生命周期</td><td>具体客户数据与收益口径</td></tr>
+<tr><td>src/domain</td><td>纯函数校验、查询、购物袋和偏好规则</td><td>DOM、网络、文件与浏览器存储</td></tr>
+<tr><td>src/services</td><td>数据适配器、偏好存储、导出下载</td><td>拼业务页面或代替服务端鉴权</td></tr>
+<tr><td>src/data</td><td>分门户菜单、分业务示例、公开商品、名称资料</td><td>网络请求与存储副作用</td></tr>
+<tr><td>src/ui</td><td>外壳、图标、按钮、表格、标签、反馈、弹层</td><td>修改业务数据、依赖某个订单模块</td></tr>
+<tr><td>src/features</td><td>页面组合与交互；向 domain/services 传递意图</td><td>复制公共逻辑或绕过安全组件</td></tr>
+<tr><td>styles</td><td>设计变量、基础、外壳、组件、业务页面、文档六层</td><td>用无作用域的选择器影响其他页面</td></tr>
+<tr><td>pages</td><td>可信文档的静态正文与目录结构</td><td>用户上传的任意 HTML</td></tr>
+<tr><td>scripts</td><td>构建、有限 Markdown 转换、发布、预览</td><td>删除旧版、修改原始业务需求</td></tr>
+<tr><td>tests</td><td>风险边界、数据契约、构建恢复测试</td><td>只为了覆盖率重复实现逻辑</td></tr>
+<tr><td>docs</td><td>完整需求、原始需求、安全设计</td><td>真实客户、发票、密钥或业务备份</td></tr>
+<tr><td>dist</td><td>生成后的静态发布产物</td><td>长期手工修改源码</td></tr>
+</tbody></table></div>
+<p>依赖方向由 entries 装配 core/features；features 使用 domain、services、ui；domain 不依赖浏览器；data 不依赖其他层。构建器运行在 Node，与浏览器代码分离。模块只通过导出接口协作，不读取其他模块的闭包状态，不把业务容器挂到 window。</p>
+<p>后台 42 个入口，客户 16 个入口，规划 14 个入口，合计 72 个。客户构建依赖图若包含 admin-navigation、admin-records 或 admin-fixtures，构建立刻失败。菜单分期、说明、原始页面 ID 和对应需求锚点保留，不通过界面示例替用户决定未决规则。</p>
+<p>发布文件为 index.html、client.html、readme.html、names.html、guide.html、design.html、security.html，以及 assets、docs、README.md、.nojekyll。HTML 使用相对链接，支持 GitHub 项目仓库子路径。</p>
+<h2 id="doc-section-9">数据契约与状态归属</h2>
+<p>示例记录为 <code>{id, values: string[]}</code>，values 与页面 columns 按顺序对应。这是有限预览的展示 DTO，不是正式订单模型。真实 API 应使用有语义的字段对象，由适配器转换到表格。数据模块视为只读，服务返回副本，表格不能直接改 fixtures。</p>
+<p>公开商品 DTO 不含采购价、供应商或外部代采来源地址。缺价格时为 null，显示“待报价”，不能转换成 0 元。后台与客户数据不是相互穷尽的数据库样本，不能根据演示数量推导真实核算结论。</p>
+<div class="table-scroll"><table><thead><tr><th>状态</th><th>所有者</th><th>保留范围</th></tr></thead><tbody>
+<tr><td>当前路由、打开标签</td><td>应用 store</td><td>当前页面内；hash 可分享</td></tr>
+<tr><td>查询、页码、内容标签</td><td>viewState 的页面 ID 项</td><td>页面切换保留；刷新重置</td></tr>
+<tr><td>表单文字和输入状态</td><td>当前 feature</td><td>当前 DOM，离开业务页不保证草稿恢复</td></tr>
+<tr><td>示例购物袋</td><td>store + domain 校验</td><td>当前页面会话；刷新重置</td></tr>
+<tr><td>密度、侧栏、减少动画</td><td>preferences service</td><td>白名单 localStorage，可导出 JSON</td></tr>
+<tr><td>名称首选、次选和理由</td><td>名称入口内存</td><td>本页内，主动复制，不自动存自由文字</td></tr>
+<tr><td>恢复前快照</td><td>备份 feature</td><td>当前操作流程内，可撤销上次恢复</td></tr>
+</tbody></table></div>
+<p>购物袋数量限制 1–9999 的整数，商品与收货组必须在允许范围内。总数由状态派生，不另存一套可能失去同步的汇总值。</p>
+<p>重复点击当前工作标签不重建页面，避免清空输入。真正切换页面会释放旧页面；这不是多页草稿缓存。列表筛选和页码是明确保留的例外。后续若需要表单草稿，必须另行设计保存范围、恢复提示和敏感数据策略。</p>
+<h2 id="doc-section-10">渲染、资源与生命周期细节</h2>
+<p>每页、导航区域、工作标签区域、表格行区域、每层 dialog 分别管理 AbortController。表格重新绘制前移除旧行监听。每个异步请求同时有取消信号和序列号，未响应取消的旧返回也不能覆盖新内容。页面离开时关闭弹层并取消查询。</p>
+<p>后台恢复浏览器后退缓存时，用 router.refresh 重新解析当前 hash，不重复注册监听。当前 hash 合法且路由未变时重新挂载一次；当前 hash 不合法时保持错误页，不读取空路由或擅自恢复旧页面。</p>
+<p>弹窗使用原生 dialog 栈。子确认只清理自己的监听，关闭后仍保留父窗口 DOM 与撤销快照；关闭主窗口或开始新流程时清理全部相关资源。迟到的异步结果不得关闭不属于自己的窗口。</p>
+<p>四个 JS 入口分别打包；CSS 构建合并成一个文件。资源名包含内容哈希，内容变化即换名称。没有运行时 CDN、远程字体、远程图片、第三方统计或 Service Worker。文件哈希不等于缓存响应头：正式托管可为有哈希资源设置长期缓存、HTML 设置重新验证；本地预览脚本使用 no-cache。</p>
+<p>上传必须包含同一次构建的 HTML 与 assets。当前示例数据量不代表大型业务性能，未宣称万行流畅或提供虚构性能分数。接入真实 API 后需补测慢网、取消、大数据分页与错误恢复。</p>
+<p>完整需求正文在构建时成为静态 HTML，禁用 JavaScript 仍可阅读正文。脚本仅增强目录搜索、高亮、手机目录和打印。README、DESIGN、SECURITY 的有限 Markdown 转换器只处理项目作者撰写的内容，转义文字后生成支持的结构；它不是用户富文本净化器。禁止把用户上传 HTML/Markdown 直接传入它。需求正文含 script/style、事件属性或内联 style 时，构建拒绝发布。</p>
+<p>原 V2.1 的正文、表格和原始锚点继续保留，V2.1.1 另加补充章节。原始 MD 有逐字节副本，不将其作为格式化或顺手清理对象。</p>
+<h2 id="doc-section-11">UI 交互约定</h2>
+<p>经营概览优先呈现统计带、近期订单、待办、常用操作；保持正文和状态标签易读。后台标题约 24px，文档和命名页使用各自作用域的标题样式。当前 HTML 的标题是容器内 h1，已显式重置 h1 默认字号与外边距，防止浏览器默认 2em 放大标题。</p>
+<p>菜单支持分组折叠、检索、当前页高亮；工作标签可关闭。工作标签的左右键/Home/End 移动焦点，Enter/Space 激活；内容标签支持方向键选择。按钮、导航和表格行有悬停状态，键盘操作有焦点描边，长文字有 title 提示。业务状态同时用文字与颜色表达。</p>
+<p>手机侧栏为抽屉，关闭时 inert，避免键盘进入不可见菜单；文档目录在窄屏改用抽屉。窄屏表格内部横向浏览，不通过把文字缩小到难以阅读来塞入所有列。减少动画同时尊重系统与用户偏好。原生 dialog 管理模态焦点，Escape 关闭最上层窗口。</p>
+<h2 id="doc-section-12">已实现的安全措施与实际限制</h2>
+<h3 id="doc-section-13">动态内容、链接和 CSP</h3>
+<p>动态业务文本经 textContent 或文本节点进入页面，不拼入 innerHTML。URL 校验允许受约束相对路径和无账号密码的 HTTPS；拒绝 javascript、data、协议相对路径、控制字符和反斜线形式。客户提交的来源链接单独填写，作为文字预览；本版不打开或抓取该链接。</p>
+<p>静态页面使用 CSP meta：默认拒绝资源，脚本/样式限同源，connect-src 为 none，object-src、frame-src、base-uri、form-action 禁用，不放开 unsafe-inline 或 eval。外链使用 noopener/noreferrer。这降低前端注入和误联网风险，不能补偿服务端授权缺失。<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP" target="_blank" rel="noopener noreferrer">MDN：CSP</a></p>
+<p>meta CSP 不支持全部能力，不能将 frame-ancestors 写入 meta 后宣称已阻止嵌入。正式部署需要 HTTP 响应头提供适当的 frame-ancestors、nosniff、Referrer-Policy 等，HSTS 由 HTTPS 服务层配置。</p>
+<h3 id="doc-section-14">本地存储与公开静态产物</h3>
+<p>localStorage 只保存三个低敏界面偏好，不保存密码、会话 Token、真实订单、票据、银行资料或自由文字。客户端/后台分包是数据最小化，公开后台 JS 仍可被直接访问。前端隐藏菜单、按钮或数据列不能代替服务端鉴权。<a href="https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">OWASP：HTML5 Security</a></p>
+<p>登录演示禁用密码输入，业务上传只是界面说明，不伪装真实提交成功。客户、商品、金额、订单和联系方式均为示例或掩码。不要把真实业务数据写进 fixtures 再上传 GitHub。</p>
+<h3 id="doc-section-15">导出边界</h3>
+<p>CSV 只输出页面明确列投影，不自动导出对象隐藏属性。单次最多 5000 行、5 MiB。处理 ASCII 与全角公式前缀、控制前缀和引号转义，降低常见公式注入风险；不承诺所有表格软件及再次保存/打开链路都绝对安全。正式敏感导出还应在服务端核对权限并记录审计。<a href="https://owasp.org/www-community/attacks/CSV_Injection" target="_blank" rel="noopener noreferrer">OWASP：CSV Injection</a></p>
+<p>下载由用户显式触发；文件名移除路径分隔符与非法字符。页面没有任意覆盖本机文件的能力，同名下载保存方式由浏览器决定。</p>
+<h2 id="doc-section-16">界面偏好备份和恢复协议</h2>
+<p>此功能只处理 density、sidebarCollapsed、reducedMotion，不称为业务数据备份。localStorage 键为 zhenpu.preview.v2.1.1.ui。备份结构如下。</p>
+<pre><code>
+{
+
+  &quot;schemaVersion&quot;: 1,
+
+  &quot;kind&quot;: &quot;zhenpu-ui-preferences&quot;,
+
+  &quot;createdAt&quot;: &quot;2026-11-17T00:00:00.000Z&quot;,
+
+  &quot;preferences&quot;: {
+
+    &quot;density&quot;: &quot;comfortable&quot;,
+
+    &quot;sidebarCollapsed&quot;: false,
+
+    &quot;reducedMotion&quot;: false
+
+  }
+
+}
+
+</code></pre>
+<p>导入先检查文件大小，再解析 JSON，验证版本、类型、白名单和取值，展示新旧差异，允许先导出当前副本，最后经用户确认后恢复。上限 16 KiB，解析后仍校验 UTF-8 字节数；拒绝未知键、错误类型、非普通对象与原型相关字段。任何校验失败都不修改当前偏好。</p>
+<p>确认恢复时保存一次恢复前快照。当前备份页或主弹窗可撤销上次恢复，取消子确认不丢失父页和快照；关闭主窗口或离开页面后不保证跨页撤销。恢复不尝试导入账号、订单或文件。</p>
+<p>存储被拒绝或空间不足时，本次界面可在内存中生效并提示未持久化，不预先删除旧持久值；刷新后可能重新载入旧值。这是明确的降级语义。偏好备份不加密，因为仅含低敏白名单设置；真实业务备份不能沿用此结构或权限模型。</p>
+<h2 id="doc-section-17">构建覆盖保护与恢复</h2>
+<p>构建入口独占创建 .build.lock，已有锁就停止；锁含本次标识，结束时仅清理自己的锁。构建在项目目录内的新 .build-stage-* 中完成，新文件排他写入。编译、客户端依赖检查、文档内容检查与资源校验都发生在触碰旧 dist 之前。</p>
+<div class="table-scroll"><table><thead><tr><th>情况</th><th>处理</th></tr></thead><tbody>
+<tr><td>没有 dist</td><td>提交已校验的临时目录</td></tr>
+<tr><td>已有 dist 目录</td><td>独占创建 backups/build-时间-随机标识，把旧 dist 移入，再提交新目录</td></tr>
+<tr><td>目标是普通文件或软链接</td><td>拒绝覆盖</td></tr>
+<tr><td>backups 本身为软链接或非目录</td><td>拒绝将旧产物移动到未知位置</td></tr>
+<tr><td>备份预约名称冲突</td><td>拒绝覆盖已有备份，保留原状</td></tr>
+<tr><td>编译或发布前检查失败</td><td>旧 dist 不变，保留临时目录诊断</td></tr>
+<tr><td>提交失败，目标仍不存在</td><td>自动尝试把旧备份移回 dist</td></tr>
+<tr><td>回滚也失败</td><td>错误明确列出保留旧产物的路径，不删除旧版本</td></tr>
+<tr><td>发布过程中出现其他新目标</td><td>拒绝覆盖，不擅自删除新目标</td></tr>
+</tbody></table></div>
+<p>两个目录重命名不是读者视角下的原子版本切换，中间可能短暂无 dist；断电可能留下锁、临时目录和备份。因此此脚本用于受信本地构建目录，不用作直接服务客户的生产发布器，也不宣称防御相同文件权限的恶意并发进程或全部祖先目录链接攻击。</p>
+<p>故障时先读日志确认备份路径，复制到新的空目录检查，再恢复整套产物。确认没有其他构建进程后才能处理遗留锁。不要为了让构建通过而自动删除旧输出、备份或不认识的目录。开发者可用 ZHENPU_FAIL_BEFORE_PUBLISH=1 验证发布前失败分支，该开关不进入浏览器包。</p>
+<h2 id="doc-section-18">后端接入设计：尚未实现</h2>
+<h3 id="doc-section-19">公司和账号权限</h3>
+<p>服务端从可信会话确定 company_id，不信任前端传入的公司标识。查询、详情、附件下载、导出与修改都要检查对象归属。客户 DTO 按白名单生成，不能只隐藏采购成本列。管理员、采购、财务、仓管、调度与客户角色都由服务端执行授权。</p>
+<p>前期由管理员创建账号，自助注册关闭并保留说明。公司主体固定、用户名每年可改一次，需服务端记录时间和审计。未来子账号保留 origin_user_id，由主账号审核提交并醒目标明来源。身份不能由前端角色下拉框决定。</p>
+<p>会话可采用服务端安全 Cookie，配合 CSRF 防护、过期、撤销与限流。密钥保存在服务端，不打进前端包。具体认证技术和后端栈在后续接入阶段确定。</p>
+<h3 id="doc-section-20">订单、票据和并发</h3>
+<p>订单、购物袋收货组、采购、配送、进项发票、销项发票、线下结算记录采用独立对象关联。全部收货确认代表履约完成，不自动等于已开票或结清。一个订单多购物袋，仍按订单结算；采购可以涉及多个供应商。跨月缺票继续保留在待办。</p>
+<p>真实写入需要事务、幂等标识和版本条件，防止重复提交及多人覆盖。OCR 结果只产生待确认字段；人工复核后才最终绑定，识别失败可手工上传。原文一单一张销项发票与可能的更正、红冲等边界继续待业务确认，不在本次 UI 重构中替换规则。</p>
+<h3 id="doc-section-21">文件和外部服务</h3>
+<p>真实票据和附件保存到受保护对象存储，下载前鉴权，并使用短期受控地址。校验大小、真实类型、内容并做必要扫描，不把未经审查的 HTML/SVG 当可信页面执行。</p>
+<p>采购链接、价格抓取、OCR 与物流由受控服务端适配器处理。限制域名、重定向、内网地址、超时、大小、频率与预算，避免任意 URL 抓取变成内部网络访问。来源链接和公开商品链接分开。第三方配额以正式接入时的官方套餐为准，不能把历史额度当成永久免费承诺。</p>
+<h3 id="doc-section-22">真实备份与审计</h3>
+<p>业务备份需要数据库和附件一致性、加密、密钥分离、校验清单、版本兼容、保留策略与异地副本。恢复先在隔离环境验证，再切换，并保留恢复前快照及审计。RPO/RTO、保留天数、存储地区和恢复授权人在生产接入前确认。</p>
+<p>审计由服务端记录操作者、公司、对象、时间、结果和变更摘要，不写入密码、Token、完整票据或不必要的个人资料。预览中的审计表不是可靠审计系统。</p>
+<h2 id="doc-section-23">测试与验收原则</h2>
+<p>npm test 覆盖偏好结构/大小、存储失败、购物袋边界、筛选/分页、CSV、异步竞争、72 页数据契约/需求锚点、发布覆盖保护和回滚。npm run build 验证四入口打包和产物完整性。</p>
+<p>浏览器检查实际导航、排版、输入焦点、筛选、标签、购物袋、偏好、弹层、文档互链和手机布局。最小 DOM harness 只证明生命周期控制流，不能替代真实 dialog 的焦点与叠层观察。大规模性能、全浏览器矩阵、正式接口及后端安全测试不属于本次静态交付验证范围。</p>
+<p>实际构建版本、时间、资源大小与模块数写入 dist/docs/build-info.json，不包含用户数据。最终交付报告只写已运行的结果，不预先填写未验证数字。</p>
+<h2 id="doc-section-24">后续维护约定</h2>
+<p>新增页面先更新菜单和数据契约，再实现 feature；公共逻辑放入适合的 core/domain/services/ui 层。新增持久化字段必须同时更新版本、白名单、迁移、README 和安全说明。新增 API 时重新审查 CSP、鉴权、取消、错误状态、缓存和字段最小化。</p>
+<p>每次需求变动更新完整需求文档及变更记录，小改动使用小版本。未决问题不可用演示值代替用户决定。本次没有新增需用户立即回答的阻塞问题；既有业务 R/D 待确认项全部保留。</p>
+<h2 id="doc-section-25">官方参考资料</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP" target="_blank" rel="noopener noreferrer">MDN：Content Security Policy</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML" target="_blank" rel="noopener noreferrer">MDN：innerHTML</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">OWASP：HTML5 Security</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">OWASP：Authorization</a></li>
+<li><a href="https://owasp.org/www-community/attacks/CSV_Injection" target="_blank" rel="noopener noreferrer">OWASP：CSV Injection</a></li>
+<li><a href="https://esbuild.github.io/api/" target="_blank" rel="noopener noreferrer">esbuild：构建 API</a></li>
+<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener noreferrer">GitHub Pages：发布来源</a></li>
+</ul></article><footer class="app-footer">上海臻朴实业有限公司 · V2.1.1 · 2026-11-17</footer></main></div></body></html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'"><meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light"><title>上传与使用说明 · 臻朴采购系统</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/app.50fc97037348.css"><script src="assets/document.5b05deb3772e.js" defer></script></head><body class="document-page" data-density="comfortable" data-reduced-motion="false"><header class="doc-topbar"><a class="brand" href="index.html"><span class="brand-mark">臻</span><span class="brand-copy"><strong class="brand-name">臻朴采购系统</strong><small class="brand-sub">企业采购 · 有序协作</small></span></a><nav class="site-links" aria-label="项目页面"><a href="index.html">系统预览</a><a href="client.html">客户门户</a><a href="readme.html">需求文档</a><a href="names.html">名称备选</a></nav></header><div class="doc-shell"><aside class="doc-sidebar" id="document-sidebar"><h2>章节目录</h2><input class="toc-search" type="search" maxlength="100" id="toc-search" placeholder="搜索章节" aria-label="搜索文档章节"><nav aria-label="章节目录"><a class="toc-link" data-level="2" href="#doc-section-2">这一版可以做什么</a><a class="toc-link" data-level="2" href="#doc-section-3">页面入口</a><a class="toc-link" data-level="2" href="#doc-section-4">直接查看与上传</a><a class="toc-link" data-level="2" href="#doc-section-5">常用操作</a><a class="toc-link" data-level="3" href="#doc-section-6">菜单与标签页</a><a class="toc-link" data-level="3" href="#doc-section-7">列表与示例导出</a><a class="toc-link" data-level="3" href="#doc-section-8">界面偏好</a><a class="toc-link" data-level="3" href="#doc-section-9">购物袋</a><a class="toc-link" data-level="3" href="#doc-section-10">名称比较</a><a class="toc-link" data-level="2" href="#doc-section-11">备份、恢复与回退</a><a class="toc-link" data-level="3" href="#doc-section-12">界面偏好备份</a><a class="toc-link" data-level="3" href="#doc-section-13">旧版页面回退</a><a class="toc-link" data-level="3" href="#doc-section-14">开发构建的自动备份</a><a class="toc-link" data-level="2" href="#doc-section-15">常见问题</a><a class="toc-link" data-level="3" href="#doc-section-16">为什么上传后一直显示正在载入？</a><a class="toc-link" data-level="3" href="#doc-section-17">为什么没有真实登录或提交成功？</a><a class="toc-link" data-level="3" href="#doc-section-18">为什么订单完成后仍显示缺发票？</a><a class="toc-link" data-level="3" href="#doc-section-19">为什么商品没有显示 0 元？</a><a class="toc-link" data-level="3" href="#doc-section-20">为什么名称选择没有自动恢复？</a><a class="toc-link" data-level="3" href="#doc-section-21">GitHub Pages 能直接保存真实业务吗？</a><a class="toc-link" data-level="2" href="#doc-section-22">版本</a></nav><a class="btn btn-ghost" href="guide.html">上传与使用说明</a><a class="btn btn-ghost" href="design.html">技术设计</a><a class="btn btn-ghost" href="security.html">安全与恢复设计</a></aside><button class="sidebar-backdrop" id="doc-backdrop" type="button" aria-label="关闭目录" tabindex="-1"></button><main class="doc-main" id="document-main"><div class="doc-toolbar"><button class="btn" id="toc-toggle" type="button" aria-controls="document-sidebar" aria-expanded="false">章节目录</button><strong>上传与使用说明</strong><div class="toolbar-spacer"></div><a class="btn" href="docs/README.md" download>下载 Markdown</a><button class="btn" data-print type="button">打印 / PDF</button></div><article class="document-content"><h1 id="doc-section-1">臻朴采购系统 V2.1.1 使用手册</h1>
+<p>面向上海臻朴实业有限公司采购协作场景的静态界面展示稿。名称暂定，所有业务记录均为示例。</p>
+<h2 id="doc-section-2">这一版可以做什么</h2>
+<ul>
+<li>查看经营后台、客户门户和后续预留的全部 72 个业务页面入口。</li>
+<li>使用工作标签页、菜单搜索、列表筛选、翻页和详情弹窗。</li>
+<li>在客户门户浏览示例商品，调整多收货组购物袋的数量，生成订单预览。</li>
+<li>阅读完整需求文档，比较五组名称，复制命名意见。</li>
+<li>切换舒适或紧凑密度、减少动画、默认收起侧栏。</li>
+<li>导出当前页示例 CSV；导出、检查和恢复当前浏览器的界面偏好。</li>
+</ul>
+<p>业务数据不会提交到服务器。真实登录、客户账号、采购提交、开票、物流查询和业务资料备份需后续接入；预览不能用于保存真实订单。</p>
+<h2 id="doc-section-3">页面入口</h2>
+<div class="table-scroll"><table><thead><tr><th>文件</th><th>用途</th></tr></thead><tbody>
+<tr><td>index.html</td><td>经营后台，42 个入口；可切换 14 个规划预留入口</td></tr>
+<tr><td>client.html</td><td>客户门户，16 个入口</td></tr>
+<tr><td>readme.html</td><td>完整 V2.1.1 需求文档，保留 V2.1 全文和待确认问题</td></tr>
+<tr><td>names.html</td><td>五组名称的含义、优缺点及个人选择</td></tr>
+<tr><td>guide.html</td><td>本使用手册的网页版本</td></tr>
+<tr><td>design.html</td><td>技术设计，供后续开发协作使用</td></tr>
+<tr><td>security.html</td><td>数据安全和恢复设计</td></tr>
+</tbody></table></div>
+<p>顶部导航可以在系统、客户门户、需求和名称页面之间跳转。技术文档也可从使用说明或后台帮助页面进入。</p>
+<h2 id="doc-section-4">直接查看与上传</h2>
+<p>下载站点包后解压，保留目录结构。推荐上传 GitHub Pages 或使用下方的本地预览方式查看；也可尝试在本地双击 <code>index.html</code>，但浏览器可能限制文件页面的脚本与存储。<code>assets</code> 文件夹须与 HTML 同时保留。</p>
+<p>上传 GitHub 时，上传解压后的文件和文件夹，不只上传 ZIP。把 <code>index.html</code>、其他 HTML、<code>assets</code> 和 <code>docs</code> 放在同一发布目录。旧版的单独 HTML 不足以运行新版，需要一起上传 assets。</p>
+<p>如果还未启用 GitHub Pages，在仓库 Settings → Pages → Build and deployment 中选择 Deploy from a branch，选中实际分支和发布目录，保存后访问 Pages 提供的网站地址。已有 Pages 配置时沿用其发布目录。源代码页不是发布后的网页。</p>
+<p>如果本地浏览器限制文件页面的脚本或存储，可以使用源码包的本地预览。安装 Node.js 20 或以上，在源码目录执行以下命令：</p>
+<pre><code>
+npm ci
+
+npm run build
+
+npm run preview
+
+</code></pre>
+<p>浏览器打开终端显示的本地地址即可。普通上传和查看站点包不需要安装 Node.js。</p>
+<h2 id="doc-section-5">常用操作</h2>
+<h3 id="doc-section-6">菜单与标签页</h3>
+<p>侧栏可展开业务分类，也可搜索当前范围的菜单。点击菜单会打开工作标签；关闭当前标签会回到相邻标签。顶部“客户门户”进入独立的客户展示入口，经营后台的下拉选择可以查看后续预留菜单。</p>
+<p>手机上点击左上角菜单按钮展开侧栏，点击遮罩或按 Escape 关闭。宽表格可以在表格区域左右滚动。</p>
+<h3 id="doc-section-7">列表与示例导出</h3>
+<p>搜索支持编号和可见字段，状态标签用于筛选，内容标签用于切换对应展示。零结果会显示提示，清空搜索可恢复。</p>
+<p>“导出示例”会先说明行数和字段，确认后下载当前页的 CSV。浏览器负责实际保存位置和同名文件处理，网页不会静默覆盖本机文件。</p>
+<h3 id="doc-section-8">界面偏好</h3>
+<p>右上角齿轮可以调整密度、减少动画和侧栏。只保存这三项界面偏好，不保存密码、客户、订单或票据。浏览器禁止存储时，当次打开仍可使用，页面会提示保存限制。</p>
+<h3 id="doc-section-9">购物袋</h3>
+<p>一个购物袋对应一个收货组。加减数量后，整单件数会更新；“生成订单预览”可查看多购物袋合并提交的样式。数量只在本次打开期间保留，刷新后回到演示初始值。</p>
+<h3 id="doc-section-10">名称比较</h3>
+<p>名称页保留臻伙伴、臻合、臻好办、臻序、臻采的完整比较。可选择第一、第二偏好，填写理由并复制给朋友。选择不会自动保存或上传，关闭页面前请复制需要保留的意见。</p>
+<h2 id="doc-section-11">备份、恢复与回退</h2>
+<h3 id="doc-section-12">界面偏好备份</h3>
+<p>在后台“权限与系统 → 备份与恢复”页面，或客户门户右上角“界面偏好 → 备份界面偏好”，导出当前偏好 JSON。这个文件只包含密度、侧栏和减少动画三个选项。</p>
+<p>恢复时先选文件，页面检查大小、格式、版本与允许字段，通过后展示差异。可先下载当前偏好的副本，再点击“确认恢复”。同一次备份页面中，可撤销上一次恢复；离开页面后若要回退，使用恢复前下载的文件。</p>
+<p>不支持的文件会给出原因，不修改当前偏好。上限为 16 KiB。此功能不是订单、客户、发票或数据库备份。</p>
+<h3 id="doc-section-13">旧版页面回退</h3>
+<p>本次另保留原 V2.1 完整包。上传新版之前，请下载或保留自己仓库当前的版本。如果需要回退，恢复整套旧版文件，而不是混用旧 HTML 和新 assets。</p>
+<h3 id="doc-section-14">开发构建的自动备份</h3>
+<p>已有 <code>dist</code> 时，再运行构建会先把旧产物移到源码目录的 <code>backups/build-时间-随机标识/dist</code>，再提交新产物。构建日志会给出准确位置。</p>
+<p>校验或编译失败时旧产物保持原状；提交步骤失败会尝试自动恢复旧产物。若终端显示回滚失败，旧产物仍保留在日志所列备份目录，先复制它到另一个空目录确认可打开，再恢复发布目录。</p>
+<p>突然断电可能留下 <code>.build.lock</code> 和构建临时目录。确认没有其他构建进程后再处理锁文件；不要在不确定时删除已有产物或备份。</p>
+<h2 id="doc-section-15">常见问题</h2>
+<h3 id="doc-section-16">为什么上传后一直显示正在载入？</h3>
+<p>优先检查是否漏传 <code>assets</code> 文件夹，或 HTML 与 assets 来自不同版本。请上传完整站点包，不要只替换一个 HTML。</p>
+<h3 id="doc-section-17">为什么没有真实登录或提交成功？</h3>
+<p>这是用于界面与需求评审的静态预览。客户、订单和金额都是示例；正式业务提交需要后续服务端接入。登录页不会收集真实密码。</p>
+<h3 id="doc-section-18">为什么订单完成后仍显示缺发票？</h3>
+<p>按照既有需求，全部收货确认代表履约完成，开票可以跨月补齐，二者分开管理。</p>
+<h3 id="doc-section-19">为什么商品没有显示 0 元？</h3>
+<p>价格尚未确认时显示“待报价”。未知价格不是零价格，核算方式也不会由展示页自行确定。</p>
+<h3 id="doc-section-20">为什么名称选择没有自动恢复？</h3>
+<p>命名意见可能含自由文字，本版采用本次页面内记录、主动复制的方式。界面偏好与命名意见是两种不同资料。</p>
+<h3 id="doc-section-21">GitHub Pages 能直接保存真实业务吗？</h3>
+<p>当前包仅发布静态页面，页面和示例可被访问。后续使用真实业务资料前，需要服务端账号、公司级权限和受保护的文件存储。</p>
+<h2 id="doc-section-22">版本</h2>
+<p>V2.1.1，2026-11-17。保留原 V2.1 的业务范围、72 个页面入口及全部待确认问题；新增模块化实现、渲染与界面优化、安全边界和可恢复构建。</p>
+<p>发布设置参考：<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener noreferrer">GitHub Pages 官方说明</a>。</p></article><footer class="app-footer">上海臻朴实业有限公司 · V2.1.1 · 2026-11-17</footer></main></div></body></html>
